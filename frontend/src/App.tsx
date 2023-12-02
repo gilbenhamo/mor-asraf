@@ -1,10 +1,11 @@
-import { motion } from "framer-motion";
-import "./App.css";
+import Header from "./components/layout/Header";
+import { HomePage } from "./pages/HomePage";
 
 function App() {
   return (
     <>
-      <motion.p whileHover={{scale:1.3}} className=" text-black">the Vite and React logos to learn more</motion.p>
+      <Header />
+      <HomePage />
     </>
   );
 }
