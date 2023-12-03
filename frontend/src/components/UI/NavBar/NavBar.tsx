@@ -5,35 +5,40 @@ import { motion } from "framer-motion";
 import { navLinks } from "../../../utils/constants";
 import { Twirl } from "hamburger-react";
 import { logo } from "../../../assets";
+import { linksVariants } from "../../../utils/motion";
 
 const NavBar = () => {
   const [isOpen, setOpen] = useState(false);
   const [active, setActive] = useState("");
   return (
     <nav
-      className={`${styles.paddingX} w-full flex items-center py-2 fixed top-0 z-20 bg-white`}
+      className={`${styles.paddingX} w-full flex items-center py-2 fixed top-0 z-20 bg-white border-b-2 border-black_m`}
     >
       <div className="w-full flex justify-between items-center max-w-7xl mx-auto">
-        <a
-        className="flex items-center gap-2 cursor-pointer">
+        <motion.a
+          variants={linksVariants}
+          whileHover="hover"
+          whileTap="tap"
+          className="flex items-center gap-2 cursor-pointer"
+          href="/#"
+        >
           <img src={logo} alt="logo" className="w-20 h-20 object-contain" />
-          <motion.p
-            // whileHover={while_hover_repeat}
-            className={`${styles.linksStyle} font-bold md:block hidden italic`}
+          <p
+            className={`${styles.linksStyle} text-gray_m text-[15px] font-bold md:block hidden italic`}
           >
-            / mor asraf&nbsp;
-            {/* <span className="md:block hidden">| &nbsp;Software Engineer</span> */}
-          </motion.p>
-        </a>
+            / MOR ASRAF&nbsp;
+          </p>
+        </motion.a>
         <ul className="list-none hidden sm:flex flex-row gap-10">
           {navLinks.map((link) => (
             <motion.li
               key={link.id}
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.7 }}
-              className={`${
-                active === link.title ? "text-blue_p" : "text-secondary"
-              } ${styles.linksStyle}`}
+              variants={linksVariants}
+              whileHover="hover"
+              whileTap="tap"
+              className={`${styles.linksStyle} ${
+                active === link.title ? "text-black_m underline" : "text-gray_m"
+              }`}
               onClick={() => setActive(link.title)}
             >
               <a href={`#${link.id}`}> {link.title} </a>
