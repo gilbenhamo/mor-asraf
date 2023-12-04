@@ -10,7 +10,7 @@ export default {
         link_hover: "#000000",
         black_m: "#28282B",
         gray_m: "#7B7B7C",
-
+        white_m: "#FDFBF9",
         "black-100": "#100d25",
         "black-200": "#090325",
         "white-100": "#f3f3f3",

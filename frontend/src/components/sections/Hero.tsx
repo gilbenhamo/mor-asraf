@@ -1,12 +1,24 @@
+import { motion, useScroll, useTransform } from "framer-motion";
 import { OvalNextSection } from "../UI/OvalNextSection";
 
 export const Hero = () => {
+  const screen_height = window.innerHeight
+  const { scrollYProgress } = useScroll();
+  const hero_height_proportion = document.getElementById("hero")!.offsetHeight/document.body.scrollHeight;
+  
+  const scale = useTransform(scrollYProgress, [0, hero_height_proportion], [1, 1.4]);
+  const y = useTransform(scrollYProgress, [0, hero_height_proportion], [1, screen_height/2+48]);
   return (
-<div className="relative flex-col flex min-h-screen bg-white overflow-hidden md:bg-cover bg-contain bg-no-repeat bg-hero-pattern bg-center">
-  <div className="flex justify-center items-center  ">
-    {/* <img src={horses} alt="Your Image" className=""   /> */}
-  </div>
-  <OvalNextSection/>
-</div>
+    <div id="hero" className="relative flex-col flex min-h-screen bg-white  md:bg-cover bg-contain bg-no-repeat bg-hero-pattern bg-center z-10">
+      <div className="flex justify-center items-center min-h-screen">
+        <motion.h1
+          style={{ scale: scale, y: y }} 
+          className="font-serif font-bold text-black text-5xl sm:text-8xl z-10"
+        >
+          Mor Asraf
+        </motion.h1>
+      </div>
+      <OvalNextSection />
+    </div>
   );
 };

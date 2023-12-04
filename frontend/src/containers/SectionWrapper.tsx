@@ -3,8 +3,7 @@ import { staggerContainer } from "../utils/motion";
 import { styles } from "../utils/styles";
 
 export const SectionWrapper = (
-  { children }: containerBaseProps,
-  idName: string
+  { children ,idName}: sectionWrapperProps
 ) => {
   return (
     <motion.section
