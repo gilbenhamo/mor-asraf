@@ -11,7 +11,7 @@ const GeustsSpots = () => (
     <SectionWrapper idName="guest-spots">
       <SectionHead pText={"Where you can find me?"} headText={"Geust Spots."} />
       <div className="mt-20 flex flex-col">
-        <VerticalTimeline>
+        <VerticalTimeline lineColor="black">
           {[1, 2, 3].map((e, index) => (
             <GeustSpotCard key={index} num={e} />
           ))}
