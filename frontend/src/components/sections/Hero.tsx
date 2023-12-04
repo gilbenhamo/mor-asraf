@@ -1,14 +1,17 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { OvalNextSection } from "../UI/OvalNextSection";
+import { useState } from "react";
 
 export const Hero = () => {
-  let hero_height_proportion = 1;
+  const [heroHeightPropportion, setHeroHeightPropportion] = useState(1);
 
   window.onload = () => {
-    const heroSection = document.getElementById("hero-section");
+    const heroSection = document.getElementById("hero");
+
     if (heroSection) {
-      hero_height_proportion =
-        heroSection.offsetHeight / document.body.scrollHeight;
+      setHeroHeightPropportion(
+        heroSection.offsetHeight / document.body.scrollHeight
+      );
     }
   };
 
@@ -17,13 +20,13 @@ export const Hero = () => {
 
   const scale = useTransform(
     scrollYProgress,
-    [0, hero_height_proportion],
+    [0, heroHeightPropportion],
     [1, 1.4]
   );
   const y = useTransform(
     scrollYProgress,
-    [0, hero_height_proportion],
-    [1, screen_height / 2 + 48]
+    [0, heroHeightPropportion],
+    [1, screen_height / 2 + 72 + 56]
   );
   return (
     <div

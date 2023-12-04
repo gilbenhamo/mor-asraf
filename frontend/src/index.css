@@ -9,3 +9,9 @@
     scroll-behavior: smooth;
     color-scheme:dark;
 }
+
+.hash-span {
+    margin-top: -100px;
+    padding-bottom: 70px;
+    display: block;
+  }
