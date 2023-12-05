@@ -21,7 +21,7 @@ export const Hero = () => {
   const scale = useTransform(
     scrollYProgress,
     [0, heroHeightPropportion],
-    [1, 1.4]
+    [1, 1.3]
   );
   const y = useTransform(
     scrollYProgress,

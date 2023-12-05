@@ -5,6 +5,7 @@ import "react-vertical-timeline-component/style.min.css";
 import SectionHead from "../UI/SectionHead";
 import GeustSpotCard from "../UI/GeustSpotCard";
 import { SectionWrapper } from "../../containers/SectionWrapper";
+import { geustSpotsData } from "../../utils/constants";
 
 const GeustsSpots = () => (
   <>
@@ -12,8 +13,8 @@ const GeustsSpots = () => (
       <SectionHead pText={"Where you can find me?"} headText={"Geust Spots."} />
       <div className="mt-20 flex flex-col">
         <VerticalTimeline lineColor="black">
-          {[1, 2, 3].map((e, index) => (
-            <GeustSpotCard key={index} num={e} />
+          {geustSpotsData.map((elem, index) => (
+            <GeustSpotCard key={index} {...elem} />
           ))}
         </VerticalTimeline>
       </div>
