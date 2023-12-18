@@ -6,11 +6,11 @@ import { about_pic } from "../../assets";
 const About = () => (
   <SectionWrapper idName="about">
     {/* <div className="h-12"></div> */}
-    <div className="flex flex-row items-center mt-28">
+    <div className="flex flex-col sm:flex-row items-center mt-36">
       <motion.p
         // variants={fadeIn("", "", 0.5, 0.2)}
         variants={slideFadeIn("up","spring",0.8,1.2)}
-        className="mt-2 text-black_m text-sm sm:text-[17px] max-w-3xl leading-[30px] text-center"
+        className="m-6 mt-2 text-black_m text-sm sm:text-[17px] max-w-3xl leading-[30px] text-center"
       >
         Artist and tattooer <br /> I truly believe that art is supposed to make
         a difference. Either if it's presented in the finest museums or laying
@@ -35,7 +35,7 @@ const About = () => (
       <motion.img
         variants={slideFadeIn("right", "spring", 0.4, 1.2)}
         src={about_pic}
-        className="h-[600px]"
+        className="h-[300px] sm:h-[400px] m-10"
       />
     </div>
   </SectionWrapper>

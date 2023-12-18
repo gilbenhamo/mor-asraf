@@ -26,7 +26,7 @@ const NavBar = () => {
           <p
             className={`${styles.linksStyle} text-gray_m text-[15px] font-bold md:block hidden italic`}
           >
-            / MOR ASRAF&nbsp;
+            {/* / MOR ASRAF&nbsp; */}
           </p>
         </motion.a>
         <ul className="list-none hidden sm:flex flex-row gap-10">
@@ -46,7 +46,7 @@ const NavBar = () => {
           ))}
         </ul>
         <div className="sm:hidden flex flex-1 justify-end items-center">
-          <Twirl rounded toggled={isOpen} toggle={setOpen} />
+          <Twirl rounded toggled={isOpen} toggle={setOpen} color="#28282B" />
           {/* <MobileNavLink
             isOpen={isOpen}
             active={active}
