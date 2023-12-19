@@ -1,10 +1,11 @@
 import { motion } from "framer-motion";
 import { VerticalTimelineElement } from "react-vertical-timeline-component";
 
-const GeustSpotCard = ({ location, studio, date, icon }: geustSpotsProps) => {
+const GeustSpotCard = ({ location, studio, date, icon, index }: geustSpotsProps) => {
   return (
     <VerticalTimelineElement
-      className="font-mono"
+      position="left"
+      className={`font-mono ${[0,3].includes(index!) ? 'opacity-50' : 'opacity-100'}`}
       contentStyle={{
         background: "#ffffff",
         borderBottomWidth: 0,
@@ -22,14 +23,14 @@ const GeustSpotCard = ({ location, studio, date, icon }: geustSpotsProps) => {
             className="w-full h-full object-cover rounded-full"
           />
         </div>
-      }
+      } 
     >
       <motion.div className="flex justify-start items-center flex-col">
         <motion.div
-          whileHover={{ scale: 1.2}}
+          whileHover={{ scale: [0,3].includes(index!) ? 1 : 1.2 }}
           className="  w-56 p-4 flex flex-col justify-start items-center border-r-2 border-t-2 border-black_m rounded-r-xl rounded-b-xl "
         >
-          <h3 className="text-black_m text-[24px] font-bold ">
+          <h3 className={`text-black_m text-[24px] font-bold `}>
             {/* {experience.title} */}
             {location}
           </h3>
@@ -40,7 +41,7 @@ const GeustSpotCard = ({ location, studio, date, icon }: geustSpotsProps) => {
             {/* {experience.company_name} */}
             {studio}
           </p>
-          <div className="mt-1 h-auto w-auto rounded-full border-2 border-black text-center p-1 text-[10px] hover:bg-gray-200 hover:cursor-pointer">
+          <div className={`mt-1 h-auto w-auto rounded-full border-2 border-black text-center p-1 text-[10px] hover:bg-gray-200 hover:cursor-pointer`}>
             {"Book Now"}
           </div>
         </motion.div>

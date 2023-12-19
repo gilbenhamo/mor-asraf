@@ -6,10 +6,14 @@ import { about_pic } from "../../assets";
 const About = () => (
   <SectionWrapper idName="about">
     {/* <div className="h-12"></div> */}
-    <div className="flex flex-col sm:flex-row items-center mt-36">
+    <motion.h1 className="font-serif font-bold text-black text-5xl sm:text-8xl text-center"
+    variants={fadeIn("down", "", 1, 0.3)}>
+      Mor Asraf
+    </motion.h1>
+    <div className="flex flex-col sm:flex-row items-center mt-3">
       <motion.p
         // variants={fadeIn("", "", 0.5, 0.2)}
-        variants={slideFadeIn("up","spring",0.8,1.2)}
+        variants={slideFadeIn("up", "spring", 0.8, 1.2)}
         className="m-6 mt-2 text-black_m text-sm sm:text-[17px] max-w-3xl leading-[30px] text-center"
       >
         Artist and tattooer <br /> I truly believe that art is supposed to make

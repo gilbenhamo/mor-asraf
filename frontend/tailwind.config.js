@@ -34,7 +34,7 @@ export default {
         // 'sh': {'raw': '(min-height: 500px)'}
       },
       backgroundImage: {
-        "hero-pattern": "url('/src/assets/horses.jpg')",
+        "hero-pattern": "url('/src/assets/hero1.jpg')",
       },
     },
   },

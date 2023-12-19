@@ -33,9 +33,15 @@ export const navLinks = [
       icon:studio_2
     },
     {
+      location:"Portugal",
+      studio:"Studio one",
+      date:"03 - 06 December",
+      icon:studio_1
+    },
+    {
       location:"Paris",
       studio:"Dev Tattoos",
-      date:"07 - 12 November",
+      date:"07 - 12 December",
       icon:studio_3
     },
   ]

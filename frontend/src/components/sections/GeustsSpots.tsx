@@ -14,7 +14,7 @@ const GeustsSpots = () => (
       <div className="mt-20 flex flex-col">
         <VerticalTimeline lineColor="black">
           {geustSpotsData.map((elem, index) => (
-            <GeustSpotCard key={index} {...elem} />
+            <GeustSpotCard key={index} index={index} {...elem} />
           ))}
         </VerticalTimeline>
       </div>

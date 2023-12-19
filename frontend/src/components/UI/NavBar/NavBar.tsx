@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { styles } from "../../../utils/styles";
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 // import { while_hover_repeat } from "../../../utils/motion";
 import { navLinks } from "../../../utils/constants";
 import { Twirl } from "hamburger-react";
@@ -10,9 +10,10 @@ import { linksVariants } from "../../../utils/motion";
 const NavBar = () => {
   const [isOpen, setOpen] = useState(false);
   const [active, setActive] = useState("");
+
   return (
     <nav
-      className={`${styles.paddingX} w-full flex items-center py-2 fixed top-0 z-20 bg-white border-b-2 border-black_m`}
+      className={`${styles.paddingX} w-full flex h-20 items-center py-2 fixed top-0 z-20 bg-white border-b-2 border-black_m`}
     >
       <div className="w-full flex justify-between items-center max-w-7xl mx-auto">
         <motion.a
@@ -22,12 +23,13 @@ const NavBar = () => {
           className="flex items-center gap-2 cursor-pointer"
           href="/#"
         >
-          <img src={logo} alt="logo" className="w-20 h-20 object-contain" />
-          <p
-            className={`${styles.linksStyle} text-gray_m text-[15px] font-bold md:block hidden italic`}
+          {/* <img src={logo} alt="logo" className="w-20 h-20 object-contain" /> */}
+          <motion.p
+            className={`${styles.linksStyle} text-black_m text-[30px] font-serif font-bold z-10`}
           >
-            {/* / MOR ASRAF&nbsp; */}
-          </p>
+            Mor Asraf
+          </motion.p>
+
         </motion.a>
         <ul className="list-none hidden sm:flex flex-row gap-10">
           {navLinks.map((link) => (

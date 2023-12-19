@@ -7,6 +7,7 @@ interface sectionWrapperProps extends containerBaseProps {
 }
 
 interface geustSpotsProps {
+  index?:number;
   location: string;
   studio: string;
   date: string;
