@@ -1,6 +1,6 @@
 export const HomeContainer = ({ children }: containerBaseProps) => {
   return (
-    <div className="relative z-0 bg-white">
+    <div className="relative z-auto bg-white">
         {children}
     </div>
   );

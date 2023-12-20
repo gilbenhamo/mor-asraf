@@ -8,15 +8,9 @@ import DateInput from "../UI/DateInput";
 import CheckBox from "../UI/CheckBox";
 
 const BookingIsrael = () => {
-  //   const [selectedDates, setSelectedDates] = useState<Date[]>([]);
 
-  //   const handleDateChange = (date: Date | null) => {
-  //     console.log(date?.toString());
-  //     setSelectedDate(date);
-  //     if (date) setSelectedDates([...selectedDates, date]);
-  //   };
   return (
-    <SectionWrapper idName="contact">
+    <SectionWrapper idName="booking-israel">
       <div className=" xl:flex-row flex-col flex items-center justify-center gap-10 overflow-hidden">
         <motion.div
           variants={slideIn("down", "spring", 0.2, 1)}
@@ -190,13 +184,12 @@ const BookingIsrael = () => {
               placeholder={"Extra things i need to know?!"}
             />
             <div className="flex flex-col gap-2 items-start justify-start ">
-              <CheckBox label="I'm over 18" />
-              <CheckBox label="I know my part in the process will be the idea\story behind it, final drawing\design will be Mor's part." />
-              <CheckBox label="I'm open minded." />
-              <CheckBox label="I really am." />
+              <CheckBox label="I'm over 18" id="18-checkbox" />
+              <CheckBox label="I know my part in the process will be the idea\story behind it, final drawing\design will be Mor's part." id="part-checkbox" />
+              <CheckBox label="I'm open minded." id="minded-checkbox" />
+              <CheckBox label="I really am." id="really-checkbox" />
             </div>
 
-            <label className="md:w-6/12 w-full lg:w-7/12"></label>
             {/* <div className="flex flex-row">
                 {selectedDates.map((date,index) => (
                   <div key={ index} className="m-2">{date.toDateString()}</div>

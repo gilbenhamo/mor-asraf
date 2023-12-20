@@ -1,10 +1,8 @@
 import { useState } from "react";
 import { styles } from "../../../utils/styles";
 import { motion, useScroll, useTransform } from "framer-motion";
-// import { while_hover_repeat } from "../../../utils/motion";
 import { navLinks } from "../../../utils/constants";
 import { Twirl } from "hamburger-react";
-import { logo } from "../../../assets";
 import { linksVariants } from "../../../utils/motion";
 
 const NavBar = () => {
@@ -25,7 +23,7 @@ const NavBar = () => {
         >
           {/* <img src={logo} alt="logo" className="w-20 h-20 object-contain" /> */}
           <motion.p
-            className={`${styles.linksStyle} text-black_m text-[30px] font-serif font-bold z-10`}
+            className={`${styles.linksStyle} text-black_m text-[30px] font-serif font-extrabold z-10`}
           >
             Mor Asraf
           </motion.p>
