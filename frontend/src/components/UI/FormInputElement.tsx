@@ -1,30 +1,22 @@
-interface Props {
-  name: string;
+import { InputHTMLAttributes } from "react";
+
+interface inputProps extends InputHTMLAttributes<HTMLInputElement> {
+  id: string;
   type: string;
-  //value: string | number;
-  label: string;
-  //onChnage: (event:any) => void;
-  placeholder: string;
+  label?: string;
+  value?: string | number;
 }
 
-const FormInputElement = ({
-  name,
-  type,
-  //value,
-  //onChnage,
-  placeholder,
-  label,
-}: Props) => {
+const FormInputElement = ({ id, label, type, ...rest }: inputProps) => {
   return (
-    <label className="flex flex-col md:w-6/12 w-full lg:w-7/12">
+    <label className="flex flex-col w-full ">
+      {label && <span className="text-black_m font-medium">{label}</span>}
       <input
         required
+        id={id}
         type={type}
-        name={name}
-        //value={value}
-        //onChange={onChnage}
-        placeholder={label}
-        className="text-black_m bg-white py-2 px-6 placeholder:text-gray_m border-black_m border-b-2 outline-none font font-medium"
+        {...rest}
+        className="text-black_m bg-white py-2 px-6 placeholder:text-gray_m border-black_m border-b-2 outline-none font-medium"
       />
     </label>
   );

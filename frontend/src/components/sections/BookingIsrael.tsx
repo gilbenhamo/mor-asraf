@@ -6,198 +6,125 @@ import FormInputElement from "../UI/FormInputElement";
 import FormTextArea from "../UI/FormTextArea";
 import DateInput from "../UI/DateInput";
 import CheckBox from "../UI/CheckBox";
+import TwoInputsGridContainer from "../../containers/TwoInputsGridContainer";
+import FormFileUploader from "../UI/FormFileUploader";
 
 const BookingIsrael = () => {
-
   return (
     <SectionWrapper idName="booking-israel">
-      <div className=" xl:flex-row flex-col flex items-center justify-center gap-10 overflow-hidden">
+      <SectionHead headText={"TLV Booking."} />
+      <div className=" xl:flex-row flex-col flex items-center justify-center gap-10 p-2 overflow-hidden">
         <motion.div
           variants={slideIn("down", "spring", 0.2, 1)}
-          className="flex-[0.75] bg-white p-8 rounded-2xl"
+          className="flex-[0.75] bg-white  rounded-2xl flex flex-col justify-center items-center"
         >
-          <SectionHead
-            pText={"Get your appointment"}
-            headText={"TLV Booking."}
-          />
-          {/* <//</div>EmailForm /> */}
           <form
-            name="contactV2"
+            name="tlv-booking-form"
             method="POST"
-            className="mt-12 flex flex-col gap-8 items-center"
-            data-netlify="true"
+            className="mt-12 flex flex-col justify-center items-center gap-8 xl:w-10/12 "
           >
-            <input type="hidden" name="form-name" value="contactV2" />
-
-            <div className="flex flex-row gap-8">
+            {/* <input type="hidden" name="form-name" value="tlv-booking-form" /> */}
+            <TwoInputsGridContainer>
               <FormInputElement
-                label={"Name"}
+                id="tlv-form-name"
                 name={"name"}
                 type={"text"}
-                // value={dataEntered.name}
-                // onChnage={onChangeHandler}
-                placeholder={"What's your full name?"}
+                placeholder="Name"
               />
               <FormInputElement
-                label={"Phone"}
+                id="tlv-form-phone"
                 name={"phone"}
                 type={"tel"}
-                // value={dataEntered.email}
-                // onChnage={onChangeHandler}
-                placeholder={"e.g. +972 50-1234567"}
+                placeholder="Phone"
               />
-            </div>
-            <div className="flex flex-row gap-8">
+            </TwoInputsGridContainer>
+
+            <TwoInputsGridContainer>
               <FormInputElement
-                label={"Email"}
+                id="tlv-form-email"
                 name={"email"}
                 type={"email"}
-                // value={dataEntered.email}
-                // onChnage={onChangeHandler}
-                placeholder={"What's your email?"}
+                placeholder="Email"
               />
               <FormInputElement
-                label={"Country"}
+                id="tlv-form-country"
                 name={"country"}
                 type={"text"}
-                // value={dataEntered.name}
-                // onChnage={onChangeHandler}
-                placeholder={"Where are you from?"}
+                placeholder={"Country"}
               />
-            </div>
+            </TwoInputsGridContainer>
 
             <FormTextArea
+              id="tlv-form-subject"
               label={"Subject"}
               name={"subject"}
               rows={1}
-              // value={dataEntered.email}
-              // onChnage={onChangeHandler}
               placeholder={
                 "A story/idea/concept that you would like to express in the tattoo"
               }
             />
-            <div className="flex gap-8">
-              <FormTextArea
-                label={"Reference"}
-                name={"reference"}
-                rows={1}
-                // value={dataEntered.email}
-                // onChnage={onChangeHandler}
-                placeholder={"Links for references / my works that you like"}
-              />
-              <label className="flex flex-col items-center justify-center">
-                {/* <span className="text-black_m font-medium mb-2">
-                  {"Add up 5 photos"}
-                </span> */}
-                <input
-                  required
-                  type="file"
-                  id="photoInput"
-                  accept="image/*"
-                  className="hidden" // Hide the default file input
-                  // className="w-48 text-black_m bg-white py-2 px-6 placeholder:text-gray_m rounded-md border-black_m border-b-4 outline-none font font-medium"
+            <div className="flex flex-row w-full">
+              <div className="w-10/12">
+                <FormTextArea
+                  id="tlv-form-reference"
+                  label={"Reference"}
+                  name={"reference"}
+                  rows={1}
+                  placeholder={"Links for references / my works that you like"}
                 />
-                <div className="w-52 bg-white  outline-none font font-medium relative overflow-hidden text-center flex items-center justify-center">
-                <div className="w-8 border-black_m border-b-2 border-r-2 rounded-b-md rounded-l-none hover:bg-gray-200">
-                    <span className="text-black_m font-mono text-[20px] font-semibold">
-                      +
-                    </span>
-                    <label
-                      htmlFor="photoInput"
-                      className="absolute top-0 left-0 h-full w-full cursor-pointer opacity-0" // Make the label cover the entire button
-                    ></label>
-                  </div>
-                </div>
-              </label>
+              </div>
+              <div className="w-2/12 flex justify-end items-end">
+                <FormFileUploader />
+              </div>
             </div>
 
-            <div className="flex flex-row gap-8">
-              <FormInputElement
-                label={"Body part"}
-                name={"body-part"}
-                type={"text"}
-                // value={dataEntered.email}
-                // onChnage={onChangeHandler}
-                placeholder={"Preferred body-part?"}
-              />
-              <label className="flex flex-col items-center justify-center">
-                {/* <span className="text-black_m font-medium mb-2">
-                  {"Add up to 3 photos"}
-                </span> 
-                //add tooltip
-                */}
-                
-                <input
-                  required
-                  type="file"
-                  id="photoInput"
-                  accept="image/*"
-                  className="hidden" // Hide the default file input
-                  // className="w-48 text-black_m bg-white py-2 px-6 placeholder:text-gray_m rounded-md border-black_m border-b-4 outline-none font font-medium"
+            <div className="flex flex-row w-full">
+              <div className="w-10/12">
+                <FormInputElement
+                  id="tlv-form-bodypart"
+                  //label={"Body part"}
+                  name={"body-part"}
+                  type={"text"}
+                  placeholder={"Preferred body-part?"}
                 />
-                <div className="w-52 bg-white  outline-none font font-medium relative overflow-hidden text-center flex items-center justify-center">
-                  <div className="w-8 border-black_m border-b-2 border-r-2 rounded-b-md rounded-l-none hover:bg-gray-200">
-                    <span className="text-black_m font-mono text-[20px] font-semibold">
-                      +
-                    </span>
-                    <label
-                      htmlFor="photoInput"
-                      className="absolute top-0 left-0 h-full w-full cursor-pointer opacity-0" // Make the label cover the entire button
-                    ></label>
-                  </div>
-                </div>
-              </label>
-              {/* <label className="flex flex-col md:w-6/12 w-full lg:w-7/12">
-                <span className="text-black_m font-medium mb-2">
-                  {"Select up to 4 dates"}
-                </span>
-                <input
-                  type="file"
-                  id="photoInput"
-                  accept="image/*"
-                  className="text-black_m md:w-6/12 w-full lg:w-7/12 bg-white py-2 px-6 placeholder:text-gray_m rounded-md border-black_m border-b-4 outline-none font font-medium"
-                />
-              </label> */}
-              {/* <FormInputElement
-                label={"Body-part photos"}
-                name={"body-part-photos"}
-                type={"text"}
-                // value={dataEntered.name}
-                // onChnage={onChangeHandler}
-                placeholder={"Body part images (up to 3 images)"}
-              /> */}
+              </div>
+              <div className="w-2/12 flex justify-end items-end">
+                <FormFileUploader />
+              </div>
             </div>
-            <div className="flex flex-col md:w-6/12 w-full lg:w-7/12">
+
+            {/*---------Date Elements----------*/}
+            <div className="flex flex-col w-full">
               <span className="text-black_m font-medium mb-2">
                 {"Select 4 optional dates"}
               </span>
               <div className="grid grid-cols-2 gap-x-4">
-                <DateInput label="Date #1" />
-                <DateInput label="Date #2" />
-                <DateInput label="Date #3" />
-                <DateInput label="Date #4" />
+                <DateInput id={"tlv-form-date1"} label="Date #1" />
+                <DateInput id={"tlv-form-date2"} label="Date #2" />
+                <DateInput id={"tlv-form-date3"} label="Date #3" />
+                <DateInput id={"tlv-form-date4"} label="Date #4" />
               </div>
             </div>
+
             <FormTextArea
               label={"Anything else?"}
               name={"reference"}
               rows={1}
-              // value={dataEntered.email}
-              // onChnage={onChangeHandler}
               placeholder={"Extra things i need to know?!"}
+              id={"tlv-form-anything-else"}
             />
-            <div className="flex flex-col gap-2 items-start justify-start ">
+
+            {/*---------Check Box Elements----------*/}
+            <div className="flex flex-col w-full gap-2 ">
               <CheckBox label="I'm over 18" id="18-checkbox" />
-              <CheckBox label="I know my part in the process will be the idea\story behind it, final drawing\design will be Mor's part." id="part-checkbox" />
+              <CheckBox
+                label="I know my part in the process will be the idea \ story behind it, final drawing\design will be Mor's part."
+                id="part-checkbox"
+              />
               <CheckBox label="I'm open minded." id="minded-checkbox" />
               <CheckBox label="I really am." id="really-checkbox" />
             </div>
 
-            {/* <div className="flex flex-row">
-                {selectedDates.map((date,index) => (
-                  <div key={ index} className="m-2">{date.toDateString()}</div>
-                ))}
-              </div> */}
             <motion.button
               whileTap={{ scale: 0.9 }}
               whileHover={{ scale: 1.1 }}

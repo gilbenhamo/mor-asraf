@@ -8,56 +8,47 @@ import FormTextArea from "../UI/FormTextArea";
 const Contact = () => {
   return (
     <SectionWrapper idName="contact">
-      <div className=" xl:flex-row flex-col flex items-center justify-center gap-10 overflow-hidden">
+      <SectionHead headText={"Contact Us."} />
+      <div className=" xl:flex-row flex-col flex justify-center gap-10 overflow-hidden mb-10">
         <motion.div
           variants={slideIn("down", "spring", 0.2, 1)}
-          className="flex-[0.75] bg-white p-8 rounded-2xl"
+          className="flex-[0.75] bg-white rounded-2xl flex justify-center items-center"
         >
-          <SectionHead pText={"Get in touch"} headText={"Contact Us."} />
-          {/* <//</div>EmailForm /> */}
           <form
             name="contactV2"
             method="POST"
-            className="mt-12 flex flex-col gap-8 items-center"
-            data-netlify="true"
+            className="mt-12 flex flex-col gap-8 items-center xs:w-7/12 w-10/12"
+            //data-netlify="true"
           >
-            <input type="hidden" name="form-name" value="contactV2" />
-
             <FormInputElement
-              label={"Name"}
               name={"name"}
               type={"text"}
-              // value={dataEntered.name}
-              // onChnage={onChangeHandler}
-              placeholder={"What's your name?"}
+              placeholder={"Name"}
+              id={"contact-name"}
             />
+
             <FormInputElement
-              label={"Email"}
               name={"email"}
               type={"email"}
-              // value={dataEntered.email}
-              // onChnage={onChangeHandler}
-              placeholder={"What's your email?"}
+              placeholder={"Email"}
+              id={"contact-email"}
             />
+
             <FormInputElement
-              label={"Subject"}
               name={"subject"}
               type={"subject"}
-              // value={dataEntered.email}
-              // onChnage={onChangeHandler}
-              placeholder={"What's the subject?"}
+              placeholder={"Subject"}
+              id={"contact-subject"}
             />
             <FormTextArea
-              label={"Your Message"}
               name={"message"}
               rows={2}
-              // value={dataEntered.message}
-              // onChnage={onChangeHandler}
-              placeholder={"What do you want to say?"}
+              placeholder={"Message"}
+              id={"contact-message"}
             />
             <motion.button
               whileTap={{ scale: 0.9 }}
-              whileHover={{scale:1.1}}
+              whileHover={{ scale: 1.1 }}
               type="submit"
               className="bg-gray_m hover:bg-black_m py-3 px-8 outline-none w-fit text-white font-bold shadow-md shadow-primary rounded-2xl"
             >
