@@ -6,12 +6,16 @@ export const navLinks = [
       title: "About",
     },
     {
+      id: "gallery",
+      title: "Gallery",
+    },
+    {
       id: "guest-spots",
       title: "Guest Spots",
     },
     {
-      id: "gallery",
-      title: "Gallery",
+      id: "booking-israel",
+      title: "TLV-Booking",
     },
     {
       id: "contact",

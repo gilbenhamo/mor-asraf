@@ -69,7 +69,7 @@ const BookingIsrael = () => {
             <FormTextArea
               label={"Subject"}
               name={"subject"}
-              rows={2}
+              rows={1}
               // value={dataEntered.email}
               // onChnage={onChangeHandler}
               placeholder={
@@ -80,15 +80,15 @@ const BookingIsrael = () => {
               <FormTextArea
                 label={"Reference"}
                 name={"reference"}
-                rows={2}
+                rows={1}
                 // value={dataEntered.email}
                 // onChnage={onChangeHandler}
                 placeholder={"Links for references / my works that you like"}
               />
               <label className="flex flex-col items-center justify-center">
-                <span className="text-black_m font-medium mb-2">
+                {/* <span className="text-black_m font-medium mb-2">
                   {"Add up 5 photos"}
-                </span>
+                </span> */}
                 <input
                   required
                   type="file"
@@ -98,7 +98,7 @@ const BookingIsrael = () => {
                   // className="w-48 text-black_m bg-white py-2 px-6 placeholder:text-gray_m rounded-md border-black_m border-b-4 outline-none font font-medium"
                 />
                 <div className="w-52 bg-white  outline-none font font-medium relative overflow-hidden text-center flex items-center justify-center">
-                  <div className="w-16 p-[5px] rounded-lg border-black_m border-4 border-t-0 hover:bg-gray-200">
+                <div className="w-8 border-black_m border-b-2 border-r-2 rounded-b-md rounded-l-none hover:bg-gray-200">
                     <span className="text-black_m font-mono text-[20px] font-semibold">
                       +
                     </span>
@@ -121,9 +121,12 @@ const BookingIsrael = () => {
                 placeholder={"Preferred body-part?"}
               />
               <label className="flex flex-col items-center justify-center">
-                <span className="text-black_m font-medium mb-2">
+                {/* <span className="text-black_m font-medium mb-2">
                   {"Add up to 3 photos"}
-                </span>
+                </span> 
+                //add tooltip
+                */}
+                
                 <input
                   required
                   type="file"
@@ -133,7 +136,7 @@ const BookingIsrael = () => {
                   // className="w-48 text-black_m bg-white py-2 px-6 placeholder:text-gray_m rounded-md border-black_m border-b-4 outline-none font font-medium"
                 />
                 <div className="w-52 bg-white  outline-none font font-medium relative overflow-hidden text-center flex items-center justify-center">
-                  <div className="w-16 p-[5px] rounded-lg border-black_m border-4 border-t-0 hover:bg-gray-200">
+                  <div className="w-8 border-black_m border-b-2 border-r-2 rounded-b-md rounded-l-none hover:bg-gray-200">
                     <span className="text-black_m font-mono text-[20px] font-semibold">
                       +
                     </span>
@@ -166,7 +169,7 @@ const BookingIsrael = () => {
             </div>
             <div className="flex flex-col md:w-6/12 w-full lg:w-7/12">
               <span className="text-black_m font-medium mb-2">
-                {"Select up to 4 dates"}
+                {"Select 4 optional dates"}
               </span>
               <div className="grid grid-cols-2 gap-x-4">
                 <DateInput label="Date #1" />

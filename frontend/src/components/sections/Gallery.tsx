@@ -30,7 +30,7 @@ const Gallery = () => {
         >
           {isOpen && (
             <button
-              className="fixed top-4 left-4 text-black z-30 text-2xl cursor-pointer ml-2 mt-2 w-10 h-10 rounded-full border-b-2 border-r-2 border-black"
+              className="fixed top-4 left-4 text-black z-30 text-2xl cursor-pointer ml-2 mt-2 w-10 h-10 rounded-full   border-black"
               onClick={() => setIsOpen(false)}
             >
               X
@@ -43,9 +43,27 @@ const Gallery = () => {
               isOpen ? "blur-none" : "blur-sm"
             } relative`}
           />
-          <motion.h1 className="font-serif font-bold text-black text-5xl sm:text-8xl z-10 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+          {/* {!isOpen && (
+            <motion.div className="bg-white h-[500px] rounded-md  w-14 opacity-80  items-center justify-center flex flex-col gap-3 font-serif font-bold text-black text-3xl sm:text-4xl z-10 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+              <span>G</span>
+              <span>A</span>
+              <span>L</span>
+              <span>L</span>
+              <span>E</span>
+              <span>R</span>
+              <span>Y</span>
+              {/* <span>a</span>
+            <span>l</span>
+            <span>l</span>
+            <span>e</span>
+            <span>r</span>
+            <span>y</span> 
+            </motion.div>
+            
+          )} */}
+          <motion.div className="font-serif font-bold text-black text-5xl sm:text-7xl z-10 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
             Gallery
-          </motion.h1>
+          </motion.div>
           {isOpen && (
             <div className="w-full h-[1000px] bg-white_m z-30 flex flex-col gap-4">
               <div className="flex  gap-4">
