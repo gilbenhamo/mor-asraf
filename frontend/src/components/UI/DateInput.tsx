@@ -3,7 +3,7 @@ import { useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { FiCalendar } from "react-icons/fi"; // You can replace this with your preferred icon library
-
+import "./DateInput.css"
 interface DateInputProps {
   label: string;
   id: string;

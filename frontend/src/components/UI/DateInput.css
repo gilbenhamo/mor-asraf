@@ -1,0 +1,35 @@
+myClassname,
+.react-datepicker__day--selected {
+  background: #28282b;
+  border-radius: 50%;
+}
+
+.react-datepicker__day--selected:hover {
+  background: #7b7b7c;
+  border-radius: 50%;
+  /* border: 1px solid #000; */
+}
+
+/* Customize the background color of the today's date in the calendar */
+.react-datepicker__day--today {
+  background-color: #e6e6e6; /* Replace with your desired background color */
+  border-radius: 50%;
+}
+
+.react-datepicker__day--today:hover {
+  background-color: #28282b; /* Replace with your desired background color */
+  color: #fdfbf9; /* Replace with your desired color */
+  border-radius: 50%;
+}
+
+.react-datepicker__header {
+  background-color: #28282b; /* Replace with your desired background color */
+}
+
+.react-datepicker__current-month {
+  color: #fdfbf9; /* Replace with your desired color */
+}
+
+.react-datepicker__day-name {
+  color: #fdfbf9; /* Replace with your desired color */
+}
