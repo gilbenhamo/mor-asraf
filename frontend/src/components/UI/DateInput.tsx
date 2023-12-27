@@ -19,7 +19,7 @@ const DateInput = ({ id, label }: DateInputProps) => {
       <DatePicker
         id={id}
         showIcon
-        onFocus={(e) => e.target.readOnly = true}
+        // onFocus={(e) => e.target.readOnly = true}  
         selected={selectedDate}
         placeholderText={label}
         onChange={setSelectedDate}
@@ -35,6 +35,7 @@ const DateInput = ({ id, label }: DateInputProps) => {
         onKeyDown={(e) => {
           e.preventDefault();
        }}
+       customInput={<input type="text" readOnly />}
       />
     </div>
   );
