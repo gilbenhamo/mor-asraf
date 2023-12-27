@@ -140,10 +140,7 @@ export const while_hover_repeat: any = {
   },
 };
 
-export const staggerContainer2 = (
-  staggerChildren?: any,
-  delayChildren?: number
-) => {
+export const staggerContainer2 = () => {
   return {
     hidden: {},
     show: {

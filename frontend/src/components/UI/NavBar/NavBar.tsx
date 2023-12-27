@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { styles } from "../../../utils/styles";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion } from "framer-motion";
 import { navLinks } from "../../../utils/constants";
 import { Twirl } from "hamburger-react";
 import { linksVariants } from "../../../utils/motion";
