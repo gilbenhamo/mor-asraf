@@ -13,13 +13,18 @@ interface DateInputProps {
 const DateInput = ({ id, label }: DateInputProps) => {
   const today = new Date();
   const [selectedDate, setSelectedDate] = useState<Date | null>(null);
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
     <div className="mb-4 flex items-center flex-col">
       <DatePicker
+      onInputClick={()=>setIsOpen(true)}
+      onClickOutside={()=>setIsOpen(false)}
+        readOnly
         id={id}
         showIcon
-        // onFocus={(e) => e.target.readOnly = true}  
+        onSelect={()=>setIsOpen(false)}
+        onFocus={(e) => e.target.readOnly = true}
         selected={selectedDate}
         placeholderText={label}
         onChange={setSelectedDate}
@@ -32,10 +37,11 @@ const DateInput = ({ id, label }: DateInputProps) => {
         className="w-11/12 sm:w-full text-center text-black_m placeholder:text-black_m px-4 py-2  outline-none border-b-2 border-r-2  border-black_m rounded-r-md rounded-t-none bg-white hover:bg-gray-400"
         popperPlacement="top-start" // Adjust the placement as needed
         minDate={today} // Disable past dates
-        onKeyDown={(e) => {
-          e.preventDefault();
-       }}
-       customInput={<input type="text" readOnly />}
+      //   onKeyDown={(e) => {
+      //     e.preventDefault();
+      //  }}
+      open={isOpen}
+       //handle mobile picker
       />
     </div>
   );
