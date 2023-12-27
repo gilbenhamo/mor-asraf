@@ -31,6 +31,9 @@ const DateInput = ({ id, label }: DateInputProps) => {
         className="w-11/12 sm:w-full text-center text-black_m placeholder:text-black_m px-4 py-2  outline-none border-b-2 border-r-2  border-black_m rounded-r-md rounded-t-none bg-white hover:bg-gray-400"
         popperPlacement="top-start" // Adjust the placement as needed
         minDate={today} // Disable past dates
+        onKeyDown={(e) => {
+          e.preventDefault();
+       }}
       />
     </div>
   );
