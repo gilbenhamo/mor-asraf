@@ -19,6 +19,7 @@ const DateInput = ({ id, label }: DateInputProps) => {
       <DatePicker
         id={id}
         showIcon
+        onFocus={(e) => e.target.readOnly = true}
         selected={selectedDate}
         placeholderText={label}
         onChange={setSelectedDate}
