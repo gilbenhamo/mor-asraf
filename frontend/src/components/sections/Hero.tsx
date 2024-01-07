@@ -1,11 +1,14 @@
 import { OvalNextSection } from "../UI/OvalNextSection";
+import { heroBackgrounds } from "../../assets/index.js";
 
 export const Hero = () => {
-  
+  const randomBackground =
+    heroBackgrounds[Math.floor(Math.random() * heroBackgrounds.length)];
   return (
     <div
       id="hero"
-      className="relative flex-col flex min-h-screen bg-white   bg-contain bg-no-repeat bg-hero-pattern bg-center z-10"
+      className="relative flex-col flex min-h-screen bg-white  bg-contain bg-no-repeat  bg-center z-10"
+      style={{ backgroundImage: `url(${randomBackground})` }}
     >
       <OvalNextSection />
     </div>
