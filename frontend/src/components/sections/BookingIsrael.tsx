@@ -16,7 +16,7 @@ const BookingIsrael = () => {
       <div className=" xl:flex-row flex-col flex items-center justify-center gap-10 p-2 overflow-hidden">
         <motion.div
           variants={slideIn("down", "spring", 0.2, 1)}
-          className="flex-[0.75] bg-white  rounded-2xl flex flex-col justify-center items-center"
+          className="flex-[0.75] bg-white   flex flex-col justify-center items-center"
         >
           <form
             name="tlv-booking-form"

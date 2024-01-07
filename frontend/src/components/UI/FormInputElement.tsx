@@ -16,7 +16,7 @@ const FormInputElement = ({ id, label, type, ...rest }: inputProps) => {
         id={id}
         type={type}
         {...rest}
-        className="text-black_m bg-white py-2 px-6 placeholder:text-gray_m border-black_m border-b-2 outline-none font-medium"
+        className="text-black_m bg-white py-2 px-6 placeholder:text-gray_m border-black_m border-b-2 outline-none font-medium rounded-none"
       />
     </label>
   );

@@ -12,7 +12,7 @@ const Contact = () => {
       <div className=" xl:flex-row flex-col flex justify-center gap-10 overflow-hidden mb-10">
         <motion.div
           variants={slideIn("down", "spring", 0.2, 1)}
-          className="flex-[0.75] bg-white rounded-2xl flex justify-center items-center"
+          className="flex-[0.75] bg-white  flex justify-center items-center"
         >
           <form
             name="contactV2"
