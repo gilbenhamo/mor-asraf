@@ -12,7 +12,7 @@ const FormInputElement = ({ label, ...rest }: textAreadProps) => {
       <textarea
         required
         {...rest}
-        className="text-black_m bg-white py-2 px-6 placeholder:text-gray_m  outline-none border-b-2 border-black_m font-medium "
+        className="text-black_m bg-white py-2 px-6 placeholder:text-gray_m  outline-none border-b-2 border-black_m font-medium rounded-none"
       />
     </label>
   );
