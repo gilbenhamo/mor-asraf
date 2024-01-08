@@ -1,8 +1,8 @@
 import { SectionWrapper } from "../../containers/SectionWrapper";
 import { motion } from "framer-motion";
 import { useState } from "react";
-import GalleryContent from "../GalleryContent";
-import { clickGif, clickWebm } from "../../assets";
+import GalleryContent from "../Gallery/GalleryContent";
+import {  clickWebm } from "../../assets";
 
 const Gallery = () => {
   const [isOpen, setIsOpen] = useState(false);
