@@ -11,7 +11,7 @@ const Gallery = () => {
     <>
       <SectionWrapper idName="gallery">
         <motion.div
-          className={` h-[500px] sm:h-[700px] p-2 relative cursor-pointer`}
+          className={` h-[500px] sm:h-[700px] bg-white_m p-2 relative cursor-pointer`}
           onClick={() => setIsOpen(!isOpen)}
           style={{
             padding: isOpen ? "1rem" : "0.5rem",
@@ -39,7 +39,7 @@ const Gallery = () => {
                 duration: 0.3,
               },
             }}
-            className={`h-full  cursor-pointer ${
+            className={`h-full   cursor-pointer ${
               isOpen ? "overflow-y-auto no-scrollbar " : "overflow-hidden " // Add overflow-y-auto when isOpen is true
             }`}
           >

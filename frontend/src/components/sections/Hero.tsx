@@ -7,7 +7,7 @@ export const Hero = () => {
   return (
     <div
       id="hero"
-      className="relative flex-col flex min-h-screen bg-white  bg-contain bg-no-repeat  bg-center z-10"
+      className="relative flex-col flex h-svh sm:min-h-screen bg-white  bg-contain bg-no-repeat  bg-center z-10"
       style={{ backgroundImage: `url(${randomBackground})` }}
     >
       <OvalNextSection />
