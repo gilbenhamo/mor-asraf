@@ -11,7 +11,7 @@ export default {
         black_m: "#28282B",
         gray_m: "#7B7B7C",
         white_m: "#FDFBF9",
-        
+
         "black-100": "#100d25",
         "black-200": "#090325",
         "white-100": "#f3f3f3",
@@ -39,6 +39,20 @@ export default {
     },
   },
   plugins: [
+    function ({ addUtilities }) {
+      const newUtilities = {
+        /* For Webkit-based browsers (Chrome, Safari and Opera) */
+        ".no-scrollbar::-webkit-scrollbar": {
+          display: "none",
+        },
+        /* For IE, Edge and Firefox */
+        ".no-scrollbar": {
+          "-ms-overflow-style": "none" /* IE and Edge */,
+          "scrollbar-width": "none" /* Firefox */,
+        },
+      };
+      addUtilities(newUtilities);
+    },
     //require('@tailwindcss/forms'),
   ],
 };

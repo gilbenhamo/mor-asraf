@@ -1,7 +1,8 @@
 import { SectionWrapper } from "../../containers/SectionWrapper";
 import { motion } from "framer-motion";
-import { horses } from "../../assets";
 import { useState } from "react";
+import GalleryContent from "../GalleryContent";
+import { clickGif, clickWebm } from "../../assets";
 
 const Gallery = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -9,67 +10,41 @@ const Gallery = () => {
   return (
     <>
       <SectionWrapper idName="gallery">
-        {/* Background div with id 'asd' */}
-        {isOpen && (
-          <div
-            id="asd"
-            className="bg-gray-100 opacity-90 h-screen w-full z-30 fixed top-0 left-0"
-            onClick={() => setIsOpen(false)}
-          ></div>
-        )}
-
         <motion.div
-          className={`h-[700px] relative p-4 cursor-pointer ${
-            isOpen ? "overflow-y-auto" : "" // Add overflow-y-auto when isOpen is true
-          } hover:z-30`}
+          className={`h-[700px] p-2 relative cursor-pointer`}
           onClick={() => setIsOpen(!isOpen)}
-          animate={{
-            scale: isOpen ? 1.2 : 1,
-            zIndex: isOpen ? 30 : 10,
+          style={{
+            padding: isOpen ? "1rem" : "0.5rem",
+            boxShadow: isOpen ? "inset 0 0 12px rgba(0, 0, 0, 0.5)" : "none", // Add a shadow for the window effect
+            transition: "box-shadow 0.3s ease, padding 0.3s ease", // Add transition to both boxShadow and padding properties
           }}
         >
-          {isOpen && (
-            <button
-              className="fixed top-4 left-4 text-black z-30 text-2xl cursor-pointer ml-2 mt-2 w-10 h-10 rounded-full   border-black"
-              onClick={() => setIsOpen(false)}
-            >
-              X
-            </button>
-          )}
-
-          <motion.img
-            src={horses}
-            className={`w-full h-[700px] object-cover ${
-              isOpen ? "blur-none" : "blur-sm"
-            } relative`}
-          />
-  
-          <motion.div className="font-serif font-bold text-black text-5xl sm:text-7xl z-10 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-            Gallery
-          </motion.div>
-          {isOpen && (
-            <div className="w-full h-[1000px] bg-white_m z-30 flex flex-col gap-4">
-              <div className="flex  gap-4">
-                <div className="h-[300px] border-4 border-black_m w-5/12 flex items-center justify-center text-black_m text-center">
-                  Picture
-                </div>
-                <div className="h-[400px] mt-4 border-4 border-black_m w-7/12 flex items-center justify-center text-black_m text-center">
-                  Picture
-                </div>
-              </div>
-              <div className="flex  gap-4">
-                <div className=" m-4 h-[550px] mt-4 border-4 border-black_m w-3/12 flex items-center justify-center text-black_m text-center">
-                  Picture
-                </div>
-                <div className=" m-4 h-[300px] border-4 border-black_m w-5/12 flex items-center justify-center text-black_m text-center">
-                  Picture
-                </div>
-                <div className=" m-4 h-[400px] border-4 border-black_m w-4/12 flex items-center justify-center text-black_m text-center">
-                  Picture
-                </div>
-              </div>
+          <motion.div
+            className="font-serif font-bold text-black text-5xl sm:text-7xl z-10 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+            animate={{ opacity: isOpen ? 0 : 1 }}
+          >
+            <div>Gallery</div>
+            <div className="flex justify-center text-sm sm:text-base text-center text-gray_m">
+              Tap to view
+              <video className="w-10" autoPlay muted loop>
+                <source src={clickWebm} type="video/webm" />
+              </video>
             </div>
-          )}
+          </motion.div>
+
+          <motion.div
+            animate={{
+              filter: isOpen ? "blur(0px)" : "blur(4px)",
+              transition: {
+                duration: 0.3,
+              },
+            }}
+            className={`h-full  cursor-pointer ${
+              isOpen ? "overflow-y-auto no-scrollbar " : "overflow-hidden " // Add overflow-y-auto when isOpen is true
+            }`}
+          >
+            <GalleryContent isOpen={isOpen} />
+          </motion.div>
         </motion.div>
       </SectionWrapper>
     </>
