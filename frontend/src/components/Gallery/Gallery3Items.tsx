@@ -1,8 +1,13 @@
+import { G_1, G_2 } from "../../assets/GalleryPhotos";
 
-const Gallery3Items = () => {
-  return (
-    <div className='flex-1 bg-blue-100'>Gallery3Items</div>
-  )
-}
+const Gallery3Items = () => (
+ <div className="h-full flex ">
+   <img src={G_1} className="w-1/4 object-contain" />
+     <img src={G_2} className="w-2/4 p-2 object-contain" />
+     <img src={G_2} className="w-1/4 object-contain" />
+</div>
 
-export default Gallery3Items
+  );
+  
+
+export default Gallery3Items;

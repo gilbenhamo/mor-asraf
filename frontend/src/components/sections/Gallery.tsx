@@ -11,7 +11,7 @@ const Gallery = () => {
     <>
       <SectionWrapper idName="gallery">
         <motion.div
-          className={`h-[700px] p-2 relative cursor-pointer`}
+          className={` h-[500px] sm:h-[700px] p-2 relative cursor-pointer`}
           onClick={() => setIsOpen(!isOpen)}
           style={{
             padding: isOpen ? "1rem" : "0.5rem",
@@ -24,7 +24,7 @@ const Gallery = () => {
             animate={{ opacity: isOpen ? 0 : 1 }}
           >
             <div>Gallery</div>
-            <div className="flex justify-center text-sm sm:text-base text-center text-gray_m">
+            <div className="flex justify-center text-sm sm:text-base text-center text-black_m">
               Tap to view
               <video className="w-10" autoPlay muted loop>
                 <source src={clickWebm} type="video/webm" />
@@ -34,7 +34,7 @@ const Gallery = () => {
 
           <motion.div
             animate={{
-              filter: isOpen ? "blur(0px)" : "blur(4px)",
+              filter: isOpen ? "blur(0px)" : "blur(8px)",
               transition: {
                 duration: 0.3,
               },
