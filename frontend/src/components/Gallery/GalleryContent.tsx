@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import Gallery3Items from "./Gallery3Items";
 import GalleryFirstSection from "./GalleryFirstSection";
 import { galleryPhotos } from "../../assets/GalleryPhotos";
+import GalleryOneCenterItem from "./GalleryOneCenterItem";
 
 interface Props {
   isOpen?: boolean;
@@ -21,11 +22,13 @@ const GalleryContent = ({ isOpen }: Props) => {
         img1={galleryPhotos.G_3_1}
         img2={galleryPhotos.G_3_2}
         img3={galleryPhotos.G_3_3}
-        description="`The process to the great relief`"
+        title="`The process to the great relief`"
+        description="*Optional* Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's "
       />
-      <div className="h-full flex justify-center p-10">
-        <img src={galleryPhotos.G_4} className="object-contain" />
-      </div>
+      <GalleryOneCenterItem img={galleryPhotos.G_4}
+       title="`equal base`"
+       description="*Optional* Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's "
+/>
       {/* <div className="flex  gap-4">
         <div className="h-[300px] border-4 border-black_m w-5/12 flex items-center justify-center text-black_m text-center">
           Picture
