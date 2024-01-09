@@ -1,4 +1,3 @@
-import React from "react";
 import GalleryItemsContainer from "../../containers/GalleryItemsContainer";
 
 interface Props extends GalleryItemBaseProps {
