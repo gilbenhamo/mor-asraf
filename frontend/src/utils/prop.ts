@@ -13,3 +13,9 @@ interface geustSpotsProps {
   date: string;
   icon:string;
 }
+
+interface GalleryItemBaseProps {
+  title?: string;
+  description?: string;
+  reverse?: boolean;
+}
