@@ -6,20 +6,20 @@ interface Props {
 }
 
 const Gallery3Items = ({ img1, img2, img3, description }: Props) => (
-  <div className="h-full flex p-4">
+  <div className="h-fit flex p-4">
     <div className="flex flex-col w-2/4 p-4 justify-start items-start">
       <img src={img1} className="object-contain" />
       <div className="text-black_m font-mono font-medium">{description}</div>
     </div>
 
-    <div className="relative w-2/4 p-4">
+    <div className="relative w-2/4 p-4 *:absolute *:object-contain">
       <img
         src={img2}
-        className="absolute top-0 w-3/5 object-contain rounded-r-sm rounded-t-3xl z-10"
+        className=" w-3/5 rounded-3xl rounded-l-sm  z-10"
       />
       <img
         src={img3}
-        className="absolute w-2/5 bottom-48  sm:bottom-56  lg:bottom-20 right-10 object-contain z-20"
+        className=" w-2/5 rounded-3xl rounded-r-sm  bottom-20 right-2 sm:bottom-10 sm:right-10 z-20"
       />
     </div>
   </div>
