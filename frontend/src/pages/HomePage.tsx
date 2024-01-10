@@ -16,5 +16,6 @@ export const HomePage = () => {
       <BookingIsrael/>
       <Contact/>
     </HomeContainer>
+
   );
 };
