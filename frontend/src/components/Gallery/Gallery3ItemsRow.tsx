@@ -4,7 +4,7 @@ interface Props {
     img3: string;
   }
   
-const GalleryFirstSection = ({img1,img2,img3}:Props) => {
+const Gallery3ItemsRow = ({img1,img2,img3}:Props) => {
   return (
     <div className="h-fit sm:h-[90%] flex ">
       <img src={img1} className="w-1/4 object-contain" />
@@ -14,4 +14,4 @@ const GalleryFirstSection = ({img1,img2,img3}:Props) => {
   );
 };
 
-export default GalleryFirstSection;
+export default Gallery3ItemsRow;
