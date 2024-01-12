@@ -11,7 +11,7 @@ const Gallery = () => {
     <>
       <SectionWrapper idName="gallery">
         <motion.div
-          className={` h-[500px] sm:h-[700px] bg-white_m p-2 relative cursor-pointer`}
+          className={`h-[500px] sm:h-[700px] bg-white_m p-2 relative cursor-pointer`}
           onClick={() => setIsOpen(!isOpen)}
           style={{
             padding: isOpen ? "1rem" : "0.5rem",
