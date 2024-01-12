@@ -1,11 +1,7 @@
 import GalleryItemsContainer from "../../containers/GalleryItemsContainer";
 
-interface Props extends GalleryItemBaseProps {
-  img1: string;
-  img2: string;
-}
 
-const Gallery2Items = ({ img1, img2, title, description, reverse }: Props) => {
+const Gallery2Items = ({ img1, img2, title, description, reverse }: Gallery2ItemsProps) => {
   return (
     <GalleryItemsContainer rowReverse={reverse}>
       <div className="flex flex-col w-5/12 p-2 ">

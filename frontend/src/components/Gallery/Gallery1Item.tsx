@@ -1,14 +1,11 @@
 import GalleryItemsContainer from "../../containers/GalleryItemsContainer";
 
-interface Props extends GalleryItemBaseProps {
-  img: string;
-}
 
-const Gallery1Item = ({ img, title, description, reverse }: Props) => {
+const Gallery1Item = ({ img1, title, description, reverse }: GalleryItemBaseProps) => {
   return (
     <GalleryItemsContainer rowReverse={reverse}>
       <div className="w-1/12" />
-      <img src={img} className="w-7/12 object-contain" />
+      <img src={img1} className="w-7/12 object-contain" />
       <div className="w-4/12 flex flex-col justify-center pl-2 lg:pl-10">
         <div className="text-black_m text-pretty font-mono text-xs md:text-lg lg:text-3xl font-semibold">
           {title}

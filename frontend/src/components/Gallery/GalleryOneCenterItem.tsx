@@ -1,14 +1,11 @@
 import GalleryItemsContainer from "../../containers/GalleryItemsContainer";
 
-interface Props extends GalleryItemBaseProps {
-  img: string;
-}
 
-const GalleryOneCenterItem = ({ img }: Props) => {
+const GalleryOneCenterItem = ({ img1}: GalleryItemBaseProps) => {
   return (
     <GalleryItemsContainer>
       <div className="w-1/4 object-contain " />
-      <img src={img} className="w-2/4 object-contain" />
+      <img src={img1} className="w-2/4 object-contain" />
       <div className="w-1/4 " />
     </GalleryItemsContainer>
   );

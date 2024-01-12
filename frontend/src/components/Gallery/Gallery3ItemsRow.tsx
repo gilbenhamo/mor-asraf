@@ -1,10 +1,5 @@
-interface Props {
-    img1: string;
-    img2: string;
-    img3: string;
-  }
   
-const Gallery3ItemsRow = ({img1,img2,img3}:Props) => {
+const Gallery3ItemsRow = ({img1,img2,img3}:Gallery3ItemsProps) => {
   return (
     <div className="h-fit sm:h-[90%] flex ">
       <img src={img1} className="w-1/4 object-contain" />

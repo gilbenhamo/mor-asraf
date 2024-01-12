@@ -17,6 +17,22 @@ import G_8_3 from "./G_8_3.jpg";
 import G_9_1 from "./G_9_1.jpg";
 import G_10_1 from "./G_10_1.jpg";
 import G_10_2 from "./G_10_2.jpg";
+import G_11_1 from "./G_11_1.jpeg";
+import G_12_1 from "./G_12_1.jpg";
+import G_12_2 from "./G_12_2.jpg";
+import G_13_1 from "./G_13_1.jpeg";
+import G_14_1 from "./G_14_1.jpg";
+import G_14_2 from "./G_14_2.jpg";
+import G_15_1 from "./G_15_1.jpg";
+import G_16_1 from "./G_16_1.jpg";
+import G_17_1 from "./G_17_1.jpg";
+import G_17_2 from "./G_17_2.jpg";
+import G_18_1 from "./G_18_1.jpeg";
+import G_18_2 from "./G_18_2.jpg";
+import G_19_1 from "./G_19_1.jpeg";
+import G_20_1 from "./G_20_1.jpg";
+import G_20_2 from "./G_20_2.jpg";
+import G_20_3 from "./G_20_3.jpg";
 
 export const galleryPhotos = {
   G_1_1,
@@ -38,5 +54,20 @@ export const galleryPhotos = {
   G_9_1,
   G_10_1,
   G_10_2,
-
+  G_11_1,
+  G_12_1,
+  G_12_2,
+  G_13_1,
+  G_14_1,
+  G_14_2,
+  G_15_1,
+  G_16_1,
+  G_17_1,
+  G_17_2,
+  G_18_1,
+  G_18_2,
+  G_19_1,
+  G_20_1,
+  G_20_2,
+  G_20_3,
 };

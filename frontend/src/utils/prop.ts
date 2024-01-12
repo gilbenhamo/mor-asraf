@@ -15,7 +15,19 @@ interface geustSpotsProps {
 }
 
 interface GalleryItemBaseProps {
+  type:number;
   title?: string;
   description?: string;
   reverse?: boolean;
+  img1: string;
+
+}
+
+interface Gallery2ItemsProps extends GalleryItemBaseProps{
+  img2: string;
+}
+
+interface Gallery3ItemsProps extends GalleryItemBaseProps{
+  img2: string;
+  img3: string;
 }
