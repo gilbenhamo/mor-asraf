@@ -35,7 +35,7 @@ export const galleryItems: (
     img2: galleryPhotos.G_4_1,
   },
   {
-    type: GalleryItemTypes.One,
+    type: GalleryItemTypes.CenterOne,
     img1: galleryPhotos.G_5_1,
   },
   {
@@ -54,9 +54,8 @@ export const galleryItems: (
     img3: galleryPhotos.G_8_3,
   },
   {
-    type: GalleryItemTypes.One,
+    type: GalleryItemTypes.CenterOne,
     img1: galleryPhotos.G_9_1,
-    reverse: true,
   },
   {
     type: GalleryItemTypes.Two,
@@ -75,7 +74,7 @@ export const galleryItems: (
     reverse: true,
   },
   {
-    type: GalleryItemTypes.One,
+    type: GalleryItemTypes.CenterOne,
     img1: galleryPhotos.G_13_1,
     reverse: true,
   },

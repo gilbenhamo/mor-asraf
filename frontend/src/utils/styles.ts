@@ -1,7 +1,7 @@
 const styles = {
     paddingX: "sm:px-32 px-6",
     paddingY: "sm:py-16 py-6",
-    padding: "sm:px-16 px-6 sm:py-16 py-10",
+    padding: "sm:px-16 px-1  sm:py-16 py-10",
     paddingHero: "lg:px-72 md:px-52 sm:px-16 px-6",
 
     linksStyle:"text-[18px] font-medium hover:text-black_m",

@@ -11,11 +11,11 @@ const Gallery = () => {
     <>
       <SectionWrapper idName="gallery">
         <motion.div
-          className={`h-[500px] sm:h-[700px] bg-white_m p-2 relative cursor-pointer`}
+          className={`h-[calc(100svh-100px)] sm:h-[calc(100vh-250px)]  bg-white_m  relative cursor-pointer`}
           onClick={() => setIsOpen(!isOpen)}
           style={{
-            padding: isOpen ? "1rem" : "0.5rem",
-            boxShadow: isOpen ? "inset 0 0 12px rgba(0, 0, 0, 0.5)" : "none", // Add a shadow for the window effect
+            padding: isOpen ? "0.5rem" : "0.5rem",
+            boxShadow: isOpen ? "inset 0 0 0.5rem rgba(0, 0, 0, 0.5)" : "none", // Add a shadow for the window effect
             transition: "box-shadow 0.3s ease, padding 0.3s ease", // Add transition to both boxShadow and padding properties
           }}
         >
