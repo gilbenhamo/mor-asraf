@@ -10,14 +10,21 @@ import TwoInputsGridContainer from "../../containers/TwoInputsGridContainer";
 import FormFileUploader from "../UI/FormFileUploader";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 import { setAttr } from "../../redux/slice/booking-reducer";
+import { useState } from "react";
 
 const BookingIsrael = () => {
+  const [referencePhotos, setReferencePhotos] = useState<File[]>([]);
+  const [bodyPhotos, setBodyPhotos] = useState<File[]>([]);
+  console.log("ref:", referencePhotos);
+  console.log("body:", bodyPhotos);
+
   const dispatch = useAppDispatch();
   const state = useAppSelector((state) => state.booking);
 
   const handleChange = (e: any) => {
-    const { name, value } = e.target;
-    dispatch(setAttr({ attr: name, value }));
+    const { name, value, type, checked } = e.target;
+    const newValue = type === "checkbox" ? checked : value;
+    dispatch(setAttr({ attr: name, value: newValue }));
   };
 
   const handleDateChange = (value: string, name: string) => {
@@ -94,8 +101,25 @@ const BookingIsrael = () => {
                 />
               </div>
               <div className="w-2/12 flex justify-end items-end">
-                <FormFileUploader />
+                <FormFileUploader
+                  maxPhotos={4}
+                  photos={referencePhotos}
+                  id={"referencePhotos"}
+                  setPhotos={setReferencePhotos}
+                />
               </div>
+            </div>
+            <div className="w-full flex flex-row justify-end items-start gap-2">
+              {/* Display uploaded photos */}
+              {referencePhotos.map((photo, index) => (
+                <motion.img
+                  className="size-20 object-contain"
+                  whileHover={{ scale: 3, zIndex: 40 }}
+                  key={index}
+                  src={URL.createObjectURL(photo)}
+                  alt={`Photo ${index + 1}`}
+                />
+              ))}
             </div>
 
             <div className="flex flex-row w-full">
@@ -110,8 +134,25 @@ const BookingIsrael = () => {
                 />
               </div>
               <div className="w-2/12 flex justify-end items-end">
-                <FormFileUploader />
+                <FormFileUploader
+                  maxPhotos={4}
+                  id={"bodyPhotos"}
+                  photos={bodyPhotos}
+                  setPhotos={setBodyPhotos}
+                />
               </div>
+            </div>
+            <div className="w-full flex flex-row justify-end items-start gap-2">
+              {/* Display uploaded photos */}
+              {bodyPhotos.map((photo, index) => (
+                <motion.img
+                  className="size-20 object-contain"
+                  whileHover={{ scale: 3, zIndex: 40 }}
+                  key={index}
+                  src={URL.createObjectURL(photo)}
+                  alt={`Photo ${index + 1}`}
+                />
+              ))}
             </div>
 
             {/*---------Date Elements----------*/}
@@ -158,13 +199,30 @@ const BookingIsrael = () => {
 
             {/*---------Check Box Elements----------*/}
             <div className="flex flex-col w-full gap-2 ">
-              <CheckBox label="I'm over 18" id="18-checkbox" />
+              <CheckBox
+                label="I'm over 18"
+                id="18-checkbox"
+                name="checkbox18"
+                onChange={handleChange}
+              />
               <CheckBox
                 label="I know my part in the process will be the idea \ story behind it, final drawing\design will be Mor's part."
                 id="part-checkbox"
+                name="checkboxPart"
+                onChange={handleChange}
               />
-              <CheckBox label="I'm open minded." id="minded-checkbox" />
-              <CheckBox label="I really am." id="really-checkbox" />
+              <CheckBox
+                label="I'm open minded."
+                id="minded-checkbox"
+                name="checkboxOpenMinded"
+                onChange={handleChange}
+              />
+              <CheckBox
+                label="I really am."
+                id="really-checkbox"
+                name="checkboxReally"
+                onChange={handleChange}
+              />
             </div>
 
             <motion.button

@@ -2,7 +2,7 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 interface attrPayload {
   attr: string;
-  value: string;
+  value: string | string[] | File[];
 }
 
 interface BookingState {
@@ -18,6 +18,10 @@ interface BookingState {
   date2:string;
   date3:string;
   date4:string;
+  checkbox18:boolean;
+  checkboxPart:boolean;
+  checkboxOpenMinded:boolean;
+  checkboxReally:boolean;
 }
 
 const initialState: BookingState = {
@@ -33,6 +37,10 @@ const initialState: BookingState = {
   date2:"",
   date3:"",
   date4:"",
+  checkbox18:false,
+  checkboxPart:false,
+  checkboxOpenMinded:false,
+  checkboxReally:false,
 };
 
 const bookingSlice = createSlice({
