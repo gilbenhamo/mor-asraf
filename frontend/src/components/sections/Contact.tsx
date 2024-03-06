@@ -25,6 +25,7 @@ const Contact = () => {
               type={"text"}
               placeholder={"Name"}
               id={"contact-name"}
+              onChange={() => {}}
             />
 
             <FormInputElement
@@ -32,6 +33,7 @@ const Contact = () => {
               type={"email"}
               placeholder={"Email"}
               id={"contact-email"}
+              onChange={() => {}}
             />
 
             <FormInputElement
@@ -39,12 +41,14 @@ const Contact = () => {
               type={"subject"}
               placeholder={"Subject"}
               id={"contact-subject"}
+              onChange={() => {}}
             />
             <FormTextArea
               name={"message"}
               rows={2}
               placeholder={"Message"}
               id={"contact-message"}
+              onChange={() => {}}
             />
             <motion.button
               whileTap={{ scale: 0.9 }}
