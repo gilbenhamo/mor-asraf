@@ -8,8 +8,19 @@ import DateInput from "../UI/DateInput";
 import CheckBox from "../UI/CheckBox";
 import TwoInputsGridContainer from "../../containers/TwoInputsGridContainer";
 import FormFileUploader from "../UI/FormFileUploader";
+import { useAppDispatch, useAppSelector } from "../../redux/hooks";
+import { setAttr } from "../../redux/slice/booking-reducer";
 
 const BookingIsrael = () => {
+  const dispatch = useAppDispatch();
+  const state = useAppSelector((state) => state.booking);
+
+  const handleChange = (e: any) => {
+    console.log("enter:", e.target);
+    const { name, value } = e.target;
+    dispatch(setAttr({ attr: name, value }));
+  };
+
   return (
     <SectionWrapper idName="booking-israel">
       <SectionHead headText={"TLV Booking."} />
@@ -30,12 +41,14 @@ const BookingIsrael = () => {
                 name={"name"}
                 type={"text"}
                 placeholder="Name"
+                onChange={handleChange}
               />
               <FormInputElement
                 id="tlv-form-phone"
                 name={"phone"}
                 type={"tel"}
                 placeholder="Phone"
+                onChange={handleChange}
               />
             </TwoInputsGridContainer>
 
@@ -45,12 +58,14 @@ const BookingIsrael = () => {
                 name={"email"}
                 type={"email"}
                 placeholder="Email"
+                onChange={handleChange}
               />
               <FormInputElement
                 id="tlv-form-country"
                 name={"country"}
                 type={"text"}
                 placeholder={"Country"}
+                onChange={handleChange}
               />
             </TwoInputsGridContainer>
 
@@ -62,6 +77,8 @@ const BookingIsrael = () => {
               placeholder={
                 "A story/idea/concept that you would like to express in the tattoo"
               }
+              onChange={handleChange}
+
             />
             <div className="flex flex-row w-full">
               <div className="w-10/12">
@@ -71,6 +88,8 @@ const BookingIsrael = () => {
                   name={"reference"}
                   rows={1}
                   placeholder={"Links for references / my works that you like"}
+                  onChange={handleChange}
+
                 />
               </div>
               <div className="w-2/12 flex justify-end items-end">
@@ -83,9 +102,10 @@ const BookingIsrael = () => {
                 <FormInputElement
                   id="tlv-form-bodypart"
                   //label={"Body part"}
-                  name={"body-part"}
+                  name={"bodyPart"}
                   type={"text"}
                   placeholder={"Preferred body-part?"}
+                  onChange={handleChange}
                 />
               </div>
               <div className="w-2/12 flex justify-end items-end">
@@ -108,10 +128,12 @@ const BookingIsrael = () => {
 
             <FormTextArea
               label={"Anything else?"}
-              name={"reference"}
+              name={"anythingElse"}
               rows={1}
               placeholder={"Extra things i need to know?!"}
               id={"tlv-form-anything-else"}
+              onChange={handleChange}
+
             />
 
             {/*---------Check Box Elements----------*/}
@@ -128,7 +150,10 @@ const BookingIsrael = () => {
             <motion.button
               whileTap={{ scale: 0.9 }}
               whileHover={{ scale: 1.1 }}
-              type="submit"
+              //type="submit"
+              onClick={() => {
+                console.log("Curr state:", state);
+              }}
               className="bg-gray_m hover:bg-black_m py-3 px-8 outline-none w-fit text-white font-bold shadow-md shadow-primary rounded-2xl"
             >
               {"Send"}

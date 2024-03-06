@@ -5,14 +5,22 @@ interface inputProps extends InputHTMLAttributes<HTMLInputElement> {
   type: string;
   label?: string;
   value?: string | number;
+  onChange: (e:any) => void;
 }
 
-const FormInputElement = ({ id, label, type, ...rest }: inputProps) => {
+const FormInputElement = ({
+  id,
+  label,
+  type,
+  onChange,
+  ...rest
+}: inputProps) => {
   return (
     <label className="flex flex-col w-full ">
       {label && <span className="text-black_m font-medium">{label}</span>}
       <input
         required
+        onChange={onChange}
         id={id}
         type={type}
         {...rest}

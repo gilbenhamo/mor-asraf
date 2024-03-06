@@ -29,7 +29,9 @@ const DateInput = ({ id, label }: DateInputProps) => {
         placeholderText={label}
         onChange={setSelectedDate}
         icon={
-          <div className="text-black-200 pr-4">
+          <div className="text-black-200 pr-4"
+          onClick={()=>setIsOpen(true)}
+          >
             <FiCalendar size={20} />
           </div>
         }

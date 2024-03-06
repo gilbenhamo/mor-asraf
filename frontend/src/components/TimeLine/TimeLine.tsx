@@ -24,9 +24,10 @@ const TimeLine = () => {
     };
 
     const setInitialMiddleItem = () => {
-      const startingIndex = items.findIndex(
+      let startingIndex = items.findIndex(
         (item) => item.endDate! > new Date()
       );
+      startingIndex = startingIndex === -1 ? items.length : startingIndex;
       if (container) {
         container.scrollTop = startingIndex * 60;
         handleScroll();
@@ -47,7 +48,7 @@ const TimeLine = () => {
   return (
     <div
       ref={containerRef}
-      className="no-scrollbar overflow-y-scroll h-[400px] w-full mx-auto"
+      className="no-scrollbar overflow-y-scroll h-[400px] mx-auto"
       style={{
         scrollbarWidth: "thin",
         scrollSnapType: "y mandatory",
