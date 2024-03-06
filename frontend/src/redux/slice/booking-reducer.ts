@@ -14,6 +14,10 @@ interface BookingState {
   bodyPart:string;
   reference:string;
   anythingElse:string;
+  date1:string;
+  date2:string;
+  date3:string;
+  date4:string;
 }
 
 const initialState: BookingState = {
@@ -25,6 +29,10 @@ const initialState: BookingState = {
   bodyPart:"",
   reference:"",
   anythingElse:"",
+  date1:"",
+  date2:"",
+  date3:"",
+  date4:"",
 };
 
 const bookingSlice = createSlice({

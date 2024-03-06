@@ -16,8 +16,11 @@ const BookingIsrael = () => {
   const state = useAppSelector((state) => state.booking);
 
   const handleChange = (e: any) => {
-    console.log("enter:", e.target);
     const { name, value } = e.target;
+    dispatch(setAttr({ attr: name, value }));
+  };
+
+  const handleDateChange = (value: string, name: string) => {
     dispatch(setAttr({ attr: name, value }));
   };
 
@@ -78,7 +81,6 @@ const BookingIsrael = () => {
                 "A story/idea/concept that you would like to express in the tattoo"
               }
               onChange={handleChange}
-
             />
             <div className="flex flex-row w-full">
               <div className="w-10/12">
@@ -89,7 +91,6 @@ const BookingIsrael = () => {
                   rows={1}
                   placeholder={"Links for references / my works that you like"}
                   onChange={handleChange}
-
                 />
               </div>
               <div className="w-2/12 flex justify-end items-end">
@@ -119,10 +120,30 @@ const BookingIsrael = () => {
                 {"Select 4 optional dates"}
               </span>
               <div className="grid grid-cols-2 gap-x-4">
-                <DateInput id={"tlv-form-date1"} label="Date #1" />
-                <DateInput id={"tlv-form-date2"} label="Date #2" />
-                <DateInput id={"tlv-form-date3"} label="Date #3" />
-                <DateInput id={"tlv-form-date4"} label="Date #4" />
+                <DateInput
+                  id={"tlv-form-date1"}
+                  name={"date1"}
+                  label="Date #1"
+                  onChange={handleDateChange}
+                />
+                <DateInput
+                  id={"tlv-form-date2"}
+                  name={"date2"}
+                  label="Date #2"
+                  onChange={handleDateChange}
+                />
+                <DateInput
+                  id={"tlv-form-date3"}
+                  name={"date3"}
+                  label="Date #3"
+                  onChange={handleDateChange}
+                />
+                <DateInput
+                  id={"tlv-form-date4"}
+                  name={"date4"}
+                  label="Date #4"
+                  onChange={handleDateChange}
+                />
               </div>
             </div>
 
@@ -133,7 +154,6 @@ const BookingIsrael = () => {
               placeholder={"Extra things i need to know?!"}
               id={"tlv-form-anything-else"}
               onChange={handleChange}
-
             />
 
             {/*---------Check Box Elements----------*/}
