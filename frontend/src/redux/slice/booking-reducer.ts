@@ -39,7 +39,7 @@ const bookingSlice = createSlice({
   name: "booking",
   initialState,
   reducers: {
-    init(state) {
+    init() {
       return { ...initialState };
     },
     setAttr(state, action: PayloadAction<attrPayload>) {
