@@ -32,9 +32,10 @@ const TimeLine = () => {
 
     const setInitialMiddleItem = () => {
       let startingIndex = data.findIndex(
-        (item: any) => item.endDate! > new Date()
+        (item: any) => new Date(item.endDate!) > new Date()
       );
-      startingIndex = startingIndex === -1 ? data.length : startingIndex;
+
+      startingIndex = startingIndex === -1 ? data.length : startingIndex-1;
       if (container) {
         container.scrollTop = startingIndex * 60;
         handleScroll();

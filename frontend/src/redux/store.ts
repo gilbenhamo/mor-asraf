@@ -1,15 +1,17 @@
 import { configureStore } from "@reduxjs/toolkit";
 import bookingReducer from "./slice/booking-reducer";
 import { detailsApi } from "../services/details-api";
+import { formsApi } from "../services/forms-api";
 
 const store = configureStore({
   reducer: {
     booking: bookingReducer,
     [detailsApi.reducerPath]: detailsApi.reducer,
+    [formsApi.reducerPath]: formsApi.reducer,
   },
 
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat([detailsApi.middleware]),
+    getDefaultMiddleware().concat([detailsApi.middleware, formsApi.middleware]),
 });
 
 export default store;

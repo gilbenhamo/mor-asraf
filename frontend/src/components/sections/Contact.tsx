@@ -4,8 +4,23 @@ import { slideIn } from "../../utils/motion";
 import SectionHead from "../UI/SectionHead";
 import FormInputElement from "../UI/FormInputElement";
 import FormTextArea from "../UI/FormTextArea";
+import { useSendContactFormMutation } from "../../services/forms-api";
 
 const Contact = () => {
+  const [sendContactForm, {}] = useSendContactFormMutation();
+
+  const handleSubmit = (e: any) => {
+    e.preventDefault();
+    console.log("Submited");
+    //TODO: HANDLE REAL DATA
+    const data = {
+      name: "moris",
+      email: "a@bcccc.com",
+      subject: "asdasdasd",
+      message: "zxcxczxcz",
+    };
+    sendContactForm(data);
+  };
   return (
     <SectionWrapper idName="contact">
       <SectionHead headText={"Contact Us."} />
@@ -18,6 +33,7 @@ const Contact = () => {
             name="contactV2"
             method="POST"
             className="mt-12 flex flex-col gap-8 items-center xs:w-7/12 w-10/12"
+            onSubmit={handleSubmit}
             //data-netlify="true"
           >
             <FormInputElement

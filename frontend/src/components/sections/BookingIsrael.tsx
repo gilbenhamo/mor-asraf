@@ -15,8 +15,6 @@ import { useState } from "react";
 const BookingIsrael = () => {
   const [referencePhotos, setReferencePhotos] = useState<File[]>([]);
   const [bodyPhotos, setBodyPhotos] = useState<File[]>([]);
-  console.log("ref:", referencePhotos);
-  console.log("body:", bodyPhotos);
 
   const dispatch = useAppDispatch();
   const state = useAppSelector((state) => state.booking);
