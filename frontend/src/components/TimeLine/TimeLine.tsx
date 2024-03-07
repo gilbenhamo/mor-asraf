@@ -1,10 +1,17 @@
 import TimeLineItem from "./TimeLineItem";
-import { geustSpotsData } from "../../utils/constants";
 import { motion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
-const items = geustSpotsData;
+import { useGetAllGuestSpotsQuery } from "../../services/details-api";
+
+// interface QueryResult {
+//   data: GuestSpotType[]; // Assuming useGetAllGuestSpotsQuery returns an array of GuestSpot objects
+//   isError: boolean;
+//   isLoading: boolean;
+// }
 
 const TimeLine = () => {
+  const { data, isError, isLoading } = useGetAllGuestSpotsQuery(undefined);
+
   const containerRef = useRef<HTMLDivElement>(null);
   const [visibleItemIndex, setVisibleItemIndex] = useState<number>(0);
 
@@ -13,7 +20,7 @@ const TimeLine = () => {
 
     const handleScroll = () => {
       if (container) {
-        const itemHeight = container.scrollHeight / items.length;
+        const itemHeight = container.scrollHeight / data.length;
         const visibleItems = Math.ceil(container.clientHeight / itemHeight);
         const middleIndex = Math.floor(visibleItems / 2);
         const selectedIndex =
@@ -24,17 +31,17 @@ const TimeLine = () => {
     };
 
     const setInitialMiddleItem = () => {
-      let startingIndex = items.findIndex(
-        (item) => item.endDate! > new Date()
+      let startingIndex = data.findIndex(
+        (item: any) => item.endDate! > new Date()
       );
-      startingIndex = startingIndex === -1 ? items.length : startingIndex;
+      startingIndex = startingIndex === -1 ? data.length : startingIndex;
       if (container) {
         container.scrollTop = startingIndex * 60;
         handleScroll();
       }
     };
 
-    if (container) {
+    if (container && data) {
       container.addEventListener("scroll", handleScroll);
       setInitialMiddleItem();
     }
@@ -44,7 +51,7 @@ const TimeLine = () => {
         container.removeEventListener("scroll", handleScroll);
       }
     };
-  }, []);
+  }, [data]);
   return (
     <div
       ref={containerRef}
@@ -57,36 +64,42 @@ const TimeLine = () => {
         scrollBehavior: "smooth",
       }}
     >
-      {geustSpotsData.map((item, index) => (
-        <motion.div
-          key={index}
-          animate={{
-            opacity:
-              index === visibleItemIndex
-                ? 1
-                : index === visibleItemIndex - 1 ||
-                  index === visibleItemIndex + 1
-                ? 0.5
-                : 0.25,
-          }}
-          transition={{
-            ease: "easeInOut",
-            duration: 0.2,
-          }}
-          style={{ scrollSnapAlign: "start" }}
-        >
-          {item.location !== "" ? (
-            <TimeLineItem
-              headline={item.location}
-              subHeadline={item.studio}
-              startDate={item.startDate!}
-              endDate={item.endDate!}
-            />
-          ) : (
-            <div className="h-[100px]"></div>
-          )}
-        </motion.div>
-      ))}
+      {isLoading ? (
+        <div> Loading... </div>
+      ) : isError ? (
+        <div> ERROR </div>
+      ) : (
+        data.map((item: any, index: number) => (
+          <motion.div
+            key={index}
+            animate={{
+              opacity:
+                index === visibleItemIndex
+                  ? 1
+                  : index === visibleItemIndex - 1 ||
+                    index === visibleItemIndex + 1
+                  ? 0.5
+                  : 0.25,
+            }}
+            transition={{
+              ease: "easeInOut",
+              duration: 0.2,
+            }}
+            style={{ scrollSnapAlign: "start" }}
+          >
+            {item.location !== "" ? (
+              <TimeLineItem
+                headline={item.location}
+                subHeadline={item.studio}
+                startDate={new Date(item.startDate!)}
+                endDate={new Date(item.endDate!)}
+              />
+            ) : (
+              <div className="h-[100px]"></div>
+            )}
+          </motion.div>
+        ))
+      )}
     </div>
   );
 };

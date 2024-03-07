@@ -31,3 +31,10 @@ interface Gallery3ItemsProps extends GalleryItemBaseProps{
   img2: string;
   img3: string;
 }
+
+interface GuestSpotType {
+  location: string;
+  studio: string;
+  startDate: Date;
+  endDate: Date;
+}
