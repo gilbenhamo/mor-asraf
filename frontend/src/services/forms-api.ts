@@ -10,14 +10,22 @@ export const formsApi = createApi({
 
   endpoints: (builder) => ({
     sendContactForm: builder.mutation({
-        query: (data) => ({
-          url: `contact`,
-          method: "POST",
-          body: data,
-        }),
+      query: (data) => ({
+        url: `contact`,
+        method: "POST",
+        body: data,
       }),
+    }),
 
+    sendBookingForm: builder.mutation({
+      query: (data) => ({
+        url: `booking`,
+        method: "POST",
+        body: data,
+      }),
+    }),
   }),
 });
 
-export const { useSendContactFormMutation } = formsApi;
+export const { useSendContactFormMutation, useSendBookingFormMutation } =
+  formsApi;

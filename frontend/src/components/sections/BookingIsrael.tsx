@@ -11,10 +11,14 @@ import FormFileUploader from "../UI/FormFileUploader";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 import { setAttr } from "../../redux/slice/booking-reducer";
 import { useState } from "react";
+import { useSendBookingFormMutation } from "../../services/forms-api";
 
 const BookingIsrael = () => {
   const [referencePhotos, setReferencePhotos] = useState<File[]>([]);
   const [bodyPhotos, setBodyPhotos] = useState<File[]>([]);
+  const [referencePhotos64, setReferencePhotos64] = useState<string[]>([]);
+  const [bodyPhotos64, setBodyPhotos64] = useState<string[]>([]);
+  const [sendBookingForm, {}] = useSendBookingFormMutation();
 
   const dispatch = useAppDispatch();
   const state = useAppSelector((state) => state.booking);
@@ -29,6 +33,40 @@ const BookingIsrael = () => {
     dispatch(setAttr({ attr: name, value }));
   };
 
+  const handleSubmit = async (e: any) => {
+    e.preventDefault();
+    const {
+      date1,
+      date2,
+      date3,
+      date4,
+      checkbox18,
+      checkboxOpenMinded,
+      checkboxPart,
+      checkboxReally,
+    } = state;
+    if (!date1 && !date2 && !date3 && !date4)
+      console.log("Must choose at least one date");
+    else if (
+      !checkbox18 ||
+      !checkboxOpenMinded ||
+      !checkboxPart ||
+      !checkboxReally
+    )
+      console.log("All checkbox must be checked");
+    else {
+      //handle error after
+      sendBookingForm({
+        ...state,
+        refPhotos: referencePhotos64,
+        bodyPhotos: bodyPhotos64,
+      })
+        .unwrap()
+        .then((payload) => console.log("fulfilled", payload))
+        .catch((error) => console.error("rejected", error));
+    }
+  };
+
   return (
     <SectionWrapper idName="booking-israel">
       <SectionHead headText={"TLV Booking."} />
@@ -40,6 +78,7 @@ const BookingIsrael = () => {
           <form
             name="tlv-booking-form"
             method="POST"
+            onSubmit={handleSubmit}
             className="mt-12 flex flex-col justify-center items-center gap-8 xl:w-10/12 "
           >
             {/* <input type="hidden" name="form-name" value="tlv-booking-form" /> */}
@@ -104,6 +143,7 @@ const BookingIsrael = () => {
                   photos={referencePhotos}
                   id={"referencePhotos"}
                   setPhotos={setReferencePhotos}
+                  set64Photos={setReferencePhotos64}
                 />
               </div>
             </div>
@@ -137,6 +177,7 @@ const BookingIsrael = () => {
                   id={"bodyPhotos"}
                   photos={bodyPhotos}
                   setPhotos={setBodyPhotos}
+                  set64Photos={setBodyPhotos64}
                 />
               </div>
             </div>
@@ -226,10 +267,7 @@ const BookingIsrael = () => {
             <motion.button
               whileTap={{ scale: 0.9 }}
               whileHover={{ scale: 1.1 }}
-              //type="submit"
-              onClick={() => {
-                console.log("Curr state:", state);
-              }}
+              type="submit"
               className="bg-gray_m hover:bg-black_m py-3 px-8 outline-none w-fit text-white font-bold shadow-md shadow-primary rounded-2xl"
             >
               {"Send"}

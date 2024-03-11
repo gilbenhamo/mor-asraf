@@ -5,13 +5,27 @@ interface FormFileUploaderProps {
   photos: File[];
   id: string;
   setPhotos: React.Dispatch<React.SetStateAction<File[]>>;
+  set64Photos: React.Dispatch<React.SetStateAction<string[]>>;
 }
 
 const FormFileUploader: React.FC<FormFileUploaderProps> = ({
   maxPhotos,
   id,
   setPhotos,
+  set64Photos,
 }) => {
+  const convertToBase64 = (file: File) => {
+    const fileReader = new FileReader();
+    fileReader.onload = (upload) => {
+      const base64String = upload.target?.result as string;
+      set64Photos((prevState) => {
+        const newPhotos = [...prevState, base64String];
+        return newPhotos.slice(0, maxPhotos);
+      });
+    };
+    fileReader.readAsDataURL(file);
+  };
+
   const handleFileChange = (event: ChangeEvent<HTMLInputElement>) => {
     const files = event.target.files;
     if (!files || files.length === 0) return;
@@ -22,9 +36,11 @@ const FormFileUploader: React.FC<FormFileUploaderProps> = ({
     );
 
     setPhotos((prevPhotos) => {
-      const newPhotos: File[] = [...imageFiles,...prevPhotos];
+      const newPhotos: File[] = [...imageFiles, ...prevPhotos];
       return newPhotos.slice(0, maxPhotos);
     });
+
+    imageFiles.map((elem) => convertToBase64(elem));
   };
 
   // const handleSubmit = () => {
@@ -38,7 +54,6 @@ const FormFileUploader: React.FC<FormFileUploaderProps> = ({
   return (
     <>
       <input
-        required
         type="file"
         id={id}
         accept="image/*"
