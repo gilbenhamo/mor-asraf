@@ -1,4 +1,4 @@
-import logo from "./mor-logo.png";
+import logo from "./mor_new_logo.jpg";
 import horses from "./horses.jpg";
 import about_pic from "./mor_about.webp";
 

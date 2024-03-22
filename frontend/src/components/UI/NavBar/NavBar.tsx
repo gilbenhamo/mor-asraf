@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { navLinks } from "../../../utils/constants";
 import { Twirl } from "hamburger-react";
 import { linksVariants } from "../../../utils/motion";
+import { logo } from "../../../assets";
 
 const NavBar = () => {
   const [isOpen, setOpen] = useState(false);
@@ -21,12 +22,12 @@ const NavBar = () => {
           className="flex items-center gap-2 cursor-pointer"
           href="/#"
         >
-          {/* <img src={logo} alt="logo" className="w-20 h-20 object-contain" /> */}
-          <motion.p
+          <img src={logo} alt="logo" className="size-24 object-contain" />
+          {/* <motion.p
             className={`${styles.linksStyle} text-black_m text-[30px] font-serif font-extrabold z-10`}
           >
             Mor Asraf
-          </motion.p>
+          </motion.p> */}
 
         </motion.a>
         <ul className="list-none hidden sm:flex flex-row gap-10">

@@ -5,6 +5,7 @@ import SectionHead from "../UI/SectionHead";
 import FormInputElement from "../UI/FormInputElement";
 import FormTextArea from "../UI/FormTextArea";
 import { useSendContactFormMutation } from "../../services/forms-api";
+import Swal from "sweetalert2";
 
 const Contact = () => {
   const [sendContactForm, {}] = useSendContactFormMutation();
@@ -19,6 +20,12 @@ const Contact = () => {
       subject: "asdasdasd",
       message: "zxcxczxcz",
     };
+    Swal.fire({
+      title: "Contact form submited!",
+      text: "We will be in touch!",
+      confirmButtonColor: "#28282B",   
+      icon: "success"
+    });
     sendContactForm(data);
   };
   return (
