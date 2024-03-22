@@ -6,27 +6,56 @@ import FormInputElement from "../UI/FormInputElement";
 import FormTextArea from "../UI/FormTextArea";
 import { useSendContactFormMutation } from "../../services/forms-api";
 import Swal from "sweetalert2";
+import { useState } from "react";
+
+const initialState = {
+  name: "",
+  email: "",
+  subject: "",
+  message: "",
+};
 
 const Contact = () => {
   const [sendContactForm, {}] = useSendContactFormMutation();
+  const [formData, setFormData] = useState(initialState);
+
+  const handleChange = (e: any) => {
+    setFormData((prevState) => ({
+      ...prevState,
+      [e.target.name]: e.target.value,
+    }));
+  };
 
   const handleSubmit = (e: any) => {
     e.preventDefault();
-    console.log("Submited");
-    //TODO: HANDLE REAL DATA
     const data = {
-      name: "moris",
-      email: "a@bcccc.com",
-      subject: "asdasdasd",
-      message: "zxcxczxcz",
+      name: formData.name,
+      email: formData.email,
+      subject: formData.subject,
+      message: formData.message,
     };
-    Swal.fire({
-      title: "Contact form submited!",
-      text: "We will be in touch!",
-      confirmButtonColor: "#28282B",   
-      icon: "success"
-    });
-    sendContactForm(data);
+
+    sendContactForm(data)
+      .unwrap()
+      .then((payload) => {
+        console.log("contact fulfilled", payload);
+        Swal.fire({
+          title: "Contact form submited!",
+          text: "We will be in touch!",
+          confirmButtonColor: "#28282B",
+          icon: "success",
+        });
+        setFormData(initialState);
+      })
+      .catch((error) => {
+        Swal.fire({
+          title: "Something went wrong!",
+          text: "Please try again later!",
+          confirmButtonColor: "#D61A3C",
+          icon: "error",
+        });
+        console.error("rejected", error);
+      });
   };
   return (
     <SectionWrapper idName="contact">
@@ -47,31 +76,35 @@ const Contact = () => {
               name={"name"}
               type={"text"}
               placeholder={"Name"}
+              value={formData.name}
               id={"contact-name"}
-              onChange={() => {}}
+              onChange={handleChange}
             />
 
             <FormInputElement
               name={"email"}
               type={"email"}
               placeholder={"Email"}
+              value={formData.email}
               id={"contact-email"}
-              onChange={() => {}}
+              onChange={handleChange}
             />
 
             <FormInputElement
               name={"subject"}
               type={"subject"}
               placeholder={"Subject"}
+              value={formData.subject}
               id={"contact-subject"}
-              onChange={() => {}}
+              onChange={handleChange}
             />
             <FormTextArea
               name={"message"}
               rows={2}
               placeholder={"Message"}
+              value={formData.message}
               id={"contact-message"}
-              onChange={() => {}}
+              onChange={handleChange}
             />
             <motion.button
               whileTap={{ scale: 0.9 }}

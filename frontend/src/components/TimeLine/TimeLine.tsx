@@ -34,10 +34,15 @@ const TimeLine = () => {
       let startingIndex = data.findIndex(
         (item: any) => new Date(item.endDate!) > new Date()
       );
+      console.log(data[startingIndex]);
 
-      startingIndex = startingIndex === -1 ? data.length : startingIndex-1;
+      startingIndex = startingIndex === -1 ? data.length : startingIndex;
+      console.log(data[startingIndex]);
+      
       if (container) {
-        container.scrollTop = startingIndex * 60;
+        const itemHeight = container.scrollHeight / data.length;
+        const middleIndex = Math.floor(container.clientHeight / (2 * itemHeight));
+        container.scrollTop = startingIndex * itemHeight - middleIndex * itemHeight;
         handleScroll();
       }
     };
