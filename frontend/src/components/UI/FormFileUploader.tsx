@@ -2,23 +2,20 @@ import React, { ChangeEvent } from "react";
 
 interface FormFileUploaderProps {
   maxPhotos: number;
-  photos: File[];
   id: string;
-  setPhotos: React.Dispatch<React.SetStateAction<File[]>>;
-  set64Photos: React.Dispatch<React.SetStateAction<string[]>>;
+  setPhotos64: React.Dispatch<React.SetStateAction<string[]>>;
 }
 
 const FormFileUploader: React.FC<FormFileUploaderProps> = ({
   maxPhotos,
   id,
-  setPhotos,
-  set64Photos,
+  setPhotos64,
 }) => {
   const convertToBase64 = (file: File) => {
     const fileReader = new FileReader();
     fileReader.onload = (upload) => {
       const base64String = upload.target?.result as string;
-      set64Photos((prevState) => {
+      setPhotos64((prevState) => {
         const newPhotos = [...prevState, base64String];
         return newPhotos.slice(0, maxPhotos);
       });
@@ -35,10 +32,10 @@ const FormFileUploader: React.FC<FormFileUploaderProps> = ({
       file.type.startsWith("image/")
     );
 
-    setPhotos((prevPhotos) => {
-      const newPhotos: File[] = [...imageFiles, ...prevPhotos];
-      return newPhotos.slice(0, maxPhotos);
-    });
+    // setPhotos((prevPhotos) => {
+    //   const newPhotos: File[] = [...imageFiles, ...prevPhotos];
+    //   return newPhotos.slice(0, maxPhotos);
+    // });
 
     imageFiles.map((elem) => convertToBase64(elem));
   };

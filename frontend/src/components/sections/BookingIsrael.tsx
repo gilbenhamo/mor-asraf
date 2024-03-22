@@ -14,8 +14,6 @@ import { useState } from "react";
 import { useSendBookingFormMutation } from "../../services/forms-api";
 
 const BookingIsrael = () => {
-  const [referencePhotos, setReferencePhotos] = useState<File[]>([]);
-  const [bodyPhotos, setBodyPhotos] = useState<File[]>([]);
   const [referencePhotos64, setReferencePhotos64] = useState<string[]>([]);
   const [bodyPhotos64, setBodyPhotos64] = useState<string[]>([]);
   const [sendBookingForm, {}] = useSendBookingFormMutation();
@@ -140,21 +138,19 @@ const BookingIsrael = () => {
               <div className="w-2/12 flex justify-end items-end">
                 <FormFileUploader
                   maxPhotos={4}
-                  photos={referencePhotos}
                   id={"referencePhotos"}
-                  setPhotos={setReferencePhotos}
-                  set64Photos={setReferencePhotos64}
+                  setPhotos64={setReferencePhotos64}
                 />
               </div>
             </div>
             <div className="w-full flex flex-row justify-end items-start gap-2">
               {/* Display uploaded photos */}
-              {referencePhotos.map((photo, index) => (
+              {referencePhotos64.map((photo, index) => (
                 <motion.img
                   className="size-20 object-contain"
                   whileHover={{ scale: 3, zIndex: 40 }}
                   key={index}
-                  src={URL.createObjectURL(photo)}
+                  src={photo}
                   alt={`Photo ${index + 1}`}
                 />
               ))}
@@ -175,20 +171,18 @@ const BookingIsrael = () => {
                 <FormFileUploader
                   maxPhotos={4}
                   id={"bodyPhotos"}
-                  photos={bodyPhotos}
-                  setPhotos={setBodyPhotos}
-                  set64Photos={setBodyPhotos64}
+                  setPhotos64={setBodyPhotos64}
                 />
               </div>
             </div>
             <div className="w-full flex flex-row justify-end items-start gap-2">
               {/* Display uploaded photos */}
-              {bodyPhotos.map((photo, index) => (
+              {bodyPhotos64.map((photo, index) => (
                 <motion.img
                   className="size-20 object-contain"
                   whileHover={{ scale: 3, zIndex: 40 }}
                   key={index}
-                  src={URL.createObjectURL(photo)}
+                  src={photo}
                   alt={`Photo ${index + 1}`}
                 />
               ))}
