@@ -34,10 +34,7 @@ const TimeLine = () => {
       let startingIndex = data.findIndex(
         (item: any) => new Date(item.endDate!) > new Date()
       );
-      console.log(data[startingIndex]);
-
       startingIndex = startingIndex === -1 ? data.length : startingIndex;
-      console.log(data[startingIndex]);
       
       if (container) {
         const itemHeight = container.scrollHeight / data.length;

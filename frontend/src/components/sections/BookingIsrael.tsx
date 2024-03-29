@@ -12,6 +12,7 @@ import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 import { setAttr } from "../../redux/slice/booking-reducer";
 import { useState } from "react";
 import { useSendBookingFormMutation } from "../../services/forms-api";
+import Swal from "sweetalert2";
 
 const BookingIsrael = () => {
   const [referencePhotos64, setReferencePhotos64] = useState<string[]>([]);
@@ -44,14 +45,22 @@ const BookingIsrael = () => {
       checkboxReally,
     } = state;
     if (!date1 && !date2 && !date3 && !date4)
-      console.log("Must choose at least one date");
+      Swal.fire({
+        title: "Must choose at least one date",
+        confirmButtonColor: "#28282B",
+        icon: "info",
+      });
     else if (
       !checkbox18 ||
       !checkboxOpenMinded ||
       !checkboxPart ||
       !checkboxReally
     )
-      console.log("All checkbox must be checked");
+      Swal.fire({
+        title: "All checkbox must be checked",
+        confirmButtonColor: "#28282B",
+        icon: "info",
+      });
     else {
       //handle error after
       sendBookingForm({
@@ -60,8 +69,25 @@ const BookingIsrael = () => {
         bodyPhotos: bodyPhotos64,
       })
         .unwrap()
-        .then((payload) => console.log("fulfilled", payload))
-        .catch((error) => console.error("rejected", error));
+        .then((payload) => {
+          console.log("contact fulfilled", payload);
+          Swal.fire({
+            title: "Booking request submited!",
+            text: "We will be in touch!",
+            confirmButtonColor: "#28282B",
+            icon: "success",
+          });
+          //TODO: Clear data from form
+        })
+        .catch((error) => {
+          Swal.fire({
+            title: "Something went wrong!",
+            text: "Please try again later!",
+            confirmButtonColor: "#D61A3C",
+            icon: "error",
+          });
+          console.error("rejected", error);
+        });
     }
   };
 
