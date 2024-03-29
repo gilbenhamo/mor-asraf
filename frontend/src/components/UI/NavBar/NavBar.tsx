@@ -42,7 +42,7 @@ const NavBar = () => {
               }`}
               onClick={() => setActive(link.title)}
             >
-              <a href={`#${link.id}`}> {link.title} </a>
+              <a href={`/#${link.id}`}> {link.title} </a>
             </motion.li>
           ))}
         </ul>

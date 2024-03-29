@@ -98,7 +98,7 @@ const BookingIsrael = ({location,date}:Props) => {
 
   return (
     <SectionWrapper idName="booking-israel">
-      <SectionHead headText={`${location ? location : "TLV"} Booking.`} />
+      <SectionHead headText={`${location ? location : "TLV"} Booking.`} subText={date}/>
       <div className=" xl:flex-row flex-col flex items-center justify-center gap-10 p-2 overflow-hidden">
         <motion.div
           variants={slideIn("down", "spring", 0.2, 1)}
