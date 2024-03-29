@@ -5,6 +5,7 @@ import { navLinks } from "../../../utils/constants";
 import { Twirl } from "hamburger-react";
 import { linksVariants } from "../../../utils/motion";
 import { logo } from "../../../assets";
+import { Link } from "react-router-dom";
 
 const NavBar = () => {
   const [isOpen, setOpen] = useState(false);
@@ -42,6 +43,8 @@ const NavBar = () => {
               }`}
               onClick={() => setActive(link.title)}
             >
+              {/* <Link to={`/#${link.id}`}>{link.title}</Link> */}
+
               <a href={`/#${link.id}`}> {link.title} </a>
             </motion.li>
           ))}

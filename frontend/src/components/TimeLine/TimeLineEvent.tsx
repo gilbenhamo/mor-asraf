@@ -2,9 +2,10 @@ interface Props {
   heading: string;
   subHeading: string;
   available?: boolean;
+  onClick?: () => void;
 }
 
-const TimeLineEvent = ({ heading, subHeading, available }: Props) => {
+const TimeLineEvent = ({ heading, subHeading, available, onClick }: Props) => {
   return (
     <div className="h-full flex flex-col justify-center items-end">
       <div className="  flex flex-col justify-start items-end ">
@@ -13,6 +14,7 @@ const TimeLineEvent = ({ heading, subHeading, available }: Props) => {
         {available && (
           <div
             className={` text-black_m  h-auto w-auto  border-b-2 border-black text-center  text-[8px] hover:bg-gray-200 hover:cursor-pointer`}
+            onClick={onClick}
           >
             {"Book Now"}
           </div>
