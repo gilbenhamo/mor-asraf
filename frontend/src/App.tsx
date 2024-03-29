@@ -1,13 +1,8 @@
-import { BrowserRouter } from "react-router-dom";
-import Header from "./components/layout/Header";
-import { HomePage } from "./pages/HomePage";
+import AppRouter from "./routes/AppRouter";
 
 function App() {
   return (
-    <BrowserRouter>
-      <Header />
-      <HomePage />
-    </BrowserRouter>
+    <AppRouter />
   );
 }
 

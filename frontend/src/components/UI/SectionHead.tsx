@@ -5,11 +5,13 @@ import { styles } from "../../utils/styles";
 interface Props{
     headText:string;
     motionDelay?:number;
+    subText?:string;
 }
 
-const SectionHead = ({headText,motionDelay}:Props) => {
+const SectionHead = ({headText,motionDelay,subText}:Props) => {
   return (
     <motion.div variants={textVariant(motionDelay || 0.2)}>
+    <p className={styles.sectionSubText}>{subText}</p>
     <h2 className={styles.sectionHeadText}>{headText}</h2>
   </motion.div>  )
 }

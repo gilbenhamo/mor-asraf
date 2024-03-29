@@ -13,8 +13,13 @@ import { setAttr } from "../../redux/slice/booking-reducer";
 import { useState } from "react";
 import { useSendBookingFormMutation } from "../../services/forms-api";
 import Swal from "sweetalert2";
+interface Props{
+  location?:string;
+  date?:string;
+}
 
-const BookingIsrael = () => {
+//todo: check case that the file is not image
+const BookingIsrael = ({location,date}:Props) => {
   const [referencePhotos64, setReferencePhotos64] = useState<string[]>([]);
   const [bodyPhotos64, setBodyPhotos64] = useState<string[]>([]);
   const [sendBookingForm, {}] = useSendBookingFormMutation();
@@ -93,7 +98,7 @@ const BookingIsrael = () => {
 
   return (
     <SectionWrapper idName="booking-israel">
-      <SectionHead headText={"TLV Booking."} />
+      <SectionHead headText={`${location ? location : "TLV"} Booking.`} />
       <div className=" xl:flex-row flex-col flex items-center justify-center gap-10 p-2 overflow-hidden">
         <motion.div
           variants={slideIn("down", "spring", 0.2, 1)}
