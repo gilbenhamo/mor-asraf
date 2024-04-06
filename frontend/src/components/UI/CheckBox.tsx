@@ -18,7 +18,7 @@ const CheckBox = ({ label, id, name, onChange }: Props) => {
 
       <label
         htmlFor={id}
-        className="ms-2 text-xs sm:text-sm font-medium text-black_m flex-shrink"
+        className="ms-2 text-xs sm:text-sm font-medium text-black_m flex-shrink text-pretty max-w-[700px]"
       >
         {label}
       </label>
