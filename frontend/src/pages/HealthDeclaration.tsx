@@ -1,6 +1,5 @@
 import SectionHead from "../components/UI/SectionHead";
 import { motion } from "framer-motion";
-import { HomeContainer } from "../containers/HomeContainer";
 import SignatureCanvas from "react-signature-canvas";
 import { SectionWrapper } from "../containers/SectionWrapper";
 import { slideIn } from "../utils/motion";
@@ -11,20 +10,86 @@ import FormTextArea from "../components/UI/FormTextArea";
 import CheckBox from "../components/UI/CheckBox";
 import { healthDeclarationBoxs } from "../utils/constants";
 import { useRef } from "react";
+import { useSendHealthDeclarationFormMutation } from "../services/forms-api";
+import { useAppDispatch, useAppSelector } from "../redux/hooks";
+import { setAttr } from "../redux/slice/health-declaration-reducer";
+import Swal from "sweetalert2";
 
 const HealthDeclaration = () => {
   const signatureRef = useRef(null);
+  const [sendForm, {}] = useSendHealthDeclarationFormMutation();
+  const dispatch = useAppDispatch();
+  const state = useAppSelector((state) => state.health);
 
   const clearSignature = () => {
     (signatureRef as any).current.clear(); // Clear the signature canvas
   };
+
+  const handleChange = (e: any) => {
+    const { name, value, type, checked } = e.target;
+    const newValue = type === "checkbox" ? checked : value;
+    dispatch(setAttr({ attr: name, value: newValue }));
+  };
+
+  const handleDateChange = (value: string, name: string) => {
+    dispatch(setAttr({ attr: name, value }));
+  };
+
   const saveSignature = () => {
     const signature = (signatureRef as any).current.toDataURL();
+    sendForm({ data: signature });
     // Do something with the signature, such as save it to state or send it to a server
     console.log(signature);
   };
-  
-  const handleChange = (e: any) => {};
+
+  const handleSubmit = async (e: any) => {
+    e.preventDefault();
+    const { name, phone, email, address, id, date1, checkboxes } = state;
+    if (!date1)
+      Swal.fire({
+        title: "Must enter date of birth",
+        confirmButtonColor: "#28282B",
+        icon: "info",
+      });
+    else {
+      const signature = (signatureRef as any).current.toDataURL();
+      const checkboxes_text = [];
+      for (var i = 0; i < checkboxes.length; i++) {
+        if (!checkboxes[i]) checkboxes_text.push(healthDeclarationBoxs[i]);
+      }
+      //todo:handle error after
+      sendForm({
+        name,
+        phone,
+        email,
+        address,
+        id,
+        date1,
+        checkboxes_text,
+        signature,
+      })
+        .unwrap()
+        .then((payload) => {
+          console.log("contact fulfilled", payload);
+          Swal.fire({
+            title: "Booking request submited!",
+            text: "We will be in touch!",
+            confirmButtonColor: "#28282B",
+            icon: "success",
+          });
+          //TODO: Clear data from form
+        })
+        .catch((error) => {
+          Swal.fire({
+            title: "Something went wrong!",
+            text: "Please try again later!",
+            confirmButtonColor: "#D61A3C",
+            icon: "error",
+          });
+          console.error("rejected", error);
+        });
+    }
+  };
 
   return (
     <div className="bg-white h-full mt-10">
@@ -36,21 +101,21 @@ const HealthDeclaration = () => {
             className="flex-[0.75] bg-white   flex flex-col justify-center items-center"
           >
             <form
-              name="tlv-booking-form"
+              name="health-booking-form"
               method="POST"
-              onSubmit={() => {}}
+              onSubmit={handleSubmit}
               className="mt-12 flex flex-col justify-center items-center gap-8 xl:w-10/12 "
             >
               <TwoInputsGridContainer>
                 <FormInputElement
-                  id="tlv-form-name"
+                  id="health-form-name"
                   name={"name"}
                   type={"text"}
                   placeholder="Name"
                   onChange={handleChange}
                 />
                 <FormInputElement
-                  id="tlv-form-phone"
+                  id="health-form-phone"
                   name={"phone"}
                   type={"tel"}
                   placeholder="Phone"
@@ -60,14 +125,14 @@ const HealthDeclaration = () => {
 
               <TwoInputsGridContainer>
                 <FormInputElement
-                  id="tlv-form-email"
+                  id="health-form-email"
                   name={"email"}
                   type={"email"}
                   placeholder="Email"
                   onChange={handleChange}
                 />
                 <FormInputElement
-                  id="tlv-form-country"
+                  id="health-form-country"
                   name={"address"}
                   type={"text"}
                   placeholder={"Address"}
@@ -77,7 +142,7 @@ const HealthDeclaration = () => {
 
               <TwoInputsGridContainer>
                 <FormInputElement
-                  id="tlv-form-name"
+                  id="health-form-id"
                   name={"id"}
                   type={"text"}
                   placeholder="ID Number"
@@ -86,16 +151,16 @@ const HealthDeclaration = () => {
 
                 <div className="mt-1 flex justify-start">
                   <DateInput
-                    id={"tlv-form-date1"}
+                    id={"health-form-date1"}
                     name={"date1"}
                     label="Date of birth"
-                    onChange={handleChange}
+                    onChange={handleDateChange}
                   />
                 </div>
               </TwoInputsGridContainer>
 
               <FormTextArea
-                id="tlv-form-subject"
+                id="health-form-subject"
                 name={"subject"}
                 rows={1}
                 placeholder={"Do you have any disease or sensitivity?"}
@@ -106,7 +171,7 @@ const HealthDeclaration = () => {
                 name={"anythingElse"}
                 rows={1}
                 placeholder={"Do you take medication regularly?"}
-                id={"tlv-form-anything-else"}
+                id={"health-form-anything-else"}
                 onChange={handleChange}
               />
 
@@ -116,8 +181,8 @@ const HealthDeclaration = () => {
                   <CheckBox
                     key={index}
                     label={elem.text}
-                    id="18-checkbox"
-                    name="checkbox18"
+                    id={"health_checkbox_" + elem.id}
+                    name={"health_checkbox_" + elem.id}
                     onChange={handleChange}
                   />
                 ))}
@@ -126,7 +191,7 @@ const HealthDeclaration = () => {
                     <div className="text-black_m">Your signature:</div>
                     <div
                       className="border-2 pr-2 pl-2 mt-2 mb-1 text-black_m cursor-pointer"
-                      onClick={saveSignature}
+                      onClick={clearSignature}
                     >
                       X
                     </div>

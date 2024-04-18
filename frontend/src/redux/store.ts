@@ -2,10 +2,12 @@ import { configureStore } from "@reduxjs/toolkit";
 import bookingReducer from "./slice/booking-reducer";
 import { detailsApi } from "../services/details-api";
 import { formsApi } from "../services/forms-api";
+import healthDeclarationReducer from "./slice/health-declaration-reducer";
 
 const store = configureStore({
   reducer: {
     booking: bookingReducer,
+    health: healthDeclarationReducer,
     [detailsApi.reducerPath]: detailsApi.reducer,
     [formsApi.reducerPath]: formsApi.reducer,
   },

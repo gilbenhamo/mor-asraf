@@ -17,6 +17,14 @@ export const formsApi = createApi({
       }),
     }),
 
+    sendHealthDeclarationForm: builder.mutation({
+      query: (data) => ({
+        url: `health-declaration`,
+        method: "POST",
+        body: data,
+      }),
+    }),
+
     sendBookingForm: builder.mutation({
       query: (data) => ({
         url: `booking`,
@@ -27,5 +35,8 @@ export const formsApi = createApi({
   }),
 });
 
-export const { useSendContactFormMutation, useSendBookingFormMutation } =
-  formsApi;
+export const {
+  useSendContactFormMutation,
+  useSendBookingFormMutation,
+  useSendHealthDeclarationFormMutation,
+} = formsApi;
