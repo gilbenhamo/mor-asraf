@@ -3,7 +3,7 @@ import BookingIsrael from "../components/sections/BookingIsrael";
 import { HomeContainer } from "../containers/HomeContainer";
 
 const GuestSpotBooking = () => {
-  const { id, location, date } = useParams();
+  const { /*id,*/ location, date } = useParams();
 
   return (
     <HomeContainer>

@@ -35,12 +35,12 @@ const HealthDeclaration = () => {
     dispatch(setAttr({ attr: name, value }));
   };
 
-  const saveSignature = () => {
-    const signature = (signatureRef as any).current.toDataURL();
-    sendForm({ data: signature });
-    // Do something with the signature, such as save it to state or send it to a server
-    console.log(signature);
-  };
+  // const saveSignature = () => {
+  //   const signature = (signatureRef as any).current.toDataURL();
+  //   sendForm({ data: signature });
+  //   // Do something with the signature, such as save it to state or send it to a server
+  //   console.log(signature);
+  // };
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
