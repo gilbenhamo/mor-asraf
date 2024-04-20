@@ -13,6 +13,8 @@ interface BookingState {
   address: string;
   id: string;
   date1: string;
+  disease: string;
+  medication: string;
   checkboxes: boolean[];
 }
 
@@ -23,6 +25,8 @@ const initialState: BookingState = {
   address: "",
   id: "",
   date1: "",
+  disease: "",
+  medication: "",
   checkboxes: new Array(healthDeclarationBoxs.length).fill(false),
 };
 
@@ -37,7 +41,7 @@ const healthSlice = createSlice({
       let { attr, value } = action.payload;
       if (attr.includes("checkbox")) {
         const index: number = Number.parseInt(attr.split("_")[2]);
-        console.log(attr+ "->" + index);
+        console.log(attr + "->" + index);
 
         state.checkboxes[index] = value as boolean;
         return;

@@ -44,7 +44,17 @@ const HealthDeclaration = () => {
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
-    const { name, phone, email, address, id, date1, checkboxes } = state;
+    const {
+      name,
+      phone,
+      email,
+      address,
+      id,
+      date1,
+      checkboxes,
+      medication,
+      disease,
+    } = state;
     if (!date1)
       Swal.fire({
         title: "Must enter date of birth",
@@ -65,6 +75,8 @@ const HealthDeclaration = () => {
         address,
         id,
         date1,
+        disease,
+        medication,
         checkboxes_text,
         signature,
       })
@@ -160,15 +172,15 @@ const HealthDeclaration = () => {
               </TwoInputsGridContainer>
 
               <FormTextArea
-                id="health-form-subject"
-                name={"subject"}
+                id="health-form-disease"
+                name={"disease"}
                 rows={1}
                 placeholder={"Do you have any disease or sensitivity?"}
                 onChange={handleChange}
               />
 
               <FormTextArea
-                name={"anythingElse"}
+                name={"medication"}
                 rows={1}
                 placeholder={"Do you take medication regularly?"}
                 id={"health-form-anything-else"}
