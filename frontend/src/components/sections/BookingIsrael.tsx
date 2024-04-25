@@ -72,6 +72,8 @@ const BookingIsrael = ({location,date}:Props) => {
         ...state,
         refPhotos: referencePhotos64,
         bodyPhotos: bodyPhotos64,
+        location,
+        date
       })
         .unwrap()
         .then((payload) => {

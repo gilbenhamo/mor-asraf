@@ -8,10 +8,19 @@ interface DateInputProps {
   label: string;
   id: string;
   name: string;
-  onChange: (value:string, name:string) => void;
+  allowPast?: boolean;
+  allowYearDropDown?: boolean;
+  onChange: (value: string, name: string) => void;
 }
 
-const DateInput = ({ id, label,name,onChange }: DateInputProps) => {
+const DateInput = ({
+  id,
+  label,
+  name,
+  allowPast,
+  allowYearDropDown,
+  onChange,
+}: DateInputProps) => {
   const today = new Date();
   const [selectedDate, setSelectedDate] = useState<Date | null>(null);
   const [isOpen, setIsOpen] = useState(false);
@@ -22,7 +31,7 @@ const DateInput = ({ id, label,name,onChange }: DateInputProps) => {
       year: "numeric",
     });
     setSelectedDate(date);
-    onChange(value,name)
+    onChange(value, name);
   };
 
   return (
@@ -46,11 +55,13 @@ const DateInput = ({ id, label,name,onChange }: DateInputProps) => {
         dateFormat="dd/MM/yyyy"
         className="w-11/12 sm:w-full text-center text-black_m placeholder:text-black_m px-4 py-2  outline-none border-b-2 border-r-2  border-black_m rounded-r-md rounded-t-none bg-white hover:bg-gray-400"
         popperPlacement="top-start" // Adjust the placement as needed
-        minDate={today} // Disable past dates
+        minDate={allowPast ? undefined : today} // Disable past dates
         //   onKeyDown={(e) => {
         //     e.preventDefault();
         //  }}
         open={isOpen}
+        //showFullMonthYearPicker
+        showYearDropdown={allowYearDropDown}
         //handle mobile picker
       />
     </div>

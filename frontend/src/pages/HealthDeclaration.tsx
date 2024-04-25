@@ -167,6 +167,8 @@ const HealthDeclaration = () => {
                     name={"date1"}
                     label="Date of birth"
                     onChange={handleDateChange}
+                    allowPast
+                    allowYearDropDown
                   />
                 </div>
               </TwoInputsGridContainer>

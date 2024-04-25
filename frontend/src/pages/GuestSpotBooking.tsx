@@ -6,6 +6,7 @@ const GuestSpotBooking = () => {
   const { /*id,*/ location, date } = useParams();
 
   return (
+    //todo: check if the guest exsits
     <HomeContainer>
       <div className="pt-16 sm:pt-12">
         <BookingIsrael location={location} date={date} />
