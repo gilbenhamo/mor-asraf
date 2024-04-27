@@ -213,8 +213,8 @@ const HealthDeclaration = () => {
                   <div className="border-2 w-[20rem] h-32">
                     <SignatureCanvas
                       ref={signatureRef}
-                      penColor="green"
-                      canvasProps={{ height: 128, width:320}}
+                      penColor="black"
+                      canvasProps={{ height: 120, width:320}}
                     />
                   </div>
                 </div>

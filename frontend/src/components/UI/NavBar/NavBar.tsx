@@ -29,7 +29,7 @@ const NavBar = () => {
             Mor Asraf
           </motion.p> */}
         </motion.a>
-        <ul className="list-none hidden sm:flex flex-row gap-10">
+        <ul className="list-none hidden lg:flex flex-row gap-10">
           {navLinks.map((link) => (
             <motion.li
               key={link.id}
@@ -47,45 +47,52 @@ const NavBar = () => {
             </motion.li>
           ))}
         </ul>
-        <motion.div
-          className="sm:hidden w-full top-0 right-0 fixed bg-white"
-          animate={{ height: isOpen ? 260 : 80 }}
-        >
-          <div className="h-20 flex justify-end items-center">
-            <Twirl rounded toggled={isOpen} toggle={setOpen} color="#28282B" />
-          </div>
-          {isOpen && (
-            <AnimatePresence mode="sync">
-              <motion.ul
-                className="flex flex-col w-full items-end gap-2 pr-4"
-                initial={{ x: 100, opacity: 0 }}
-                animate={{ x: 0, opacity: 1 }}
-                transition={{ delay: 0.3, duration: 0.25 }}
-              >
-                {navLinks.map((link) => (
-                  <motion.li
-                    key={link.id}
-                    variants={linksVariants}
-                    whileHover="hover"
-                    whileTap="tap"
-                    className={`${styles.linksStyle} ${
-                      active === link.title
-                        ? "text-black_m underline"
-                        : "text-gray_m"
-                    }`}
-                    onClick={() => {
-                      setOpen(false);
-                      setActive(link.title);
-                    }}
-                  >
-                    {/* <Link to={`/#${link.id}`}>{link.title}</Link> */}
-                    <a href={`/#${link.id}`}> {link.title} </a>
-                  </motion.li>
-                ))}
-              </motion.ul>
-            </AnimatePresence>
-          )}
-        </motion.div>
+        <div className="lg:hidden w-full top-0 right-0 fixed bg-white">
+          <motion.div
+            className="sm:hidden w-full top-0 right-0 fixed bg-white"
+            animate={{ height: isOpen ? 260 : 80 }}
+          >
+            <div className="h-20 flex justify-end items-center">
+              <Twirl
+                rounded
+                toggled={isOpen}
+                toggle={setOpen}
+                color="#28282B"
+              />
+            </div>
+            {isOpen && (
+              <AnimatePresence mode="sync">
+                <motion.ul
+                  className="flex flex-col w-full items-end gap-2 pr-4"
+                  initial={{ x: 100, opacity: 0 }}
+                  animate={{ x: 0, opacity: 1 }}
+                  transition={{ delay: 0.3, duration: 0.25 }}
+                >
+                  {navLinks.map((link) => (
+                    <motion.li
+                      key={link.id}
+                      variants={linksVariants}
+                      whileHover="hover"
+                      whileTap="tap"
+                      className={`${styles.linksStyle} ${
+                        active === link.title
+                          ? "text-black_m underline"
+                          : "text-gray_m"
+                      }`}
+                      onClick={() => {
+                        setOpen(false);
+                        setActive(link.title);
+                      }}
+                    >
+                      {/* <Link to={`/#${link.id}`}>{link.title}</Link> */}
+                      <a href={`/#${link.id}`}> {link.title} </a>
+                    </motion.li>
+                  ))}
+                </motion.ul>
+              </AnimatePresence>
+            )}
+          </motion.div>
+        </div>
       </div>
     </nav>
   );
