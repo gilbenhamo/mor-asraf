@@ -12,7 +12,12 @@ export const detailsApi = createApi({
     getAllGuestSpots: builder.query({
       query: () => `guest-spots`,
     }),
+
+    getGuestSpotById: builder.query({
+      query: (id) => `guest-spots/get-by-id/${id}`,
+    }),
   }),
 });
 
-export const { useGetAllGuestSpotsQuery } = detailsApi;
+export const { useGetAllGuestSpotsQuery, useGetGuestSpotByIdQuery } =
+  detailsApi;

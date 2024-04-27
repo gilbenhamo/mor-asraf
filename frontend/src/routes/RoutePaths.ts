@@ -1,5 +1,5 @@
 export const RoutePaths = {
   HOME: "/",
-  GUEST_SPOT_BOOKING:"/guest-spot-booking/:location/:date/:id?",
+  GUEST_SPOT_BOOKING:"/guest-spot-booking/:id",
   HEALTH_DECLARATION: "/health-declaration",
 };

@@ -93,6 +93,7 @@ const TimeLine = () => {
           >
             {item.location !== "" ? (
               <TimeLineItem
+                _id={item._id}
                 headline={item.location}
                 subHeadline={item.studio}
                 startDate={new Date(item.startDate!)}
