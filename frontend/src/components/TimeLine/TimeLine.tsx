@@ -35,11 +35,14 @@ const TimeLine = () => {
         (item: any) => new Date(item.endDate!) > new Date()
       );
       startingIndex = startingIndex === -1 ? data.length : startingIndex;
-      
+
       if (container) {
         const itemHeight = container.scrollHeight / data.length;
-        const middleIndex = Math.floor(container.clientHeight / (2 * itemHeight));
-        container.scrollTop = startingIndex * itemHeight - middleIndex * itemHeight;
+        const middleIndex = Math.floor(
+          container.clientHeight / (2 * itemHeight)
+        );
+        container.scrollTop =
+          startingIndex * itemHeight - middleIndex * itemHeight;
         handleScroll();
       }
     };
@@ -60,9 +63,7 @@ const TimeLine = () => {
       ref={containerRef}
       className="no-scrollbar overflow-y-scroll h-[400px] mx-auto"
       style={{
-        scrollbarWidth: "thin",
         scrollSnapType: "y mandatory",
-        overflowX: "hidden",
         WebkitOverflowScrolling: "touch",
         scrollBehavior: "smooth",
       }}
