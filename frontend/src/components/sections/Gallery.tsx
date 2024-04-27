@@ -27,9 +27,9 @@ const Gallery = () => {
             <div>Gallery</div>
             <div className="flex justify-center text-sm sm:text-base text-center text-black_m">
               Tap to view
-              <video className="w-10" autoPlay muted loop>
+              {/* <video className="w-10" autoPlay muted loop>
                 <source src={clickWebm} type="video/webm" />
-              </video>
+              </video> */}
             </div>
           </motion.div>
 
