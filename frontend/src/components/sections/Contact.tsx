@@ -59,7 +59,7 @@ const Contact = () => {
   };
   return (
     <SectionWrapper idName="contact">
-      <SectionHead headText={"Contact Us."} />
+      <SectionHead headText={"Contact."} />
       <div className=" xl:flex-row flex-col flex justify-center gap-10 overflow-hidden mb-10">
         <motion.div
           variants={slideIn("down", "spring", 0.2, 1)}

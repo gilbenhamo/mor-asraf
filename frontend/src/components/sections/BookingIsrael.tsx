@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { SectionWrapper } from "../../containers/SectionWrapper";
-import { slideIn } from "../../utils/motion";
+import { slideFadeIn } from "../../utils/motion";
 import SectionHead from "../UI/SectionHead";
 import FormInputElement from "../UI/FormInputElement";
 import FormTextArea from "../UI/FormTextArea";
@@ -99,11 +99,11 @@ const BookingIsrael = ({location,date}:Props) => {
   };
 
   return (
-    <SectionWrapper idName="booking-israel">
+    <SectionWrapper idName="booking-israel2">
       <SectionHead headText={`${location ? location : "TLV"} Booking.`} subText={date}/>
       <div className=" xl:flex-row flex-col flex items-center justify-center gap-10 p-2 overflow-hidden">
         <motion.div
-          variants={slideIn("down", "spring", 0.2, 1)}
+          variants={slideFadeIn("down", "spring", 0.2, 1.5)}
           className="flex-[0.75] bg-white   flex flex-col justify-center items-center"
         >
           <form
