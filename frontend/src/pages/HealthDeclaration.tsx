@@ -104,7 +104,7 @@ const HealthDeclaration = () => {
   };
 
   return (
-    <div className="bg-white h-full mt-10">
+    <div className="bg-white h-full">
       <SectionWrapper idName="booking-israel">
         <SectionHead headText={`Health Declaration`} />
         <div className=" xl:flex-row flex-col flex items-center justify-center gap-10 p-2 overflow-hidden">
