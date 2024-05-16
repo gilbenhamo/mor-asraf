@@ -2,7 +2,7 @@ import SectionHead from "../components/UI/SectionHead";
 import { motion } from "framer-motion";
 import SignatureCanvas from "react-signature-canvas";
 import { SectionWrapper } from "../containers/SectionWrapper";
-import { slideIn } from "../utils/motion";
+import { textVariant } from "../utils/motion";
 import TwoInputsGridContainer from "../containers/TwoInputsGridContainer";
 import FormInputElement from "../components/UI/FormInputElement";
 import DateInput from "../components/UI/DateInput";
@@ -109,14 +109,14 @@ const HealthDeclaration = () => {
         <SectionHead headText={`Health Declaration`} />
         <div className=" xl:flex-row flex-col flex items-center justify-center gap-10 p-2 overflow-hidden">
           <motion.div
-            variants={slideIn("down", "spring", 0.2, 1)}
-            className="flex-[0.75] bg-white   flex flex-col justify-center items-center"
+            variants={textVariant(0.2)}
+            className="flex-[0.75] bg-white flex flex-col justify-center items-center"
           >
             <form
               name="health-booking-form"
               method="POST"
               onSubmit={handleSubmit}
-              className="mt-12 flex flex-col justify-center items-center gap-8 xl:w-10/12 "
+              className="sm:mt-12 flex flex-col justify-center items-center gap-8 xl:w-10/12 "
             >
               <TwoInputsGridContainer>
                 <FormInputElement
