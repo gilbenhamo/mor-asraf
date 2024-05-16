@@ -2,7 +2,7 @@ import { es_plandscape } from "../../assets";
 import { SectionWrapper } from "../../containers/SectionWrapper";
 import { fadeIn } from "../../utils/motion";
 import SectionHead from "../UI/SectionHead";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import BookingIsrael from "./BookingIsrael";
 import { useRef, useState } from "react";
 
@@ -17,23 +17,28 @@ const EmptySpace = () => {
     }
   };
   return (
-    <SectionWrapper idName="booking-israel">
-      <SectionHead headText={`Empty space`} subText={`tlv studio`} />
-      <motion.img
-        variants={fadeIn("up", "", 0.5, 0.5)}
-        src={es_plandscape}
-        className="p-4"
-        onClick={handleClick}
-      />
-      <motion.div
-        ref={targetRef}
-        id="es-content"
-        className=" bg-white"
-        animate={{ height: isOpen ? 1100 : 0 }}
-      >
-        {isOpen && <BookingIsrael />}
-      </motion.div>
-    </SectionWrapper>
+    <AnimatePresence mode="sync">
+      <SectionWrapper idName="booking-israel">
+        <SectionHead headText={`Empty space`} subText={`tlv studio`} />
+        <motion.img
+          variants={fadeIn("up", "", 0.5, 0.5)}
+          src={es_plandscape}
+          className="p-4"
+          onClick={handleClick}
+        />
+        <motion.div
+          ref={targetRef}
+          id="es-content"
+          className=" bg-white"
+          animate={{ height: isOpen ? 1100 : 0 }}
+          transition={{
+            duration: 0.5,
+          }}
+        >
+          {isOpen && <BookingIsrael />}
+        </motion.div>
+      </SectionWrapper>
+    </AnimatePresence>
   );
 };
 
