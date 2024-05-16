@@ -2,7 +2,6 @@ import SectionHead from "../components/UI/SectionHead";
 import { motion } from "framer-motion";
 import SignatureCanvas from "react-signature-canvas";
 import { SectionWrapper } from "../containers/SectionWrapper";
-import { textVariant } from "../utils/motion";
 import TwoInputsGridContainer from "../containers/TwoInputsGridContainer";
 import FormInputElement from "../components/UI/FormInputElement";
 import DateInput from "../components/UI/DateInput";
@@ -107,7 +106,7 @@ const HealthDeclaration = () => {
     <div className="bg-white h-full mt-10" >
       <SectionWrapper idName="booking-israel">
         <SectionHead headText={`Health Declaration`} />
-        <motion.div className=" xl:flex-row flex-col flex items-center justify-center gap-10 p-2 overflow-hidden" variants={textVariant(0.2)}>
+        <div className=" xl:flex-row flex-col flex items-center justify-center gap-10 p-2 overflow-hidden" >
           <div className="flex-[0.75] bg-white flex flex-col justify-center items-center">
             <form
               name="health-booking-form"
@@ -228,7 +227,7 @@ const HealthDeclaration = () => {
               </motion.button>
             </form>
           </div>
-        </motion.div>
+        </div>
       </SectionWrapper>
     </div>
   );
