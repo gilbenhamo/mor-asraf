@@ -104,14 +104,11 @@ const HealthDeclaration = () => {
   };
 
   return (
-    <div className="bg-white h-full">
+    <div className="bg-white h-full mt-10" >
       <SectionWrapper idName="booking-israel">
         <SectionHead headText={`Health Declaration`} />
-        <div className=" xl:flex-row flex-col flex items-center justify-center gap-10 p-2 overflow-hidden">
-          <motion.div
-            variants={textVariant(0.2)}
-            className="flex-[0.75] bg-white flex flex-col justify-center items-center"
-          >
+        <motion.div className=" xl:flex-row flex-col flex items-center justify-center gap-10 p-2 overflow-hidden" variants={textVariant(0.2)}>
+          <div className="flex-[0.75] bg-white flex flex-col justify-center items-center">
             <form
               name="health-booking-form"
               method="POST"
@@ -214,7 +211,7 @@ const HealthDeclaration = () => {
                     <SignatureCanvas
                       ref={signatureRef}
                       penColor="black"
-                      canvasProps={{ height: 120, width:320}}
+                      canvasProps={{ height: 120, width: 320 }}
                     />
                   </div>
                 </div>
@@ -230,8 +227,8 @@ const HealthDeclaration = () => {
                 {/* {loading ? "Sending..." : "Send"} */}
               </motion.button>
             </form>
-          </motion.div>
-        </div>
+          </div>
+        </motion.div>
       </SectionWrapper>
     </div>
   );
