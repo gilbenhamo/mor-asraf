@@ -24,7 +24,7 @@ const About = () => (
         variants={slideFadeIn("up", "", 0.3, 1.2)}
         className="m-10 xs:m-6 sm:pt-12 text-black_m text-sm sm:text-[17px] max-w-3xl leading-[30px] text-left"
       >
-        Mor Asaraf,
+        Mor Asraf,
         <br />
         27-year-old Artist and Tattooist, Tel Aviv, Israel.
         <br />

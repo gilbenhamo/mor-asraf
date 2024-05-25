@@ -1,4 +1,4 @@
-import { es_plandscape } from "../../assets";
+import { es_plandscape, es_portrait } from "../../assets";
 import { SectionWrapper } from "../../containers/SectionWrapper";
 import { fadeIn } from "../../utils/motion";
 import SectionHead from "../UI/SectionHead";
@@ -20,15 +20,21 @@ const EmptySpace = () => {
   return (
     <AnimatePresence mode="sync">
       <SectionWrapper idName="booking-israel">
-        <SectionHead headText={`Empty space`} subText={`tlv studio`} />
+        <SectionHead headText={`Empty Space`} subText={`tlv studio`} />
         <div className="relative">
           <motion.img
             variants={fadeIn("up", "", 0.5, 0.5)}
             src={es_plandscape}
-            className="p-4"
+            className="p-4 hidden md:block w-full h-auto"
+          />
+          {/* Mobile Image */}
+          <motion.img
+            variants={fadeIn("up", "", 0.5, 0.5)}
+            src={es_portrait}
+            className="p-4 block md:hidden w-full h-auto"
           />
           <motion.button
-            className="text-sm md:text-xl text-black_m font-bold bg-opacity-50 rounded-xl backdrop-filter backdrop-blur-sm md:p-6 md:py-4 p-2 py-1 absolute z-10 border-gray-600 border-b-2"
+            className="text-lg md:text-xl text-black_m font-bold bg-opacity-50 rounded-xl backdrop-filter backdrop-blur-sm md:p-6 md:py-4 p-2 py-1 absolute z-10 border-gray-600 border-b-2"
             onClick={handleClick}
             variants={{
               hidden: {

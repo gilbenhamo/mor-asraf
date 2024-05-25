@@ -130,7 +130,7 @@ export const navLinks = [
   },
   {
     id: "booking-israel",
-    title: "TLV-Booking",
+    title: "Empty Space",
   },
   {
     id: "contact",
