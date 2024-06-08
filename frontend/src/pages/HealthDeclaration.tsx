@@ -213,6 +213,7 @@ const HealthDeclaration = () => {
                       onChange={handleChange}
                     />
                   ))}
+                {/*---------Signature Element----------*/}
                   <div className="flex flex-col items-center">
                     <div className="flex flex-row justify-between w-[20rem] items-center">
                       <div className="text-black_m">Your signature:</div>

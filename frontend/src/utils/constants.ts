@@ -333,4 +333,8 @@ export const healthDeclarationBoxs = [
      and its location was agreed upon and chosen by me, 
      I know that after my consent and after the tattoo is made I cannot express regret or complaint to the studio and the responsibility is mine.`,
   },
+  {
+    id: 20,
+    text: `Sign up to Empty Space newsletter`
+  }
 ];
