@@ -9,17 +9,17 @@ import CheckBox from "../UI/CheckBox";
 import TwoInputsGridContainer from "../../containers/TwoInputsGridContainer";
 import FormFileUploader from "../UI/FormFileUploader";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
-import { setAttr } from "../../redux/slice/booking-reducer";
+import { init, setAttr } from "../../redux/slice/booking-reducer";
 import { useState } from "react";
 import { useSendBookingFormMutation } from "../../services/forms-api";
 import Swal from "sweetalert2";
-interface Props{
-  location?:string;
-  date?:string;
+interface Props {
+  location?: string;
+  date?: string;
 }
 
 //todo: check case that the file is not image
-const BookingIsrael = ({location,date}:Props) => {
+const BookingIsrael = ({ location, date }: Props) => {
   const [referencePhotos64, setReferencePhotos64] = useState<string[]>([]);
   const [bodyPhotos64, setBodyPhotos64] = useState<string[]>([]);
   const [sendBookingForm, {}] = useSendBookingFormMutation();
@@ -73,7 +73,7 @@ const BookingIsrael = ({location,date}:Props) => {
         refPhotos: referencePhotos64,
         bodyPhotos: bodyPhotos64,
         location,
-        date
+        date,
       })
         .unwrap()
         .then((payload) => {
@@ -83,8 +83,13 @@ const BookingIsrael = ({location,date}:Props) => {
             text: "We will be in touch!",
             confirmButtonColor: "#28282B",
             icon: "success",
+          }).then((result) => {
+            if (result.isConfirmed) {
+              dispatch(init());
+              setBodyPhotos64([]);
+              setReferencePhotos64([]);
+            }
           });
-          //TODO: Clear data from form
         })
         .catch((error) => {
           Swal.fire({
@@ -100,7 +105,10 @@ const BookingIsrael = ({location,date}:Props) => {
 
   return (
     <SectionWrapper idName="booking-israel2">
-      <SectionHead headText={`${location ? location : "TLV"} Booking.`} subText={date}/>
+      <SectionHead
+        headText={`${location ? location : "TLV"} Booking.`}
+        subText={date}
+      />
       <div className=" xl:flex-row flex-col flex items-center justify-center gap-10 p-2 overflow-hidden">
         <motion.div
           variants={slideFadeIn("down", "spring", 0.2, 1.5)}
@@ -120,12 +128,14 @@ const BookingIsrael = ({location,date}:Props) => {
                 type={"text"}
                 placeholder="Name"
                 onChange={handleChange}
+                value={state.name}
               />
               <FormInputElement
                 id="tlv-form-phone"
                 name={"phone"}
                 type={"tel"}
                 placeholder="Phone"
+                value={state.phone}
                 onChange={handleChange}
               />
             </TwoInputsGridContainer>
@@ -136,6 +146,7 @@ const BookingIsrael = ({location,date}:Props) => {
                 name={"email"}
                 type={"email"}
                 placeholder="Email"
+                value={state.email}
                 onChange={handleChange}
               />
               <FormInputElement
@@ -143,6 +154,7 @@ const BookingIsrael = ({location,date}:Props) => {
                 name={"country"}
                 type={"text"}
                 placeholder={"Country"}
+                value={state.country}
                 onChange={handleChange}
               />
             </TwoInputsGridContainer>
@@ -152,6 +164,7 @@ const BookingIsrael = ({location,date}:Props) => {
               label={"Subject"}
               name={"subject"}
               rows={1}
+              value={state.subject}
               placeholder={
                 "A story/idea/concept that you would like to express in the tattoo"
               }
@@ -165,6 +178,7 @@ const BookingIsrael = ({location,date}:Props) => {
                   name={"reference"}
                   rows={1}
                   placeholder={"Links for references / my works that you like"}
+                  value={state.reference}
                   onChange={handleChange}
                 />
               </div>
@@ -197,6 +211,7 @@ const BookingIsrael = ({location,date}:Props) => {
                   name={"bodyPart"}
                   type={"text"}
                   placeholder={"Preferred body-part?"}
+                  value={state.bodyPart}
                   onChange={handleChange}
                 />
               </div>
@@ -260,6 +275,7 @@ const BookingIsrael = ({location,date}:Props) => {
               rows={1}
               placeholder={"Extra things i need to know?!"}
               id={"tlv-form-anything-else"}
+              value={state.anythingElse}
               onChange={handleChange}
             />
 
@@ -269,24 +285,28 @@ const BookingIsrael = ({location,date}:Props) => {
                 label="I'm over 18"
                 id="18-checkbox"
                 name="checkbox18"
+                isChecked={state.checkbox18}
                 onChange={handleChange}
               />
               <CheckBox
                 label="I know my part in the process will be the idea \ story behind it, final drawing\design will be Mor's part."
                 id="part-checkbox"
                 name="checkboxPart"
+                isChecked={state.checkboxPart}
                 onChange={handleChange}
               />
               <CheckBox
                 label="I'm open minded."
                 id="minded-checkbox"
                 name="checkboxOpenMinded"
+                isChecked={state.checkboxOpenMinded}
                 onChange={handleChange}
               />
               <CheckBox
                 label="I really am."
                 id="really-checkbox"
                 name="checkboxReally"
+                isChecked={state.checkboxReally}
                 onChange={handleChange}
               />
             </div>
@@ -298,7 +318,6 @@ const BookingIsrael = ({location,date}:Props) => {
               className="bg-gray_m hover:bg-black_m py-3 px-8 outline-none w-fit text-white font-bold shadow-md shadow-primary rounded-2xl"
             >
               {"Send"}
-              {/* {loading ? "Sending..." : "Send"} */}
             </motion.button>
           </form>
         </motion.div>

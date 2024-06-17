@@ -64,7 +64,7 @@ const EmptySpace = () => {
           ref={targetRef}
           id="es-content"
           className=" bg-white"
-          animate={{ height: isOpen ? 1100 : 0 }}
+          animate={{ height: isOpen ? 1300 : 0 }}
           transition={{
             duration: 0.5,
           }}

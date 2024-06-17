@@ -13,11 +13,15 @@ import { useSendHealthDeclarationFormMutation } from "../services/forms-api";
 import { useAppDispatch, useAppSelector } from "../redux/hooks";
 import { setAttr } from "../redux/slice/health-declaration-reducer";
 import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
+import { RoutePaths } from "../routes/RoutePaths";
 
+//TODO: Change the text area to not be always required
 const HealthDeclaration = () => {
   const signatureRef = useRef(null);
   const [sendForm, {}] = useSendHealthDeclarationFormMutation();
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
   const state = useAppSelector((state) => state.health);
 
   const clearSignature = () => {
@@ -33,13 +37,6 @@ const HealthDeclaration = () => {
   const handleDateChange = (value: string, name: string) => {
     dispatch(setAttr({ attr: name, value }));
   };
-
-  // const saveSignature = () => {
-  //   const signature = (signatureRef as any).current.toDataURL();
-  //   sendForm({ data: signature });
-  //   // Do something with the signature, such as save it to state or send it to a server
-  //   console.log(signature);
-  // };
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
@@ -87,8 +84,12 @@ const HealthDeclaration = () => {
             text: "We will be in touch!",
             confirmButtonColor: "#28282B",
             icon: "success",
+          }).then((result) => {
+            if (result.isConfirmed) {
+              navigate(RoutePaths.HOME);
+              scrollTo(0,0);
+            }
           });
-          //TODO: Clear data from form
         })
         .catch((error) => {
           Swal.fire({
@@ -213,7 +214,7 @@ const HealthDeclaration = () => {
                       onChange={handleChange}
                     />
                   ))}
-                {/*---------Signature Element----------*/}
+                  {/*---------Signature Element----------*/}
                   <div className="flex flex-col items-center">
                     <div className="flex flex-row justify-between w-[20rem] items-center">
                       <div className="text-black_m">Your signature:</div>
