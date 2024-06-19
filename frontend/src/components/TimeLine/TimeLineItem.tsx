@@ -17,6 +17,9 @@ const TimeLineItem = ({ headline, subHeadline, startDate, endDate, _id }: TimeLi
  
   const handleBookNow = () =>{
     navigate(`/guest-spot-booking/${_id}`)
+    setTimeout(() => {
+      scrollTo(0, 0);
+    }, 500);
   }
   return (
     <div className="h-[100px] grid grid-cols-[1fr_auto_1fr] gap-x-2 items-center mx-auto">

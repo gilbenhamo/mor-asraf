@@ -87,7 +87,9 @@ const HealthDeclaration = () => {
           }).then((result) => {
             if (result.isConfirmed) {
               navigate(RoutePaths.HOME);
-              scrollTo(0,0);
+              setTimeout(() => {
+                scrollTo(0, 0);
+              }, 500);
             }
           });
         })
