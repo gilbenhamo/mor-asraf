@@ -5,7 +5,7 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 export const formsApi = createApi({
   reducerPath: "formsApi",
   baseQuery: fetchBaseQuery({
-    baseUrl: "https://mor-asraf-api.onrender.com/api/",
+    baseUrl: "https://mor-asraf-api.onrender.com/api/forms",
   }),
 
   endpoints: (builder) => ({
