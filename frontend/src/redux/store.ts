@@ -3,6 +3,7 @@ import bookingReducer from "./slice/booking-reducer";
 import { detailsApi } from "../services/details-api";
 import { formsApi } from "../services/forms-api";
 import healthDeclarationReducer from "./slice/health-declaration-reducer";
+import { paymentsApi } from "../services/payment-api";
 
 const store = configureStore({
   reducer: {
@@ -10,10 +11,11 @@ const store = configureStore({
     health: healthDeclarationReducer,
     [detailsApi.reducerPath]: detailsApi.reducer,
     [formsApi.reducerPath]: formsApi.reducer,
+    [paymentsApi.reducerPath]: paymentsApi.reducer,
   },
 
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat([detailsApi.middleware, formsApi.middleware]),
+    getDefaultMiddleware().concat([detailsApi.middleware, formsApi.middleware, paymentsApi.middleware]),
 });
 
 export default store;
