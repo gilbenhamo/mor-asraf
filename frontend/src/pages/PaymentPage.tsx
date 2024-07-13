@@ -18,7 +18,6 @@ const PaymentPage = () => {
   });
   const [iframeSrc, setframeSrc] = useState("");
   const [isOpen, setIsOpen] = useState(false);
-  const [errors, setErrors] = useState({});
   const [sendForm, {}] = useGetPaymentFrameMutation();
 
   const validate = () => {
@@ -49,9 +48,7 @@ const PaymentPage = () => {
 
     const newErrors = validate();
     if (Object.keys(newErrors).length > 0) {
-      setErrors(newErrors);
       console.log(newErrors);
-
       return;
     }
     //wait to response
