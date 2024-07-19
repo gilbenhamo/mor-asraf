@@ -16,7 +16,6 @@ import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
 import { RoutePaths } from "../routes/RoutePaths";
 
-//TODO: Change the text area to not be always required
 const HealthDeclaration = () => {
   const signatureRef = useRef(null);
   const [sendForm, {}] = useSendHealthDeclarationFormMutation();
@@ -38,6 +37,26 @@ const HealthDeclaration = () => {
     dispatch(setAttr({ attr: name, value }));
   };
 
+  const validateData = () => {
+    const { name, phone, email, address, id, medication, disease } = state;
+    if (
+      !name ||
+      !phone ||
+      !email ||
+      !address ||
+      !id ||
+      !medication ||
+      !disease
+    ) {
+      Swal.fire({
+        title: "All fields are required",
+        confirmButtonColor: "#28282B",
+        icon: "info",
+      });
+      return;
+    }
+  };
+
   const handleSubmit = async (e: any) => {
     e.preventDefault();
     const {
@@ -51,6 +70,16 @@ const HealthDeclaration = () => {
       medication,
       disease,
     } = state;
+    // Custom validation
+    if (!name || !phone || !email || !address || !id) {
+      Swal.fire({
+        title: "All fields are required",
+        confirmButtonColor: "#28282B",
+        icon: "info",
+      });
+      return;
+    }
+
     if (!date1)
       Swal.fire({
         title: "Must enter date of birth",
@@ -63,7 +92,6 @@ const HealthDeclaration = () => {
       for (var i = 0; i < checkboxes.length; i++) {
         if (!checkboxes[i]) checkboxes_text.push(healthDeclarationBoxs[i]);
       }
-      //todo:handle error after
       sendForm({
         name,
         phone,
@@ -241,6 +269,7 @@ const HealthDeclaration = () => {
                   whileTap={{ scale: 0.9 }}
                   whileHover={{ scale: 1.1 }}
                   type="submit"
+                  onClick={validateData}
                   className="bg-gray_m hover:bg-black_m py-3 px-8 outline-none w-fit text-white font-bold shadow-md shadow-primary rounded-2xl"
                 >
                   {"Send"}

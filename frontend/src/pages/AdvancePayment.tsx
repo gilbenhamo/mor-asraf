@@ -6,19 +6,6 @@ import FormInputElement from "../components/UI/FormInputElement";
 import { useState } from "react";
 import Swal from "sweetalert2";
 import { useGetPaymentFrameMutation } from "../services/payment-api";
-import FormSelectElement from "../components/UI/FormSelectElement";
-import ThreeInputsGridContainer from "../containers/ThreeInputsGridContainer";
-
-interface Option {
-  label: string;
-  value: string | number;
-}
-
-const CURRENCIES = [
-  { label: "NIS ₪", value: 1 },
-  { label: "USD $", value: 2 },
-  { label: "EURO €", value: 3 },
-];
 
 const ARTISTS = [
   { label: "Mor", value: "Mor Asraf" },
@@ -26,21 +13,21 @@ const ARTISTS = [
   { label: "Itay", value: "Itay" },
 ];
 
-const PaymentPage = () => {
+const AdvancePayment = ({
+  amount,
+  currency,
+}: {
+  amount?: number;
+  currency?: number;
+}) => {
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
     email: "",
     phone: "",
-    amount: 0,
+    amount: amount,
+    Currency: currency,
   });
-  const [selectedArtistOption, setSelectedArtistOption] = useState<
-    Option | undefined
-  >(undefined);
-
-  const [selectedCurrencyOption, setSelectedCurrencyOption] = useState<
-    Option | undefined
-  >(undefined);
 
   const [iframeSrc, setframeSrc] = useState("");
   const [isOpen, setIsOpen] = useState(false);
@@ -60,10 +47,6 @@ const PaymentPage = () => {
       newErrors.amount = "Amount must be greater than 0";
     else if (isNaN(formData.amount))
       newErrors.amount = "Amount must be a number";
-
-    if (!selectedArtistOption) newErrors.artist = "Artist must be selected";
-    if (!selectedCurrencyOption)
-      newErrors.currency = "Currency must be selected";
 
     return newErrors;
   };
@@ -104,13 +87,12 @@ const PaymentPage = () => {
     //wait to response
     sendForm({
       ...formData,
-      Custom1: selectedArtistOption?.value,
-      Currency: selectedCurrencyOption?.value,
+      Custom1: ARTISTS[0].value,
       Items,
     })
       .unwrap()
       .then((payload) => {
-        console.log("get payment frame fulfilled", payload);
+        //console.log("get payment frame fulfilled", payload);
         setframeSrc(payload);
         setTimeout(() => setIsOpen(true), 1000);
       })
@@ -124,7 +106,6 @@ const PaymentPage = () => {
         console.error("rejected", error);
       });
 
-    console.log("Allgood");
   };
 
   return (
@@ -147,23 +128,14 @@ const PaymentPage = () => {
         }}
       >
         <SectionWrapper idName="booking-israel">
-          <SectionHead headText={`Payment`} subText="checkout" />
+          <SectionHead headText={`Advance Payment`} subText="checkout" />
           <div className=" xl:flex-row flex-col flex p-2 overflow-hidden xl:justify-center mt-2 min-h-svh">
             <div className="flex-[0.75] bg-white flex flex-col items-center">
-              <motion.form
+              <form
                 name="health-booking-form"
                 method="POST"
                 onSubmit={handleSubmit}
                 className="sm:mt-12 flex flex-col gap-12 xl:w-10/12 "
-                style={
-                  isOpen
-                    ? {
-                        opacity: 0.6,
-                        pointerEvents: "none",
-                        cursor: "not-allowed",
-                      }
-                    : {}
-                }
               >
                 <TwoInputsGridContainer>
                   <FormInputElement
@@ -199,27 +171,8 @@ const PaymentPage = () => {
                   />
                 </TwoInputsGridContainer>
 
-                <ThreeInputsGridContainer>
-                  <FormInputElement
-                    id="payment-form-amount"
-                    name={"amount"}
-                    type={"number"}
-                    placeholder="Amount"
-                    min={1}
-                    onKeyDown={(e) => {
-                      if (e.key == "-") e.preventDefault();
-                    }}
-                    onChange={handleChange}
-                  />
-
-                  <FormSelectElement
-                    id="payment-form-currency"
-                    value={selectedCurrencyOption}
-                    placeHolder={"Currency"}
-                    options={CURRENCIES}
-                    onChange={setSelectedCurrencyOption}
-                  />
-
+                {/* <ThreeInputsGridContainer>
+     
                   <FormSelectElement
                     id="payment-form-artist"
                     value={selectedArtistOption}
@@ -227,19 +180,19 @@ const PaymentPage = () => {
                     options={ARTISTS}
                     onChange={setSelectedArtistOption}
                   />
-                </ThreeInputsGridContainer>
+                </ThreeInputsGridContainer> */}
 
                 {!isOpen && (
                   <motion.button
                     whileTap={{ scale: 0.9 }}
                     whileHover={{ scale: 1.1 }}
                     type="submit"
-                    className=" hover:bg-black_m hover:text-white_m py-2 px-2  w-fit text-black_m border-black_m border-2 font-bold shadow-md shadow-primary rounded-2xl"
+                    className="bg-gray_m hover:bg-black_m py-3 px-8 outline-none w-fit text-white font-bold shadow-md shadow-primary rounded-2xl"
                   >
                     {"Continue"}
                   </motion.button>
                 )}
-              </motion.form>
+              </form>
 
               <motion.div
                 initial={{ height: 0, opacity: 0 }}
@@ -261,4 +214,4 @@ const PaymentPage = () => {
   );
 };
 
-export default PaymentPage;
+export default AdvancePayment;

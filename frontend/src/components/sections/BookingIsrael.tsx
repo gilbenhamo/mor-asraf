@@ -16,10 +16,11 @@ import Swal from "sweetalert2";
 interface Props {
   location?: string;
   date?: string;
+  studio?: string;
 }
 
 //todo: check case that the file is not image
-const BookingIsrael = ({ location, date }: Props) => {
+const BookingIsrael = ({ location, date, studio }: Props) => {
   const [referencePhotos64, setReferencePhotos64] = useState<string[]>([]);
   const [bodyPhotos64, setBodyPhotos64] = useState<string[]>([]);
   const [sendBookingForm, {}] = useSendBookingFormMutation();
@@ -107,7 +108,7 @@ const BookingIsrael = ({ location, date }: Props) => {
     <SectionWrapper idName="booking-israel2">
       <SectionHead
         headText={`${location ? location : "TLV"} Booking.`}
-        subText={date}
+        subText={location ? `${date} - ${studio}` : ""}
       />
       <div className=" xl:flex-row flex-col flex items-center justify-center gap-10 p-2 overflow-hidden">
         <motion.div

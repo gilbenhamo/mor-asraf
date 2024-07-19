@@ -49,7 +49,7 @@ const NavBar = () => {
         </ul>
         <div className="lg:hidden w-full top-0 right-0 fixed bg-white">
           <motion.div
-            className="lg:hidden w-full top-0 right-0 fixed bg-white"
+            className="lg:hidden w-full top-0 right-0 fixed bg-white pr-4 "
             animate={{ height: isOpen ? 260 : 80 }}
           >
             <div className="h-20 flex justify-end items-center">
