@@ -6,12 +6,27 @@ import FormInputElement from "../components/UI/FormInputElement";
 import { useState } from "react";
 import Swal from "sweetalert2";
 import { useGetPaymentFrameMutation } from "../services/payment-api";
+import CheckBox from "../components/UI/CheckBox";
 
 const ARTISTS = [
   { label: "Mor", value: "Mor Asraf" },
   { label: "Guy", value: "Guy" },
   { label: "Itay", value: "Itay" },
 ];
+
+const termsAndConditionsPopUp = () =>
+  Swal.fire({
+    title: "Terms & Conditions",
+    html: `
+    <li>Term1 ................  </li>
+    <li>Term2 ................  </li>
+    <li>Term3 ................  </li>
+    <li>Term4 ................  </li>
+    <li>Term5 ................  </li>
+    <li>Term6 ................  </li>
+    `,
+    confirmButtonColor: "#28282b",
+  });
 
 const AdvancePayment = ({
   amount,
@@ -29,9 +44,14 @@ const AdvancePayment = ({
     Currency: currency,
   });
 
+  const [conditions, setConditions] = useState(false);
   const [iframeSrc, setframeSrc] = useState("");
   const [isOpen, setIsOpen] = useState(false);
   const [sendForm, {}] = useGetPaymentFrameMutation();
+
+  const handleConditionsCheckbox = (e: any) => {
+    setConditions(e.target.checked);
+  };
 
   const validate = () => {
     const newErrors: any = {};
@@ -76,6 +96,14 @@ const AdvancePayment = ({
       });
       return;
     }
+    if (!conditions) {
+      Swal.fire({
+        text: "Must agree to Terms & Conditions!",
+        confirmButtonColor: "#28282b",
+        icon: "warning",
+      });
+      return;
+    }
     const Items = [
       {
         CatalogNumber: 1,
@@ -105,11 +133,10 @@ const AdvancePayment = ({
         });
         console.error("rejected", error);
       });
-
   };
 
   return (
-    <div className="bg-white">
+    <div className="bg-white pt-4">
       <motion.div
         id="payment"
         className="bg-white "
@@ -135,7 +162,7 @@ const AdvancePayment = ({
                 name="health-booking-form"
                 method="POST"
                 onSubmit={handleSubmit}
-                className="sm:mt-12 flex flex-col gap-12 xl:w-10/12 "
+                className="sm:mt-12 flex flex-col gap-10 xl:w-10/12 "
               >
                 <TwoInputsGridContainer>
                   <FormInputElement
@@ -181,13 +208,31 @@ const AdvancePayment = ({
                     onChange={setSelectedArtistOption}
                   />
                 </ThreeInputsGridContainer> */}
+                <div className="flex flex-row ">
+                  <CheckBox
+                    key={0}
+                    label={""}
+                    id={"conditions_checkbox"}
+                    name={"conditions_checkbox_"}
+                    onChange={handleConditionsCheckbox}
+                  />
+                  <div className="text-black_m text-sm">
+                    I have read{" "}
+                    <a
+                      className="underline font-bold cursor-pointer"
+                      onClick={termsAndConditionsPopUp}
+                    >
+                      Terms & Conditions
+                    </a>
+                  </div>
+                </div>
 
                 {!isOpen && (
                   <motion.button
                     whileTap={{ scale: 0.9 }}
                     whileHover={{ scale: 1.1 }}
                     type="submit"
-                    className="bg-gray_m hover:bg-black_m py-3 px-8 outline-none w-fit text-white font-bold shadow-md shadow-primary rounded-2xl"
+                    className=" hover:bg-black_m hover:text-white_m py-2 px-2  w-fit text-black_m border-black_m border-2 font-bold shadow-md shadow-primary rounded-2xl"
                   >
                     {"Continue"}
                   </motion.button>
@@ -196,7 +241,7 @@ const AdvancePayment = ({
 
               <motion.div
                 initial={{ height: 0, opacity: 0 }}
-                animate={{ height: isOpen ? 840 : 0, opacity: isOpen ? 1 : 0 }}
+                animate={{ height: isOpen ? 900 : 0, opacity: isOpen ? 1 : 0 }}
                 transition={{ duration: 1 }}
                 className="overflow-hidden w-full sm:w-10/12"
               >
