@@ -8,7 +8,7 @@ const artists = [
   {
     name: "Mor Asraf",
     description:
-      "Artist, Tattoer, Owner of Empty Space asdadasdadsadadsasdasdasdasdasdasdasdasdasdasda",
+      "Artist, Tattoer, Owner of Empty Space",
     pic: logo,
     scale: 1,
     page: "/mor-asraf",
