@@ -1,20 +1,25 @@
+import Header from "../components/layout/Header";
 import { HomeContainer } from "../containers/HomeContainer";
-import { Hero } from "../components/sections/Hero";
-import About from "../components/sections/About";
-import GeustsSpots from "../components/sections/GeustsSpots";
+import { EmptySpaceNavLinks } from "../utils/constants";
+import HeroEmptySpace from "../components/sections/HeroEmptySpace";
 import Contact from "../components/sections/Contact";
-import Gallery from "../components/sections/Gallery";
 import EmptySpace from "../components/sections/EmptySpace";
+import Events from "../components/sections/Events";
+import Artists from "../components/sections/Artists";
+import AboutEmptySpace from "../components/sections/AboutEmptySpace";
 
 export const HomePage = () => {
   return (
-    <HomeContainer>
-      <Hero />
-      <About />
-      <Gallery />
-      <GeustsSpots />
-      <EmptySpace />
-      <Contact />
-    </HomeContainer>
+    <>
+      <Header navLinks={EmptySpaceNavLinks} pageBaseUrl="" />
+      <HomeContainer>
+        <HeroEmptySpace />
+        <AboutEmptySpace />
+        <Artists />
+        <Events />
+        <EmptySpace />
+        <Contact />
+      </HomeContainer>
+    </>
   );
 };

@@ -1,4 +1,5 @@
 import AdvancePayment from "../pages/AdvancePayment";
+import { ArtistHomePage } from "../pages/ArtistHomePage";
 import GuestSpotBooking from "../pages/GuestSpotBooking";
 import HealthDeclaration from "../pages/HealthDeclaration";
 import { HomePage } from "../pages/HomePage";
@@ -12,4 +13,5 @@ export const routes = [
   { path: RoutePaths.PAYMENT, element: PaymentPage },
   { path: RoutePaths.ADVANCE_PAYMENT, element: AdvancePayment ,props:{amount:200,currency:2}},
   { path: RoutePaths.ADVANCE_PAYMENT_IL, element: AdvancePayment ,props:{amount:350,currency:1}},
+  { path: RoutePaths.MOR_ASRAF, element: ArtistHomePage},
 ];

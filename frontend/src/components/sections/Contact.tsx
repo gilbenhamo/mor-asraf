@@ -68,7 +68,7 @@ const Contact = () => {
           <form
             name="contactV2"
             method="POST"
-            className="mt-12 flex flex-col gap-8 items-center xs:w-7/12 w-10/12"
+            className="mt-12 flex flex-col gap-8 items-center xs:w-7/12 w-10/12 h-full"
             onSubmit={handleSubmit}
             //data-netlify="true"
           >

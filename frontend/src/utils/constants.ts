@@ -138,6 +138,29 @@ export const navLinks = [
   },
 ];
 
+export const EmptySpaceNavLinks = [
+  {
+    id: "about",
+    title: "About",
+  },
+  {
+    id: "artists",
+    title: "Artists",
+  },
+  {
+    id: "events",
+    title: "Events",
+  },
+  {
+    id: "booking-israel",
+    title: "Booking",
+  },
+  {
+    id: "contact",
+    title: "Contact",
+  },
+];
+
 export const geustSpotsData = [
   {
     location: "",

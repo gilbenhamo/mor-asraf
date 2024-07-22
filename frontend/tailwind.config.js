@@ -36,8 +36,12 @@ export default {
       backgroundImage: {
         "hero-pattern": "url('/src/assets/hero1.jpg')",
       },
+      fontFamily: {
+        PlayfairDisplay: ["Playfair Display", "serif"],
+      },
     },
   },
+  
   plugins: [
     function ({ addUtilities }) {
       const newUtilities = {

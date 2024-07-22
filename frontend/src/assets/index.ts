@@ -1,4 +1,5 @@
 import logo from "./mor_new_logo.jpg";
+import es_logo from "./es_logo.jpg";
 import horses from "./horses.jpg";
 import about_pic from "./mor_about.webp";
 
@@ -12,6 +13,7 @@ import es_plandscape from "./es_landscape.jpg";
 
 export {
   logo,
+  es_logo,
   horses,
   about_pic,
   hero_1,

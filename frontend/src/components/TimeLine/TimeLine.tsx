@@ -1,16 +1,20 @@
 import TimeLineItem from "./TimeLineItem";
 import { motion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
-import { useGetAllGuestSpotsQuery } from "../../services/details-api";
+// import { useGetAllGuestSpotsQuery } from "../../services/details-api";
 
 // interface QueryResult {
 //   data: GuestSpotType[]; // Assuming useGetAllGuestSpotsQuery returns an array of GuestSpot objects
 //   isError: boolean;
 //   isLoading: boolean;
 // }
-
-const TimeLine = () => {
-  const { data, isError, isLoading } = useGetAllGuestSpotsQuery(undefined);
+interface TimeLineProps {
+  data: any;
+  isError: boolean;
+  isLoading: boolean;
+}
+const TimeLine = ({ data, isError, isLoading }: TimeLineProps) => {
+  
 
   const containerRef = useRef<HTMLDivElement>(null);
   const [visibleItemIndex, setVisibleItemIndex] = useState<number>(0);

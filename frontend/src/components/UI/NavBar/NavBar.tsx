@@ -1,12 +1,16 @@
 import { useState } from "react";
 import { styles } from "../../../utils/styles";
 import { AnimatePresence, motion } from "framer-motion";
-import { navLinks } from "../../../utils/constants";
 import { Twirl } from "hamburger-react";
 import { linksVariants } from "../../../utils/motion";
-import { logo } from "../../../assets";
 
-const NavBar = () => {
+interface Props {
+  navLinks: { id: string; title: string }[];
+  logo?: string;
+  pageBaseUrl: string;
+}
+
+const NavBar = ({ navLinks, logo, pageBaseUrl }: Props) => {
   const [isOpen, setOpen] = useState(false);
   const [active, setActive] = useState("");
 
@@ -20,9 +24,11 @@ const NavBar = () => {
           whileHover="hover"
           whileTap="tap"
           className="flex items-center gap-2 cursor-pointer z-30"
-          href="/#"
+          href={`${pageBaseUrl}/#`}
         >
-          <img src={logo} alt="logo" className="size-24 object-contain" />
+          {logo && (
+            <img src={logo} alt="logo" className="size-24 object-contain" />
+          )}
           {/* <motion.p
             className={`${styles.linksStyle} text-black_m text-[30px] font-serif font-extrabold z-10`}
           >
@@ -42,8 +48,7 @@ const NavBar = () => {
               onClick={() => setActive(link.title)}
             >
               {/* <Link to={`/#${link.id}`}>{link.title}</Link> */}
-
-              <a href={`/#${link.id}`}> {link.title} </a>
+              <a href={`${pageBaseUrl}/#${link.id}`}> {link.title} </a>
             </motion.li>
           ))}
         </ul>
@@ -85,7 +90,7 @@ const NavBar = () => {
                       }}
                     >
                       {/* <Link to={`/#${link.id}`}>{link.title}</Link> */}
-                      <a href={`/#${link.id}`}> {link.title} </a>
+                      <a href={`${pageBaseUrl}/#${link.id}`}> {link.title} </a>
                     </motion.li>
                   ))}
                 </motion.ul>

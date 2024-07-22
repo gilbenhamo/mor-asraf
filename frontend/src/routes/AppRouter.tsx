@@ -1,12 +1,10 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { routes } from "./RouteData";
-import Header from "../components/layout/Header";
 import { HomePage } from "../pages/HomePage";
 
 const AppRouter = () => {
   return (
     <Router>
-      <Header />
       <Routes>
         {routes.map((route) => (
           <Route
