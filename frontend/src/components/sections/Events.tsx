@@ -7,8 +7,11 @@ const Events = () => {
   const data = [
     {
       id: "1",
-      location: "TBA",
-      studio: "TBA",
+      location: "ALMA'S SALON",
+      studio: ` Salon conversation with Alma Hanegbi.
+      An hour and a half session on the connection between popular culture and art.
+      From Beyoncé and Renaissance to Magritte and Kendrick Lamar.
+      `,
       startDate: new Date(),
       endDate: new Date(),
     },

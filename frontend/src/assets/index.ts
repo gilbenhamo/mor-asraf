@@ -10,6 +10,9 @@ import clickGif from "./click.gif";
 import clickWebm from "./click.webm";
 import es_portrait from "./es_portrait.jpg";
 import es_plandscape from "./es_landscape.jpg";
+import guy_profile from "./guy_profile.jpeg";
+import ori_profile from "./ori_profile.jpeg";
+import mor_profile from "./mor_profile.jpeg";
 
 export {
   logo,
@@ -23,6 +26,9 @@ export {
   es_portrait,
   clickGif,
   clickWebm,
+  guy_profile,
+  ori_profile,
+  mor_profile
 };
 
 export const heroBackgrounds = [hero_1, hero_2, hero_3];

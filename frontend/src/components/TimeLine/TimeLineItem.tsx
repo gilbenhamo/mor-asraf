@@ -23,9 +23,9 @@ const TimeLineItem = ({ headline, subHeadline, startDate, endDate, _id }: TimeLi
   }
   return (
     <div className="h-[100px] grid grid-cols-[1fr_auto_1fr] gap-x-2 items-center mx-auto">
-      <TimeLineEvent heading={headline} subHeading={subHeadline} available={available} onClick={handleBookNow}/>
-      <TimeLinePiller />
       <TimeLineDate startDate={startDate} endDate={endDate}/>
+      <TimeLinePiller />
+      <TimeLineEvent heading={headline} subHeading={subHeadline} available={available} onClick={handleBookNow}/>
     </div>
   );
 };

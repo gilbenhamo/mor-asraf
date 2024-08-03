@@ -14,7 +14,7 @@ const TimeLineDate = ({ startDate, endDate }: Props) => {
   const endYear = endDate.getFullYear();
 
   return (
-    <div className="text-black text-xs sm:text-sm">
+    <div className="text-black text-right text-xs sm:text-sm">
       {startMonth !== endMonth ? (
         startYear !== endYear ? (
           <>

@@ -1,31 +1,34 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { SectionWrapper } from "../../containers/SectionWrapper";
-import {  slideFadeIn } from "../../utils/motion";
-import { logo } from "../../assets";
+import { slideFadeIn } from "../../utils/motion";
+import { guy_profile, mor_profile, ori_profile } from "../../assets";
 
 const artists = [
   {
-    name: "Mor Asraf",
-    description:
-      "Artist, Tattoer, Owner of Empty Space",
-    pic: logo,
+    name: "Mor Asraf (28), Tel Aviv",
+    description: "Artist, Tattoer, Owner of Empty Space",
+    pic: mor_profile,
     scale: 1,
     page: "/mor-asraf",
-    booking: "/#booking-israel",
+    booking: "mor-asraf/#booking-israel",
   },
   {
-    name: "Guy Drago",
+    name: "Guy Drago (21), Jerusalem",
     description:
-      "typesetting industry. Lorem Ipsum has been the industry's standard dummy",
-    pic: logo,
+      "A tattoo artist for three years, specializing in black and white tattoos. Expert in illustrative surrealism, stippling shading, and possessing a unique personality that will realize both his and your wildest dreams.",
+    pic: guy_profile,
+    page: "https://www.instagram.com/guydrago_tattoo/",
     scale: 1,
   },
   {
-    name: "Itay Pitay",
-    description:
-      "It is a long established fact that a reader will be distracted by the readable ",
-    pic: logo,
+    name: "Ori Bensh (24), Tel Aviv",
+    description: `
+      A tattoo artist for four years, specializing in realism and surrealism.
+      His work transforms skin into unique pieces of art, telling captivating stories through a fusion of reality and fantasy.
+      `,
+    pic: ori_profile,
+    page: "https://www.instagram.com/ori__bensh/",
     scale: 1,
   },
   // Add more artists as needed
@@ -39,26 +42,34 @@ const ArtistCard = ({ artist }: any) => {
       animate={{ scale: artist.scale }}
       whileHover={{ scale: artist.scale * 1.05 }}
       onClick={() => setIsOpen(!isOpen)}
-      className="relative flex flex-col pb-1  border-black_m w-10/12 sm:w-6/12 " // Fixed height for the card
+      className="relative flex flex-col pb-1  border-black_m w-11/12 lg:w-9/12 " // Fixed height for the card
     >
-      <div className="flex font-serif">
+      <div className="flex font-serif h-full">
         <img
           src={artist.pic}
           alt={artist.name}
-          className="size-20 rounded-full object-contain mr-4 w-3/12 sm:w-2/12"
+          className="size-24 lg:size-32 rounded-full object-cover mr-2"
         />
 
         <div className="grid w-9/12 sm:w-10/12">
-          <h2 className="text-xl font-semibold text-black_m">{artist.name}</h2>
+          <h2 className="text-xl font-light text-black_m">{artist.name}</h2>
           <p className="pb-2 text-gray-500 text-left overflow-hidden text-sm">
             {artist.description}
           </p>
 
           <div className="flex flex-col items-end justify-end">
-            <div className="w-full h-[0.15rem] bg-gradient-to-r from-black/0 via-black to-black/0 "></div>
+            <div className="w-full h-[0.15rem] bg-black_m "></div>
             <div className="flex gap-2 cursor-pointer text-sm text-gray-500 text-right">
-              <a href={artist.page}>Tap to view</a>
-              <a href={artist.booking}>| Booking</a>
+              <a href={artist.page} target="_blank" rel="noopener noreferrer">
+                Gallery
+              </a>
+              <a
+                href={artist.booking}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                | Booking
+              </a>
             </div>
           </div>
         </div>
@@ -78,7 +89,7 @@ const Artists = () => {
           ARTISTS
         </motion.h1>
 
-        <div className="flex flex-col gap-y-20 justify-center items-center ">
+        <div className="flex flex-col gap-y-16 lg:gap-y-20 justify-center items-center ">
           {artists.map((artist, index) => (
             <ArtistCard key={index} artist={artist} />
           ))}
