@@ -16,22 +16,17 @@ const AboutEmptySpace = () => {
           variants={slideFadeIn("up", "", 0.3, 1.2)}
           className="p-1 pt-10 sm:pt-20 text-black_m text-sm sm:text-3xl font-light text-center text-pretty"
         >
-          Empty Space is a shared creative space open to all
-          <br />
-          types of art and craft, and a house of content for our
-          <br />
-          artists and clients members.
+          Empty Space is a creative space open to all forms of art and design,
+          serving as a content hub and gallery for our artists and members.
           <br />
           <br />
-          In our physical empty space we will both create and
+          In the physical space, we nurture creativity by connecting local
+          culture with contemporary perspectives, particularly in the fields of
+          painting, fashion, and dialogue, with the goal of expressing and
+          filling the empty spaces within us.
           <br />
-          bring our new and old mental empty space, through the
           <br />
-          connection between locality and culture to modern
-          <br />
-          perceptions of style and knowledge such as fashion,
-          <br />
-          music, and dialogue.
+          You are welcome, there's a space for everyone 🌹
         </motion.p>
       </div>
     </SectionWrapper>

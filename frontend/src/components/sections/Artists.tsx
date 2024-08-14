@@ -2,7 +2,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { SectionWrapper } from "../../containers/SectionWrapper";
 import { slideFadeIn } from "../../utils/motion";
-import { guy_profile, mor_profile, ori_profile } from "../../assets";
+import { guy_profile, iftah_profile, mor_profile, ori_profile } from "../../assets";
 
 const artists = [
   {
@@ -29,6 +29,16 @@ const artists = [
       `,
     pic: ori_profile,
     page: "https://www.instagram.com/ori__bensh/",
+    scale: 1,
+  },
+  {
+    name: "Iftah Ram - AKA SLMTK (25), Tel Aviv",
+    description: `
+    A tattoo artist for 2.5 years, specializing in realism and surrealism 
+    love to combine objects and elements in a unique way that will  make you think twice about what you see.    
+      `,
+    pic: iftah_profile,
+    page: "https://www.instagram.com/iftah.ram/",
     scale: 1,
   },
   // Add more artists as needed
@@ -63,13 +73,13 @@ const ArtistCard = ({ artist }: any) => {
               <a href={artist.page} target="_blank" rel="noopener noreferrer">
                 Gallery
               </a>
-              <a
+              {/* <a
                 href={artist.booking}
                 target="_blank"
                 rel="noopener noreferrer"
               >
                 | Booking
-              </a>
+              </a> */}
             </div>
           </div>
         </div>
