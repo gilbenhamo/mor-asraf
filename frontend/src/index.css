@@ -17,3 +17,11 @@
   padding-bottom: 70px;
   display: block;
 }
+
+.my-popup {
+  font-size: 0.9rem; /* Change font size */
+  overflow-y: auto;
+  max-height: 400px;
+  color: #2b2b2b; /* Change background color */
+  text-align: left;
+}

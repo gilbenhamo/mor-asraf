@@ -9,36 +9,21 @@ import { useGetPaymentFrameMutation } from "../services/payment-api";
 import FormSelectElement from "../components/UI/FormSelectElement";
 import ThreeInputsGridContainer from "../containers/ThreeInputsGridContainer";
 import CheckBox from "../components/UI/CheckBox";
+import { ARTISTS, CURRENCIES, termsAndAgreements } from "../utils/constants";
 
 interface Option {
   label: string;
   value: string | number;
 }
 
-const CURRENCIES = [
-  { label: "NIS ₪", value: 1 },
-  { label: "USD $", value: 2 },
-  { label: "EURO €", value: 3 },
-];
-
-const ARTISTS = [
-  { label: "Mor", value: "Mor Asraf" },
-  { label: "Guy", value: "Guy" },
-  { label: "Itay", value: "Itay" },
-];
-
 const termsAndConditionsPopUp = () =>
   Swal.fire({
     title: "Terms & Conditions",
-    html: `
-    <li>Term1 ................  </li>
-    <li>Term2 ................  </li>
-    <li>Term3 ................  </li>
-    <li>Term4 ................  </li>
-    <li>Term5 ................  </li>
-    <li>Term6 ................  </li>
-    `,
+    html: termsAndAgreements,
     confirmButtonColor: "#28282b",
+    customClass:{
+      popup:'my-popup'
+    }
   });
 
 const PaymentPage = () => {

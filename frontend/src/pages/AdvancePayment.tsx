@@ -7,25 +7,16 @@ import { useState } from "react";
 import Swal from "sweetalert2";
 import { useGetPaymentFrameMutation } from "../services/payment-api";
 import CheckBox from "../components/UI/CheckBox";
-
-const ARTISTS = [
-  { label: "Mor", value: "Mor Asraf" },
-  { label: "Guy", value: "Guy" },
-  { label: "Itay", value: "Itay" },
-];
+import { ARTISTS, termsAndAgreements } from "../utils/constants";
 
 const termsAndConditionsPopUp = () =>
   Swal.fire({
     title: "Terms & Conditions",
-    html: `
-    <li>Term1 ................  </li>
-    <li>Term2 ................  </li>
-    <li>Term3 ................  </li>
-    <li>Term4 ................  </li>
-    <li>Term5 ................  </li>
-    <li>Term6 ................  </li>
-    `,
+    html: termsAndAgreements,
     confirmButtonColor: "#28282b",
+    customClass:{
+      popup:'my-popup'
+    }
   });
 
 const AdvancePayment = ({

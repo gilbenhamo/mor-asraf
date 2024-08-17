@@ -358,6 +358,68 @@ export const healthDeclarationBoxs = [
   },
   {
     id: 20,
-    text: `Sign up to Empty Space newsletter`
-  }
+    text: `Sign up to Empty Space newsletter`,
+  },
+];
+
+export const termsAndAgreements = `
+<b>**Introduction**</b>
+<li>
+Welcome to the Empty Space website (hereinafter: "the Website") operated by Mor Asraf, 
+company registration number 316433226, located at 150 Hagoren, Ofakim (hereinafter: "the Website Management" and/or "the Company").
+Any use of the Website constitutes acceptance of this agreement, including the terms and conditions contained herein.
+The terms of use may change from time to time, and users are required to review them upon each visit to the Website. Browsing the Website and/or using it in any manner implies agreement to these terms and an obligation to adhere to them. It is clarified that these terms constitute a legally binding agreement for all intents and purposes and are binding on the user for any use of the Website.
+</li>
+<li> The use of the masculine form in this document is for convenience only, and the terms apply equally to all genders. </li>
+<li>Placing an order for services on the Website constitutes a declaration by the client that they have read, understood, and agreed to these terms. These terms form a binding contract between the user and the Website Management. </li>
+<br/>
+<b>**Services**</b> 
+<li>The Website offers payment services for works done at the Empty Space Art Studio and by individuals providing their services, including artwork and tattoos. </li>
+<li>Services can be ordered by contacting the Website Management, subject to availability and geographical location.</li>
+<li>Payment for services on the Website can be made through the Website's payment system, subject to approval by the Website Management. </li>
+<li>The prices of the services are exclusive of VAT, in accordance with tax laws for a "limited liability company.</li>
+<li>The Website Management reserves the right to discontinue its services at any time.</li>
+<li>Eligibility to use the Website is granted to any citizen aged 18 and over. Orders can be placed by individuals with an active bank account and/or a valid Israeli credit card and an email address provided during the purchase process on the Website. A minor making a purchase will be considered as having obtained parental/guardian consent for the transaction.</li>
+<br/>
+<b>**Cancellations and Changes to Service Types**</b> 
+<li>The policy for canceling transactions and returning products is in accordance with the Consumer Protection (Transaction Cancellation) Regulations, 2010, and the Consumer Protection Law, 1981.</li>
+<li>Services scheduled for a client can be canceled at any time, provided that the client informs the Website Management of the cancellation or rescheduling at least 30 days prior to the end of the engagement.</li>
+<li>Orders can be canceled up to 72 hours from the time of order, through direct communication with the studio manager.</li>
+<li>No refunds will be issued for services that have already been provided.</li>
+<li>Notice of cancellation or termination by the Company will be given to the user, and the Company will refrain from charging the user's credit card or will refund any amount paid for the products if applicable.</li>
+<br/>
+<b>**Availability and Location of Services**</b>
+<li>The availability of services is subject to the schedule agreed upon with the Website Management.</li>
+<li>For any questions or inquiries regarding the services, you may contact the studio manager at +972 53-283-5820.</li>
+<br/>
+<b>**Data Security and Privacy**</b>
+<li>The Website Management, as well as affiliated companies and additional parties operating on behalf of the Company to the same standards, may use the information provided in the form to deliver the requested information and services. This personal information will not be disclosed or used for other marketing purposes without permission and will not be transferred to a third party without the explicit consent of the client.</li>
+<li>The content of the service and any personal information disclosed during the service will never be revealed to any other person or entity without written consent from the client. The Website Management is committed to your privacy, which is our top priority.</li>
+<li>The Company undertakes not to use the information provided by the buyers except to facilitate the purchase on the sales site and in accordance with all legal requirements.</li>
+<li>By clicking the "Send" button, I confirm the form and its terms with my signature.</li>
+<li>The Website is secured using advanced security measures to ensure proper use and safe browsing on the Website and to protect users' privacy. All users of the Website and its services agree not to engage in any activity that may disrupt the operation of the Website, steal user information, or breach the Website's security mechanisms.</li>
+<li>In the event of misuse, the Website Management will take action against any such activity through all legal means available, including blocking the user from accessing the Website and taking legal action if the user engages in such conduct.</li>
+<br/>
+<b>**Intellectual Property**</b>
+<li>All intellectual property rights on this Website, including copyrights, distribution rights, trade secrets, trademarks, and all types of intellectual property, whether related to the design and layout of the Website or the content appearing on it, are the exclusive property of the Website Management.</li>
+<li>It is prohibited to copy, duplicate, distribute, publish, or use any information from or on the Website in any other way unless prior written consent has been obtained from the Website Management.</li>
+<br/>
+<b>**Governing Law and Jurisdiction**</b>
+<li> The interpretation and enforcement of these terms and/or any action or dispute arising from them will be governed by Israeli law only, and the Tel Aviv District Court will have exclusive jurisdiction</li>
+<br/>
+<b>**Contact and Accessibility**</b>
+<li>For any questions or inquiries, you may contact the Website Management by phone at +972 53-283-5820 or by email at mor@oart.co.il during the Website's operating hours.</li>
+`;
+
+export const ARTISTS = [
+  { label: "Mor Asraf", value: "Mor Asraf" },
+  { label: "Guy Drago", value: "Guy Drago" },
+  { label: "Ori Bensh", value: "Ori Bensh" },
+  { label: "Iftah Ram", value: "Iftah Ram" },
+];
+
+export const CURRENCIES = [
+  { label: "NIS ₪", value: 1 },
+  { label: "USD $", value: 2 },
+  { label: "EURO €", value: 3 },
 ];
