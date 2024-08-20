@@ -47,9 +47,6 @@ const ArtistBooking = ({ location, date, artist }: Props) => {
       date3,
       date4,
       checkbox18,
-      checkboxOpenMinded,
-      checkboxPart,
-      checkboxReally,
     } = state;
     if (!date1 && !date2 && !date3 && !date4)
       Swal.fire({
