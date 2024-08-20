@@ -1,26 +1,27 @@
 import { motion } from "framer-motion";
-import { SectionWrapper } from "../../containers/SectionWrapper";
-import { slideFadeIn } from "../../utils/motion";
-import SectionHead from "../UI/SectionHead";
-import FormInputElement from "../UI/FormInputElement";
-import FormTextArea from "../UI/FormTextArea";
-import DateInput from "../UI/DateInput";
-import CheckBox from "../UI/CheckBox";
-import TwoInputsGridContainer from "../../containers/TwoInputsGridContainer";
-import FormFileUploader from "../UI/FormFileUploader";
-import { useAppDispatch, useAppSelector } from "../../redux/hooks";
-import { init, setAttr } from "../../redux/slice/booking-reducer";
 import { useState } from "react";
-import { useSendBookingFormMutation } from "../../services/forms-api";
+import FormTextArea from "../components/UI/FormTextArea";
 import Swal from "sweetalert2";
+import { useSendBookingFormMutation } from "../services/forms-api";
+import { useAppDispatch, useAppSelector } from "../redux/hooks";
+import { init, setAttr } from "../redux/slice/booking-reducer";
+import { slideFadeIn } from "../utils/motion";
+import { SectionWrapper } from "../containers/SectionWrapper";
+import SectionHead from "../components/UI/SectionHead";
+import TwoInputsGridContainer from "../containers/TwoInputsGridContainer";
+import FormInputElement from "../components/UI/FormInputElement";
+import FormFileUploader from "../components/UI/FormFileUploader";
+import DateInput from "../components/UI/DateInput";
+import CheckBox from "../components/UI/CheckBox";
 interface Props {
   location?: string;
   date?: string;
   studio?: string;
+  artist?: string;
 }
 
 //todo: check case that the file is not image
-const BookingIsrael = ({ location, date, studio }: Props) => {
+const ArtistBooking = ({ location, date, artist }: Props) => {
   const [referencePhotos64, setReferencePhotos64] = useState<string[]>([]);
   const [bodyPhotos64, setBodyPhotos64] = useState<string[]>([]);
   const [sendBookingForm, {}] = useSendBookingFormMutation();
@@ -57,10 +58,7 @@ const BookingIsrael = ({ location, date, studio }: Props) => {
         icon: "info",
       });
     else if (
-      !checkbox18 ||
-      !checkboxOpenMinded ||
-      !checkboxPart ||
-      !checkboxReally
+      !checkbox18
     )
       Swal.fire({
         title: "All checkbox must be checked",
@@ -75,7 +73,7 @@ const BookingIsrael = ({ location, date, studio }: Props) => {
         bodyPhotos: bodyPhotos64,
         location,
         date,
-        artist: "Mor"
+        artist
       })
         .unwrap()
         .then((payload) => {
@@ -108,8 +106,8 @@ const BookingIsrael = ({ location, date, studio }: Props) => {
   return (
     <SectionWrapper idName="booking-israel2">
       <SectionHead
-        headText={`${location ? location : "TLV"} Booking.`}
-        subText={location ? `${date} - ${studio}` : ""}
+        headText={`${artist} Booking.`}
+        subText={"Empty____Space"}
       />
       <div className=" xl:flex-row flex-col flex items-center justify-center gap-10 p-2 overflow-hidden">
         <motion.div
@@ -290,27 +288,6 @@ const BookingIsrael = ({ location, date, studio }: Props) => {
                 isChecked={state.checkbox18}
                 onChange={handleChange}
               />
-              <CheckBox
-                label="I know my part in the process will be the idea \ story behind it, final drawing\design will be Mor's part."
-                id="part-checkbox"
-                name="checkboxPart"
-                isChecked={state.checkboxPart}
-                onChange={handleChange}
-              />
-              <CheckBox
-                label="I'm open minded."
-                id="minded-checkbox"
-                name="checkboxOpenMinded"
-                isChecked={state.checkboxOpenMinded}
-                onChange={handleChange}
-              />
-              <CheckBox
-                label="I really am."
-                id="really-checkbox"
-                name="checkboxReally"
-                isChecked={state.checkboxReally}
-                onChange={handleChange}
-              />
             </div>
 
             <motion.button
@@ -328,4 +305,4 @@ const BookingIsrael = ({ location, date, studio }: Props) => {
   );
 };
 
-export default BookingIsrael;
+export default ArtistBooking;

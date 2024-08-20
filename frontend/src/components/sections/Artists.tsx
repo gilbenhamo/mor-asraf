@@ -2,7 +2,12 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { SectionWrapper } from "../../containers/SectionWrapper";
 import { slideFadeIn } from "../../utils/motion";
-import { guy_profile, iftah_profile, mor_profile, ori_profile } from "../../assets";
+import {
+  guy_profile,
+  iftah_profile,
+  mor_profile,
+  ori_profile,
+} from "../../assets";
 
 const artists = [
   {
@@ -73,13 +78,13 @@ const ArtistCard = ({ artist }: any) => {
               <a href={artist.page} target="_blank" rel="noopener noreferrer">
                 Gallery
               </a>
-              {/* <a
+              <a
                 href={artist.booking}
                 target="_blank"
                 rel="noopener noreferrer"
               >
                 | Booking
-              </a> */}
+              </a>
             </div>
           </div>
         </div>

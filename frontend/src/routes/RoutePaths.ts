@@ -5,5 +5,7 @@ export const RoutePaths = {
   PAYMENT:"/payment",
   ADVANCE_PAYMENT:"/advance-payment",
   ADVANCE_PAYMENT_IL:"/advance-payment-il",
-  MOR_ASRAF: "/mor-asraf"
+  MOR_ASRAF: "/mor-asraf",
+  BOOKING: "/mor-asraf/booking",
+  ARTIST_BOOKING: "/artist-booking/"
 };

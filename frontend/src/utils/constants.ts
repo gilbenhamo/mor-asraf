@@ -418,6 +418,13 @@ export const ARTISTS = [
   { label: "Iftah Ram", value: "Iftah Ram" },
 ];
 
+export enum ArtistsName{
+  Mor = "Mor Asraf",
+  Guy = "Guy Drago",
+  Ori = "Ori Bensh",
+  Iftah = "Iftah Ram",
+}
+
 export const CURRENCIES = [
   { label: "NIS ₪", value: 1 },
   { label: "USD $", value: 2 },
