@@ -8,15 +8,22 @@ import Swal from "sweetalert2";
 import { useGetPaymentFrameMutation } from "../services/payment-api";
 import CheckBox from "../components/UI/CheckBox";
 import { ARTISTS, termsAndAgreements } from "../utils/constants";
+import ThreeInputsGridContainer from "../containers/ThreeInputsGridContainer";
+import FormSelectElement from "../components/UI/FormSelectElement";
+
+interface Option {
+  label: string;
+  value: string | number;
+}
 
 const termsAndConditionsPopUp = () =>
   Swal.fire({
     title: "Terms & Conditions",
     html: termsAndAgreements,
     confirmButtonColor: "#28282b",
-    customClass:{
-      popup:'my-popup'
-    }
+    customClass: {
+      popup: "my-popup",
+    },
   });
 
 const AdvancePayment = ({
@@ -44,6 +51,10 @@ const AdvancePayment = ({
     setConditions(e.target.checked);
   };
 
+  const [selectedArtistOption, setSelectedArtistOption] = useState<
+    Option | undefined
+  >(undefined);
+
   const validate = () => {
     const newErrors: any = {};
 
@@ -58,6 +69,7 @@ const AdvancePayment = ({
       newErrors.amount = "Amount must be greater than 0";
     else if (isNaN(formData.amount))
       newErrors.amount = "Amount must be a number";
+    if (!selectedArtistOption) newErrors.artist = "Artist must be selected";
 
     return newErrors;
   };
@@ -106,7 +118,7 @@ const AdvancePayment = ({
     //wait to response
     sendForm({
       ...formData,
-      Custom1: ARTISTS[0].value,
+      Custom1: selectedArtistOption?.value,
       Items,
     })
       .unwrap()
@@ -189,8 +201,7 @@ const AdvancePayment = ({
                   />
                 </TwoInputsGridContainer>
 
-                {/* <ThreeInputsGridContainer>
-     
+                <ThreeInputsGridContainer>
                   <FormSelectElement
                     id="payment-form-artist"
                     value={selectedArtistOption}
@@ -198,7 +209,7 @@ const AdvancePayment = ({
                     options={ARTISTS}
                     onChange={setSelectedArtistOption}
                   />
-                </ThreeInputsGridContainer> */}
+                </ThreeInputsGridContainer>
                 <div className="flex flex-row ">
                   <CheckBox
                     key={0}

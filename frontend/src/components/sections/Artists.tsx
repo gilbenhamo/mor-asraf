@@ -24,6 +24,7 @@ const artists = [
       "A tattoo artist for three years, specializing in black and white tattoos. Expert in illustrative surrealism, stippling shading, and possessing a unique personality that will realize both his and your wildest dreams.",
     pic: guy_profile,
     page: "https://www.instagram.com/guydrago_tattoo/",
+    booking: "artist-booking/guy drago",
     scale: 1,
   },
   {
@@ -34,6 +35,7 @@ const artists = [
       `,
     pic: ori_profile,
     page: "https://www.instagram.com/ori__bensh/",
+    booking: "artist-booking/ori bensh",
     scale: 1,
   },
   {
@@ -44,6 +46,7 @@ const artists = [
       `,
     pic: iftah_profile,
     page: "https://www.instagram.com/iftah.ram/",
+    booking: "artist-booking/iftah ram",
     scale: 1,
   },
   // Add more artists as needed
