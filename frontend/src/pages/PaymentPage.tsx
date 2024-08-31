@@ -119,6 +119,7 @@ const PaymentPage = () => {
       ...formData,
       Custom1: selectedArtistOption?.value,
       Currency: selectedCurrencyOption?.value,
+      ExemptVAT: selectedCurrencyOption != CURRENCIES[0],
       Items,
     })
       .unwrap()

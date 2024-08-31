@@ -152,10 +152,6 @@ export const EmptySpaceNavLinks = [
     title: "Events",
   },
   {
-    id: "booking-israel",
-    title: "Booking",
-  },
-  {
     id: "contact",
     title: "Contact",
   },

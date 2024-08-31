@@ -1,4 +1,4 @@
-import { es_plandscape, es_portrait } from "../../assets";
+import { es_movie_landscape,  es_portrait } from "../../assets";
 import { SectionWrapper } from "../../containers/SectionWrapper";
 import { fadeIn } from "../../utils/motion";
 import SectionHead from "../UI/SectionHead";
@@ -22,11 +22,15 @@ const EmptySpace = () => {
       <SectionWrapper idName="booking-israel">
         <SectionHead headText={`Empty Space`} subText={`tlv studio`} />
         <div className="relative">
-          <motion.img
-            variants={fadeIn("up", "", 0.5, 0.5)}
-            src={es_plandscape}
+          <motion.video
+            variants={fadeIn("up", "", 0.2, 1)}
             className="p-4 hidden md:block w-full h-auto"
-          />
+            autoPlay
+            loop
+            muted
+          >
+            <source src={es_movie_landscape} type="video/mp4" />
+          </motion.video>
           {/* Mobile Image */}
           <motion.img
             variants={fadeIn("up", "", 0.5, 0.5)}

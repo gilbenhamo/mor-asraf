@@ -5,7 +5,7 @@ import { fadeIn, slideFadeIn } from "../../utils/motion";
 const AboutEmptySpace = () => {
   return (
     <SectionWrapper idName="about">
-      <div className="pt-16 sm:pt-24 h-[50svh] sm:h-[60svh] w-full flex flex-col justify-center">
+      <div className="pt-16 pb-16 sm:pt-24 sm:pb-24 w-full flex flex-col justify-center">
         <motion.h1
           className="font-serif font-lightbold text-black text-4xl sm:text-[3.5rem] text-center"
           variants={fadeIn("down", "", 0.1, 1)}

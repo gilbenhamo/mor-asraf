@@ -18,7 +18,7 @@ const Events = () => {
   ];
 
   return (
-    <SectionWrapper idName="guest-spots">
+    <SectionWrapper idName="events">
       <SectionHead headText={"Events"} />
       <div className="mt-20 flex flex-col sm:scale-125 ">
         <TimeLine data={data} isError={false} isLoading={false} />

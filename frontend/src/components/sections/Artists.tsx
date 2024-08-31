@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { SectionWrapper } from "../../containers/SectionWrapper";
-import { slideFadeIn } from "../../utils/motion";
+import { fadeIn, slideFadeIn } from "../../utils/motion";
 import {
   guy_profile,
   iftah_profile,
@@ -102,16 +102,19 @@ const Artists = () => {
       <div className=" pt-16 sm:pt-24 h-fit w-full flex flex-col ">
         <motion.h1
           className="pb-20 font-serif font-lightbold text-black text-4xl sm:text-[3.5rem] text-center"
-          variants={slideFadeIn("up", "", 0.1, 0.5)}
+          variants={slideFadeIn("down", "", 0.1, 0.5)}
         >
           ARTISTS
         </motion.h1>
 
-        <div className="flex flex-col gap-y-16 lg:gap-y-20 justify-center items-center ">
+        <motion.div
+          className="flex flex-col gap-y-16 lg:gap-y-20 justify-center items-center "
+          variants={fadeIn("right", "", 0.3, 1)}
+        >
           {artists.map((artist, index) => (
             <ArtistCard key={index} artist={artist} />
           ))}
-        </div>
+        </motion.div>
       </div>
     </SectionWrapper>
   );
