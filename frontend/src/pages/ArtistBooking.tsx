@@ -100,7 +100,7 @@ const ArtistBooking = ({ location, date, artist }: Props) => {
           headText={`${artist} Booking.`}
           subText={"Empty____Space"}
         />
-        <div className="bg-white xl:flex-row flex-col flex items-center justify-center gap-10 p-2 overflow-hidden">
+        <div className="bg-white xl:flex-row flex-col flex items-center justify-center gap-10 p-2 overflow-hidden sm:pt-10">
           <motion.div
             variants={slideFadeIn("down", "spring", 0.2, 1.5)}
             className="flex-[0.75] bg-white   flex flex-col justify-center items-center"

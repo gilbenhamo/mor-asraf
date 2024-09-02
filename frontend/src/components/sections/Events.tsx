@@ -21,7 +21,13 @@ const Events = () => {
     <SectionWrapper idName="events">
       <SectionHead headText={"Events"} />
       <div className="mt-20 flex flex-col sm:scale-125 ">
-        <TimeLine data={data} isError={false} isLoading={false} />
+        {data.length ? (
+          <TimeLine data={data} isError={false} isLoading={false} />
+        ) : (
+          <div className="pb-20 font-serif font-lightbold text-black text-2xl sm:text-[2rem] text-center">
+            TBA
+            </div>
+        )}
       </div>
     </SectionWrapper>
   );

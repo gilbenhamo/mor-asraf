@@ -12,11 +12,11 @@ import {
 const artists = [
   {
     name: "Mor Asraf (28), Tel Aviv",
-    description: "Artist, Tattoer, Owner of Empty Space",
+    description: "Artist, Tattooist, Owner of Empty Space",
     pic: mor_profile,
     scale: 1,
     page: "/mor-asraf",
-    booking: "mor-asraf/#booking-israel",
+    booking: "mor-asraf",
   },
   {
     name: "Guy Drago (21), Jerusalem",

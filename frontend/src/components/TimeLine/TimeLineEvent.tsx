@@ -10,7 +10,7 @@ const TimeLineEvent = ({ heading, subHeading, available, onClick }: Props) => {
     <div className="h-full flex flex-col justify-center items-start">
       <div className="  flex flex-col justify-start items-start ">
         <h3 className={`text-black_m text-xl font-bold `}>{heading}</h3>
-        <p className="text-gray_m text-sm font-light overflow-hidden w-10/12">
+        <p className="text-gray_m text-xs font-light overflow-hidden w-10/12">
           {subHeading}
         </p>
         {available && (
