@@ -102,6 +102,7 @@ const TimeLine = ({ data, isError, isLoading }: TimeLineProps) => {
                 subHeadline={item.studio}
                 startDate={new Date(item.startDate!)}
                 endDate={new Date(item.endDate!)}
+                fullBooked={item.fullBooked}
               />
             ) : (
               <div className="h-[100px]"></div>

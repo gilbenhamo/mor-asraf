@@ -16,7 +16,7 @@ const artists = [
     pic: mor_profile,
     scale: 1,
     page: "/mor-asraf",
-    booking: "mor-asraf",
+    booking: "/mor-asraf/booking",
   },
   {
     name: "Guy Drago (21), Jerusalem",

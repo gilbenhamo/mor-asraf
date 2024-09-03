@@ -9,23 +9,37 @@ interface TimeLineItemProps {
   headline: string;
   subHeadline: string;
   _id: string;
+  fullBooked?: boolean;
 }
 
-const TimeLineItem = ({ headline, subHeadline, startDate, endDate, _id }: TimeLineItemProps) => {
+const TimeLineItem = ({
+  headline,
+  subHeadline,
+  startDate,
+  endDate,
+  _id,
+  fullBooked,
+}: TimeLineItemProps) => {
   const navigate = useNavigate();
-  const available = new Date() < endDate
- 
-  const handleBookNow = () =>{
-    navigate(`/guest-spot-booking/${_id}`)
+  const available = new Date() < endDate;
+
+  const handleBookNow = () => {
+    navigate(`/guest-spot-booking/${_id}`);
     setTimeout(() => {
       scrollTo(0, 0);
     }, 500);
-  }
+  };
   return (
     <div className="h-[100px] grid grid-cols-[1fr_auto_1fr] gap-x-2 items-center mx-auto">
-      <TimeLineDate startDate={startDate} endDate={endDate}/>
+      <TimeLineDate startDate={startDate} endDate={endDate} />
       <TimeLinePiller />
-      <TimeLineEvent heading={headline} subHeading={subHeadline} available={available} onClick={handleBookNow}/>
+      <TimeLineEvent
+        heading={headline}
+        subHeading={subHeadline}
+        available={available}
+        onClick={handleBookNow}
+        fullBooked={fullBooked}
+      />
     </div>
   );
 };
