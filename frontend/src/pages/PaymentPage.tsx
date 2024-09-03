@@ -10,6 +10,7 @@ import FormSelectElement from "../components/UI/FormSelectElement";
 import ThreeInputsGridContainer from "../containers/ThreeInputsGridContainer";
 import CheckBox from "../components/UI/CheckBox";
 import { ARTISTS, CURRENCIES, termsAndAgreements } from "../utils/constants";
+import LoadingElement from "../components/UI/LoadingElement";
 
 interface Option {
   label: string;
@@ -21,9 +22,9 @@ const termsAndConditionsPopUp = () =>
     title: "Terms & Conditions",
     html: termsAndAgreements,
     confirmButtonColor: "#28282b",
-    customClass:{
-      popup:'my-popup'
-    }
+    customClass: {
+      popup: "my-popup",
+    },
   });
 
 const PaymentPage = () => {
@@ -46,6 +47,7 @@ const PaymentPage = () => {
   const [iframeSrc, setframeSrc] = useState("");
   const [isOpen, setIsOpen] = useState(false);
   const [sendForm, {}] = useGetPaymentFrameMutation();
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleConditionsCheckbox = (e: any) => {
     setConditions(e.target.checked);
@@ -115,6 +117,7 @@ const PaymentPage = () => {
       },
     ];
     //wait to response
+    setIsLoading(true);
     sendForm({
       ...formData,
       Custom1: selectedArtistOption?.value,
@@ -136,8 +139,9 @@ const PaymentPage = () => {
           icon: "error",
         });
         console.error("rejected", error);
+        setIsLoading(false);
       });
-
+    setIsLoading(false);
     console.log("Allgood");
   };
 
@@ -279,11 +283,15 @@ const PaymentPage = () => {
                 transition={{ duration: 1 }}
                 className="overflow-hidden w-full sm:w-10/12"
               >
-                <iframe
-                  className="pt-10 w-full h-full"
-                  src={iframeSrc}
-                  title="Payment Page"
-                ></iframe>
+                {isLoading ? (
+                  <LoadingElement isLoading={isLoading} />
+                ) : (
+                  <iframe
+                    className="pt-10 w-full h-full"
+                    src={iframeSrc}
+                    title="Payment Page"
+                  ></iframe>
+                )}
               </motion.div>
             </div>
           </div>

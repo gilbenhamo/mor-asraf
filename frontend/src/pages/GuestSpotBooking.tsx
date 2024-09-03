@@ -2,7 +2,7 @@ import { useParams } from "react-router-dom";
 import BookingIsrael from "../components/sections/BookingIsrael";
 import { HomeContainer } from "../containers/HomeContainer";
 import { useGetGuestSpotByIdQuery } from "../services/details-api";
-import Spinner from "../components/UI/Spinner";
+import LoadingElement from "../components/UI/LoadingElement";
 
 const GuestSpotBooking = () => {
   const { id } = useParams();
@@ -12,12 +12,8 @@ const GuestSpotBooking = () => {
     <>
       <HomeContainer>
         <div className="pt-16 sm:pt-12">
-          {isLoading ? (
-            <Spinner />
-          ) : isError ? (
-            <div className=" text-black text-3xl h-screen text-center pt-20">
-              404<br></br> Page Not Found{" "}
-            </div>
+          {!data ? (
+            <LoadingElement isLoading={isLoading} isError={isError} />
           ) : (
             <BookingIsrael
               location={data.location}
