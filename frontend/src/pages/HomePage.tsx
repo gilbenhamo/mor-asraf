@@ -9,7 +9,6 @@ import AboutEmptySpace from "../components/sections/AboutEmptySpace";
 import { motion } from "framer-motion";
 import { fadeIn } from "../utils/motion";
 import { es_movie_landscape, es_portrait } from "../assets";
-import { SectionWrapper } from "../containers/SectionWrapper";
 
 export const HomePage = () => {
   return (
@@ -20,7 +19,7 @@ export const HomePage = () => {
         <AboutEmptySpace />
         <Artists />
         <Events />
-        <SectionWrapper idName="booking-israel">
+        <>
           <div className="relative"></div>
           <video className="p-4 hidden md:block w-full h-auto"  autoPlay loop muted>
             <source src={es_movie_landscape} type="video/mp4" />
@@ -31,8 +30,7 @@ export const HomePage = () => {
             src={es_portrait}
             className="p-4 block md:hidden w-full h-auto"
           />
-        </SectionWrapper>
-
+        </>
         <Contact />
       </HomeContainer>
     </>

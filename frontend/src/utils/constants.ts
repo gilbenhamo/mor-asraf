@@ -410,14 +410,14 @@ The terms of use may change from time to time, and users are required to review 
 export const ARTISTS = [
   { label: "Mor Asraf", value: "Mor Asraf" },
   { label: "Guy Drago", value: "Guy Drago" },
-  { label: "Ori Bensh", value: "Ori Bensh" },
+  { label: "Sivan Barkai", value: "Sivan Barkai" },
   { label: "Iftah Ram", value: "Iftah Ram" },
 ];
 
 export enum ArtistsName{
   Mor = "Mor Asraf",
   Guy = "Guy Drago",
-  Ori = "Ori Bensh",
+  Sivan = "Sivan Barkai",
   Iftah = "Iftah Ram",
 }
 
