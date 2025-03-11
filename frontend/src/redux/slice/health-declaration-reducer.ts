@@ -38,7 +38,7 @@ const healthSlice = createSlice({
       return { ...initialState };
     },
     setAttr(state, action: PayloadAction<attrPayload>) {
-      let { attr, value } = action.payload;
+      const { attr, value } = action.payload;
       if (attr.includes("checkbox")) {
         const index: number = Number.parseInt(attr.split("_")[2]);
         console.log(attr + "->" + index);

@@ -11,11 +11,10 @@ const styles = {
       "text-[#edf5e1] font-semibold lg:text-[30px] sm:text-[26px] xs:text-[20px] text-[17px] lg:leading-[40px] md:mt-2",
 
     sectionHeadText:
-      "text-black_m font-black md:text-[60px] sm:text-[50px] xs:text-[40px] text-[30px]",
+      "text-black_m md:text-[60px] sm:text-[50px] xs:text-[40px] text-[30px]",
     sectionSubText:
       "sm:text-[18px] text-[14px] text-gray_m uppercase tracking-wider",
   };
-  
+
   export { styles };
-  
-  
+

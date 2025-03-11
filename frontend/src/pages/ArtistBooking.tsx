@@ -23,11 +23,11 @@ interface Props {
 
 //todo: check case that the file is not image
 const ArtistBooking = ({ location, date, artist }: Props) => {
+  const dispatch = useAppDispatch();
   const [referencePhotos64, setReferencePhotos64] = useState<string[]>([]);
   const [bodyPhotos64, setBodyPhotos64] = useState<string[]>([]);
   const [sendBookingForm, {}] = useSendBookingFormMutation();
 
-  const dispatch = useAppDispatch();
   const state = useAppSelector((state) => state.booking);
 
   const handleChange = (e: any) => {

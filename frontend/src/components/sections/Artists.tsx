@@ -6,9 +6,10 @@ import {
   guy_profile,
   iftah_profile,
   mor_profile,
-  ori_profile,
+    sivan_profile
 } from "../../assets";
 
+type ArtistsType = {     name: string  ,   description: string  ,   pic: string ,    scale: number    , page: string ,    booking: string }
 const artists = [
   {
     name: "Mor Asraf (28), Tel Aviv",
@@ -28,14 +29,13 @@ const artists = [
     scale: 1,
   },
   {
-    name: "Ori Bensh (24), Tel Aviv",
+    name: "Sivan Barkai (32), Tel Aviv",
     description: `
-      A tattoo artist for four years, specializing in realism and surrealism.
-      His work transforms skin into unique pieces of art, telling captivating stories through a fusion of reality and fantasy.
+     A true visual storyteller fine line body flow specialist with a unique understanding of body movement. Most of her projects are done freehand directly on the skin, giving each piece its perfect anatomical placement
       `,
-    pic: ori_profile,
-    page: "https://www.instagram.com/ori__bensh/",
-    booking: "artist-booking/ori bensh",
+    pic: sivan_profile,
+    page: "https://www.instagram.com/sivanbarkai?igsh=MWN5cWNjbmRqOTVleg==",
+    booking: "artist-booking/sivan barkai",
     scale: 1,
   },
   {
@@ -53,7 +53,7 @@ const artists = [
 ];
 // animate={{ height: isOpen ? 800 : 100, scale: artist.scale }}
 
-const ArtistCard = ({ artist }: any) => {
+const ArtistCard = ({ artist }: { artist:ArtistsType }) => {
   const [isOpen, setIsOpen] = useState(false);
   return (
     <motion.div
@@ -62,14 +62,14 @@ const ArtistCard = ({ artist }: any) => {
       onClick={() => setIsOpen(!isOpen)}
       className="relative flex flex-col pb-1  border-black_m w-11/12 lg:w-9/12 " // Fixed height for the card
     >
-      <div className="flex font-serif h-full">
+      <div className="flex h-full">
         <img
           src={artist.pic}
           alt={artist.name}
-          className="size-24 lg:size-32 rounded-full object-cover mr-2"
+          className="size-24 lg:size-32 rounded-full object-center mr-2"
         />
 
-        <div className="grid w-9/12 sm:w-10/12">
+        <div className="grid w-9/12 sm:w-10/12 ">
           <h2 className="text-xl font-light text-black_m">{artist.name}</h2>
           <p className="pb-2 text-gray-500 text-left overflow-hidden text-sm">
             {artist.description}
@@ -101,7 +101,7 @@ const Artists = () => {
     <SectionWrapper idName="artists">
       <div className=" pt-16 sm:pt-24 h-fit w-full flex flex-col ">
         <motion.h1
-          className="pb-20 font-serif font-lightbold text-black text-4xl sm:text-[3.5rem] text-center"
+          className="pb-20 font-lightbold text-black text-4xl sm:text-[3.5rem] text-center"
           variants={slideFadeIn("down", "", 0.1, 0.5)}
         >
           ARTISTS
@@ -111,8 +111,8 @@ const Artists = () => {
           className="flex flex-col gap-y-16 lg:gap-y-20 justify-center items-center "
           variants={fadeIn("right", "", 0.3, 1)}
         >
-          {artists.map((artist, index) => (
-            <ArtistCard key={index} artist={artist} />
+          {artists.map((artist) => (
+            <ArtistCard artist={artist} />
           ))}
         </motion.div>
       </div>

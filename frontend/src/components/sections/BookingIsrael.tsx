@@ -23,7 +23,7 @@ interface Props {
 const BookingIsrael = ({ location, date, studio }: Props) => {
   const [referencePhotos64, setReferencePhotos64] = useState<string[]>([]);
   const [bodyPhotos64, setBodyPhotos64] = useState<string[]>([]);
-  const [sendBookingForm, {}] = useSendBookingFormMutation();
+  const [sendBookingForm] = useSendBookingFormMutation();
 
   const dispatch = useAppDispatch();
   const state = useAppSelector((state) => state.booking);
@@ -197,7 +197,7 @@ const BookingIsrael = ({ location, date, studio }: Props) => {
               </div>
               <div className="w-full flex flex-row justify-end items-start gap-2">
                 {/* Display uploaded photos */}
-                {referencePhotos64.map((photo, index) => (
+                {referencePhotos64?.map((photo, index) => (
                   <motion.img
                     className="size-20 object-contain"
                     whileHover={{ scale: 3, zIndex: 40 }}

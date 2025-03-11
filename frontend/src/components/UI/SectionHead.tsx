@@ -11,8 +11,8 @@ interface Props{
 const SectionHead = ({headText,motionDelay,subText}:Props) => {
   return (
     <motion.div variants={textVariant(motionDelay || 0.2)}>
-    <p className={styles.sectionSubText + ' font-serif'}>{subText}</p>
-    <h2 className={styles.sectionHeadText + ' font-serif'}>{headText}</h2>
+    <p className={styles.sectionSubText}>{subText}</p>
+    <h2 className={styles.sectionHeadText}>{headText}</h2>
   </motion.div>  )
 }
 export default SectionHead

@@ -19,6 +19,6 @@ export const routes = [
   { path: RoutePaths.MOR_ASRAF, element: ArtistHomePage},
   { path: RoutePaths.BOOKING, element: BookingIsrael},
   { path: RoutePaths.ARTIST_BOOKING+ArtistsName.Guy, element: ArtistBooking, props:{artist:ArtistsName.Guy}},
-  { path: RoutePaths.ARTIST_BOOKING+ArtistsName.Ori, element: ArtistBooking, props:{artist:ArtistsName.Ori}},
+  { path: RoutePaths.ARTIST_BOOKING+ArtistsName.Sivan, element: ArtistBooking, props:{artist:ArtistsName.Sivan}},
   { path: RoutePaths.ARTIST_BOOKING+ArtistsName.Iftah, element: ArtistBooking, props:{artist:ArtistsName.Iftah}},
 ];
