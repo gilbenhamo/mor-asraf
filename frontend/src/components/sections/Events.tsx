@@ -19,7 +19,7 @@ const Events = () => {
 
   return (
     <SectionWrapper idName="events">
-      <SectionHead headText={"Events"} />
+      <SectionHead headText={"Events"} withMargin="ml-[30px]" />
       <div className="mt-20 flex flex-col sm:scale-125 ">
         {data.length ? (
           <TimeLine data={data} isError={false} isLoading={false} />

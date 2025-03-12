@@ -31,7 +31,7 @@ const artists = [
   {
     name: "Sivan Barkai (32), Tel Aviv",
     description: `
-     A true visual storyteller fine line body flow specialist with a unique understanding of body movement. Most of her projects are done freehand directly on the skin, giving each piece its perfect anatomical placement
+     A true visual storyteller fine line body flow specialist with a unique understanding of body movement. Most of her projects are done freehand directly on the skin, giving each piece its perfect anatomical placement.
       `,
     pic: sivan_profile,
     page: "https://www.instagram.com/sivanbarkai?igsh=MWN5cWNjbmRqOTVleg==",
@@ -55,6 +55,16 @@ const artists = [
 
 const ArtistCard = ({ artist }: { artist:ArtistsType }) => {
   const [isOpen, setIsOpen] = useState(false);
+
+  const extractParts=(input: string): [string, string]=> {
+    const match = input.match(/^(.*?)(\(.*)/);
+    if (!match) {
+      throw new Error("Invalid format");
+    }
+    return [match[1].trim(), match[2].trim()];
+  }
+
+
   return (
     <motion.div
       animate={{ scale: artist.scale }}
@@ -70,7 +80,10 @@ const ArtistCard = ({ artist }: { artist:ArtistsType }) => {
         />
 
         <div className="grid w-9/12 sm:w-10/12 ">
-          <h2 className="text-xl font-light text-black_m">{artist.name}</h2>
+          <p>
+          <span className="text-xl text-black_m font-black mr-2">{extractParts(artist.name)[0]}{' '}</span>
+          <span className="text-xl font-light text-black_m">{extractParts(artist.name)[1]}</span>
+          </p>
           <p className="pb-2 text-gray-500 text-left overflow-hidden text-sm">
             {artist.description}
           </p>
