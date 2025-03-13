@@ -6,7 +6,7 @@ const Events = () => {
   //   const { data, isError, isLoading } = useGetAllGuestSpotsQuery(undefined);
   const data = [
     {
-      id: "1",
+      _id: "1",
       location: "ALMA'S SALON",
       studio: ` Salon conversation with Alma Hanegbi.
       An hour and a half session on the connection between popular culture and art.
@@ -14,6 +14,7 @@ const Events = () => {
       `,
       startDate: new Date(),
       endDate: new Date(),
+      fullBooked: true,
     },
   ];
 
@@ -26,7 +27,7 @@ const Events = () => {
         ) : (
           <div className="pb-20 font-serif font-lightbold text-black text-2xl sm:text-[2rem] text-center">
             TBA
-            </div>
+          </div>
         )}
       </div>
     </SectionWrapper>

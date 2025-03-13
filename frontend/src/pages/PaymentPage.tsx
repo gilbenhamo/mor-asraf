@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { SectionWrapper } from "../containers/SectionWrapper";
 import TwoInputsGridContainer from "../containers/TwoInputsGridContainer";
 import FormInputElement from "../components/UI/FormInputElement";
-import { useState } from "react";
+import React, { useState } from "react";
 import Swal from "sweetalert2";
 import { useGetPaymentFrameMutation } from "../services/payment-api";
 import FormSelectElement from "../components/UI/FormSelectElement";
@@ -17,6 +17,15 @@ interface Option {
   value: string | number;
 }
 
+export type FormDataType={
+  firstName: string,
+  lastName: string,
+  email: string,
+  phone: string,
+  amount: string,
+  artist?:string,
+  currency?:string
+}
 const termsAndConditionsPopUp = () =>
   Swal.fire({
     title: "Terms & Conditions",
@@ -28,12 +37,12 @@ const termsAndConditionsPopUp = () =>
   });
 
 const PaymentPage = () => {
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<FormDataType>({
     firstName: "",
     lastName: "",
     email: "",
     phone: "",
-    amount: 0,
+    amount: "0",
   });
   const [selectedArtistOption, setSelectedArtistOption] = useState<
     Option | undefined
@@ -46,15 +55,15 @@ const PaymentPage = () => {
   const [conditions, setConditions] = useState(false);
   const [iframeSrc, setframeSrc] = useState("");
   const [isOpen, setIsOpen] = useState(false);
-  const [sendForm, {}] = useGetPaymentFrameMutation();
+  const [sendForm] = useGetPaymentFrameMutation();
   const [isLoading, setIsLoading] = useState(false);
 
-  const handleConditionsCheckbox = (e: any) => {
+  const handleConditionsCheckbox = (e: React.ChangeEvent<HTMLInputElement> ) => {
     setConditions(e.target.checked);
   };
 
   const validate = () => {
-    const newErrors: any = {};
+    const newErrors = {} as FormDataType;
 
     if (!formData.firstName) newErrors.firstName = "First name is required";
     if (!formData.lastName) newErrors.lastName = "Last name is required";
@@ -63,9 +72,9 @@ const PaymentPage = () => {
       newErrors.email = "Email is invalid";
     if (!formData.phone) newErrors.phone = "Phone number is required";
     if (!formData.amount) newErrors.amount = "Amount is required";
-    else if (formData.amount <= 0)
+    else if (+formData.amount <= 0)
       newErrors.amount = "Amount must be greater than 0";
-    else if (isNaN(formData.amount))
+    else if (isNaN(+formData.amount))
       newErrors.amount = "Amount must be a number";
 
     if (!selectedArtistOption) newErrors.artist = "Artist must be selected";
@@ -75,14 +84,14 @@ const PaymentPage = () => {
     return newErrors;
   };
 
-  const handleChange = (e: any) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
     });
   };
 
-  const handleSubmit = async (e: any) => {
+  const handleSubmit = async (e:  React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     const newErrors = validate();

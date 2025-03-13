@@ -1,11 +1,11 @@
-import { InputHTMLAttributes } from "react";
+import React, { InputHTMLAttributes } from "react";
 
 interface inputProps extends InputHTMLAttributes<HTMLInputElement> {
   id: string;
   type: string;
   label?: string;
   value?: string | number;
-  onChange: (e:any) => void;
+  onChange: (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
 }
 
 const FormInputElement = ({

@@ -1,6 +1,12 @@
 import { motion } from "framer-motion";
 import { staggerContainer } from "../utils/motion";
 import { styles } from "../utils/styles";
+import {ReactNode} from "react";
+
+interface sectionWrapperProps  {
+  children: ReactNode;
+  idName: string;
+}
 
 export const SectionWrapper = (
   { children ,idName}: sectionWrapperProps

@@ -3,13 +3,14 @@ import { motion } from "framer-motion";
 import { SectionWrapper } from "../containers/SectionWrapper";
 import TwoInputsGridContainer from "../containers/TwoInputsGridContainer";
 import FormInputElement from "../components/UI/FormInputElement";
-import { useState } from "react";
+import React, { useState } from "react";
 import Swal from "sweetalert2";
 import { useGetPaymentFrameMutation } from "../services/payment-api";
 import CheckBox from "../components/UI/CheckBox";
 import { ARTISTS, termsAndAgreements } from "../utils/constants";
 import ThreeInputsGridContainer from "../containers/ThreeInputsGridContainer";
 import FormSelectElement from "../components/UI/FormSelectElement";
+import {FormDataType} from "./PaymentPage.tsx";
 
 interface Option {
   label: string;
@@ -45,9 +46,9 @@ const AdvancePayment = ({
   const [conditions, setConditions] = useState(false);
   const [iframeSrc, setframeSrc] = useState("");
   const [isOpen, setIsOpen] = useState(false);
-  const [sendForm, {}] = useGetPaymentFrameMutation();
+  const [sendForm] = useGetPaymentFrameMutation();
 
-  const handleConditionsCheckbox = (e: any) => {
+  const handleConditionsCheckbox = (e: React.ChangeEvent<HTMLInputElement>) => {
     setConditions(e.target.checked);
   };
 
@@ -56,7 +57,7 @@ const AdvancePayment = ({
   >(undefined);
 
   const validate = () => {
-    const newErrors: any = {};
+    const newErrors = {} as FormDataType;
 
     if (!formData.firstName) newErrors.firstName = "First name is required";
     if (!formData.lastName) newErrors.lastName = "Last name is required";
@@ -74,14 +75,14 @@ const AdvancePayment = ({
     return newErrors;
   };
 
-  const handleChange = (e: any) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
     });
   };
 
-  const handleSubmit = async (e: any) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     const newErrors = validate();

@@ -1,9 +1,9 @@
-import { TextareaHTMLAttributes } from "react";
+import React, { TextareaHTMLAttributes } from "react";
 interface textAreadProps extends TextareaHTMLAttributes<HTMLTextAreaElement> {
   id: string;
   label?: string;
   value?: string | number;
-  onChange: (e:any) => void;
+  onChange: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
 
 }
 

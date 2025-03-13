@@ -1,3 +1,4 @@
+import React, { useRef} from "react";
 import SectionHead from "../components/UI/SectionHead";
 import { motion } from "framer-motion";
 import SignatureCanvas from "react-signature-canvas";
@@ -8,7 +9,6 @@ import DateInput from "../components/UI/DateInput";
 import FormTextArea from "../components/UI/FormTextArea";
 import CheckBox from "../components/UI/CheckBox";
 import { healthDeclarationBoxs } from "../utils/constants";
-import { useRef } from "react";
 import { useSendHealthDeclarationFormMutation } from "../services/forms-api";
 import { useAppDispatch, useAppSelector } from "../redux/hooks";
 import { setAttr } from "../redux/slice/health-declaration-reducer";
@@ -17,19 +17,19 @@ import { useNavigate } from "react-router-dom";
 import { RoutePaths } from "../routes/RoutePaths";
 
 const HealthDeclaration = () => {
-  const signatureRef = useRef(null);
-  const [sendForm, {}] = useSendHealthDeclarationFormMutation();
+  const signatureRef = useRef<SignatureCanvas|null>(null);
+  const [sendForm] = useSendHealthDeclarationFormMutation();
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const state = useAppSelector((state) => state.health);
 
   const clearSignature = () => {
-    (signatureRef as any).current.clear(); // Clear the signature canvas
+      if(signatureRef.current)  signatureRef.current.clear(); // Clear the signature canvas
   };
 
-  const handleChange = (e: any) => {
-    const { name, value, type, checked } = e.target;
-    const newValue = type === "checkbox" ? checked : value;
+  const handleChange = (e:  React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value, type, checked } = e.target as HTMLInputElement;
+    const newValue = type === "checkbox" || type === "radio" ? checked : value;
     dispatch(setAttr({ attr: name, value: newValue }));
   };
 
@@ -57,7 +57,7 @@ const HealthDeclaration = () => {
     }
   };
 
-  const handleSubmit = async (e: any) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const {
       name,
@@ -70,6 +70,7 @@ const HealthDeclaration = () => {
       medication,
       disease,
     } = state;
+
     // Custom validation
     if (!name || !phone || !email || !address || !id) {
       Swal.fire({
@@ -87,11 +88,13 @@ const HealthDeclaration = () => {
         icon: "info",
       });
     else {
-      const signature = (signatureRef as any).current.toDataURL();
-      const checkboxes_text = [];
-      for (var i = 0; i < checkboxes.length; i++) {
-        if (!checkboxes[i]) checkboxes_text.push(healthDeclarationBoxs[i]);
-      }
+      const signature = (signatureRef?.current) ? signatureRef.current.toDataURL() : undefined;
+
+      // Using map to create checkboxes_text array
+      const checkboxes_text = healthDeclarationBoxs
+          .filter((_, index) => !checkboxes[index]) // Filter out unchecked items
+          .map((elem) => elem.text); // Map to get the text of unchecked checkboxes
+
       sendForm({
         name,
         phone,
@@ -104,32 +107,32 @@ const HealthDeclaration = () => {
         checkboxes_text,
         signature,
       })
-        .unwrap()
-        .then((payload) => {
-          console.log("contact fulfilled", payload);
-          Swal.fire({
-            title: "Booking request submited!",
-            text: "We will be in touch!",
-            confirmButtonColor: "#28282B",
-            icon: "success",
-          }).then((result) => {
-            if (result.isConfirmed) {
-              navigate(RoutePaths.HOME);
-              setTimeout(() => {
-                scrollTo(0, 0);
-              }, 500);
-            }
+          .unwrap()
+          .then((payload) => {
+            console.log("contact fulfilled", payload);
+            Swal.fire({
+              title: "Booking request submitted!",
+              text: "We will be in touch!",
+              confirmButtonColor: "#28282B",
+              icon: "success",
+            }).then((result) => {
+              if (result.isConfirmed) {
+                navigate(RoutePaths.HOME);
+                setTimeout(() => {
+                  scrollTo(0, 0);
+                }, 500);
+              }
+            });
+          })
+          .catch((error) => {
+            Swal.fire({
+              title: "Something went wrong!",
+              text: "Please try again later!",
+              confirmButtonColor: "#D61A3C",
+              icon: "error",
+            });
+            console.error("rejected", error);
           });
-        })
-        .catch((error) => {
-          Swal.fire({
-            title: "Something went wrong!",
-            text: "Please try again later!",
-            confirmButtonColor: "#D61A3C",
-            icon: "error",
-          });
-          console.error("rejected", error);
-        });
     }
   };
 

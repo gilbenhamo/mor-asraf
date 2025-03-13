@@ -1,9 +1,11 @@
+import React from "react";
+
 interface Props {
   label: string;
   id: string;
   name: string;
   isChecked?:boolean;
-  onChange: (e: any) => void;
+  onChange: (e:  React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 const CheckBox = ({ label, id, name,isChecked, onChange }: Props) => {

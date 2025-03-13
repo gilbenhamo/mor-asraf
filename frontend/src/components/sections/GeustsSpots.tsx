@@ -7,6 +7,7 @@ import LoadingElement from "../UI/LoadingElement";
 
 const GeustsSpots = () => {
   const { data, isError, isLoading } = useGetAllGuestSpotsQuery(undefined);
+
   return (
     <>
       <SectionWrapper idName="guest-spots">

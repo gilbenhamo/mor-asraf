@@ -6,7 +6,7 @@ import FormInputElement from "../UI/FormInputElement";
 import FormTextArea from "../UI/FormTextArea";
 import { useSendContactFormMutation } from "../../services/forms-api";
 import Swal from "sweetalert2";
-import { useState } from "react";
+import React, { useState } from "react";
 
 const initialState = {
   name: "",
@@ -16,17 +16,17 @@ const initialState = {
 };
 
 const Contact = () => {
-  const [sendContactForm, {}] = useSendContactFormMutation();
+  const [sendContactForm] = useSendContactFormMutation();
   const [formData, setFormData] = useState(initialState);
 
-  const handleChange = (e: any) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData((prevState) => ({
       ...prevState,
       [e.target.name]: e.target.value,
     }));
   };
 
-  const handleSubmit = (e: any) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const data = {
       name: formData.name,

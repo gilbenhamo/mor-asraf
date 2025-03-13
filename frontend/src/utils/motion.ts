@@ -1,3 +1,5 @@
+import { Variants } from "framer-motion";
+
 export const linksVariants = {
   hover: { scale: 1.1 },
   tap: { scale: 0.9 },
@@ -23,9 +25,9 @@ export const textVariant = (delay?: number) => {
 
 export const fadeIn = (
   direction: string,
-  type: any,
+  type: string,
   delay: number,
-  duration: number
+  duration: number,
 ) => {
   return {
     hidden: {
@@ -68,9 +70,9 @@ export const zoomIn = (delay: number, duration: number) => {
 
 export const slideIn = (
   direction: string,
-  type: any,
+  type: string,
   delay: number,
-  duration: number
+  duration: number,
 ) => {
   return {
     hidden: {
@@ -91,9 +93,9 @@ export const slideIn = (
 };
 export const slideFadeIn = (
   direction: string,
-  type: any,
+  type: string,
   delay: number,
-  duration: number
+  duration: number,
 ) => {
   return {
     hidden: {
@@ -117,28 +119,27 @@ export const slideFadeIn = (
 };
 
 export const staggerContainer = (
-  staggerChildren?: any,
-  delayChildren?: number
-) => {
-  return {
-    hidden: {},
-    show: {
-      transition: {
-        staggerChildren: staggerChildren,
-        delayChildren: delayChildren || 0,
-      },
+  staggerChildren?: boolean,
+  delayChildren: number = 0,
+): Variants => ({
+  hidden: { opacity: 0 },
+  show: {
+    opacity: 1,
+    transition: {
+      staggerChildren: staggerChildren ? 1 : 0,
+      delayChildren,
     },
-  };
-};
-
-export const while_hover_repeat: any = {
-  scale: [1, 1.05],
-  transition: {
-    duration: 1,
-    repeat: Infinity,
-    repeatType: "mirror",
   },
-};
+});
+
+// export const while_hover_repeat: any = {
+//   scale: [1, 1.05],
+//   transition: {
+//     duration: 1,
+//     repeat: Infinity,
+//     repeatType: "mirror",
+//   },
+// };
 
 export const staggerContainer2 = () => {
   return {

@@ -7,14 +7,14 @@ interface selectProps {
   // options: string[];
   options: { label: string; value: number | string }[];
   value?: { label: string; value: number | string };
-  onChange: (e: any) => void;
+  onChange: (e: { label: string; value: string | number }) => void;
 }
 
 const FormSelectElement = ({
   options,
   value,
   placeHolder,
-  onChange
+  onChange,
 }: selectProps) => {
   const [isOpen, setIsOpen] = useState(false);
 
