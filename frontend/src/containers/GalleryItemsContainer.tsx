@@ -1,3 +1,5 @@
+import {containerBaseProps} from "../utils/prop.ts";
+
 interface galleryItemsContainerProps extends containerBaseProps {
   rowReverse?: boolean;
   colReverse?: boolean;

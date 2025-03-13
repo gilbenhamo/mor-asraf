@@ -4,6 +4,7 @@ import GalleryOneCenterItem from "../components/Gallery/GalleryOneCenterItem";
 import Gallery2Items from "../components/Gallery/Gallery2Items"; // Assuming this import is needed
 import Gallery3ItemsRow from "../components/Gallery/Gallery3ItemsRow"; // Assuming this import is needed
 import Gallery3Items from "../components/Gallery/Gallery3Items";
+import {Gallery2ItemsProps, Gallery3ItemsProps, GalleryItemBaseProps} from "./prop.ts";
 
 const GalleryItemFactory = (item: GalleryItemBaseProps, key?: number) => {
   switch (item.type) {

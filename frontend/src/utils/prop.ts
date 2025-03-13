@@ -1,3 +1,10 @@
+export interface containerBaseProps {
+  children: React.ReactNode;
+}
+
+export interface sectionWrapperProps extends containerBaseProps {
+  idName: string;
+}
 
 export interface geustSpotsProps {
   index?:number;
