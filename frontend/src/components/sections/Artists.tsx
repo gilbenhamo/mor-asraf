@@ -88,7 +88,7 @@ const ArtistCard = ({ artist }: { artist: ArtistsType }) => {
         <div className="grid w-9/12 sm:w-10/12 ">
           <p>
             <span className="text-xl text-black_m font-black mr-2">
-              {extractParts(artist.name)[0]}{" "}
+              {extractParts(artist.name)[0]}
             </span>
             <span className="text-xl font-light text-black_m">
               {extractParts(artist.name)[1]}
