@@ -6,10 +6,17 @@ import {
   guy_profile,
   iftah_profile,
   mor_profile,
-    sivan_profile
+  sivan_profile,
 } from "../../assets";
 
-type ArtistsType = {     name: string  ,   description: string  ,   pic: string ,    scale: number    , page: string ,    booking: string }
+type ArtistsType = {
+  name: string;
+  description: string;
+  pic: string;
+  scale: number;
+  page: string;
+  booking: string;
+};
 const artists = [
   {
     name: "Mor Asraf (28), Tel Aviv",
@@ -53,17 +60,16 @@ const artists = [
 ];
 // animate={{ height: isOpen ? 800 : 100, scale: artist.scale }}
 
-const ArtistCard = ({ artist }: { artist:ArtistsType }) => {
+const ArtistCard = ({ artist }: { artist: ArtistsType }) => {
   const [isOpen, setIsOpen] = useState(false);
 
-  const extractParts=(input: string): [string, string]=> {
+  const extractParts = (input: string): [string, string] => {
     const match = input.match(/^(.*?)(\(.*)/);
     if (!match) {
       throw new Error("Invalid format");
     }
     return [match[1].trim(), match[2].trim()];
-  }
-
+  };
 
   return (
     <motion.div
@@ -81,8 +87,12 @@ const ArtistCard = ({ artist }: { artist:ArtistsType }) => {
 
         <div className="grid w-9/12 sm:w-10/12 ">
           <p>
-          <span className="text-xl text-black_m font-black mr-2">{extractParts(artist.name)[0]}{' '}</span>
-          <span className="text-xl font-light text-black_m">{extractParts(artist.name)[1]}</span>
+            <span className="text-xl text-black_m font-black mr-2">
+              {extractParts(artist.name)[0]}{" "}
+            </span>
+            <span className="text-xl font-light text-black_m">
+              {extractParts(artist.name)[1]}
+            </span>
           </p>
           <p className="pb-2 text-gray-500 text-left overflow-hidden text-sm">
             {artist.description}
@@ -124,8 +134,8 @@ const Artists = () => {
           className="flex flex-col gap-y-16 lg:gap-y-20 justify-center items-center "
           variants={fadeIn("right", "", 0.3, 1)}
         >
-          {artists.map((artist) => (
-            <ArtistCard artist={artist} />
+          {artists.map((artist, index) => (
+            <ArtistCard artist={artist} key={index} />
           ))}
         </motion.div>
       </div>

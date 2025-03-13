@@ -10,7 +10,7 @@ import TwoInputsGridContainer from "../../containers/TwoInputsGridContainer";
 import FormFileUploader from "../UI/FormFileUploader";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 import { init, setAttr } from "../../redux/slice/booking-reducer";
-import { useState } from "react";
+import React, { useState } from "react";
 import { useSendBookingFormMutation } from "../../services/forms-api";
 import Swal from "sweetalert2";
 interface Props {
@@ -28,9 +28,9 @@ const BookingIsrael = ({ location, date, studio }: Props) => {
   const dispatch = useAppDispatch();
   const state = useAppSelector((state) => state.booking);
 
-  const handleChange = (e: any) => {
-    const { name, value, type, checked } = e.target;
-    const newValue = type === "checkbox" ? checked : value;
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value, type, checked } = e.target as HTMLInputElement;
+    const newValue = type === "checkbox" || type === "radio" ? checked : value;
     dispatch(setAttr({ attr: name, value: newValue }));
   };
 
@@ -38,7 +38,7 @@ const BookingIsrael = ({ location, date, studio }: Props) => {
     dispatch(setAttr({ attr: name, value }));
   };
 
-  const handleSubmit = async (e: any) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const {
       date1,

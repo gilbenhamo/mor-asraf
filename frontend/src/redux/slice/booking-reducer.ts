@@ -2,7 +2,7 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 interface attrPayload {
   attr: string;
-  value: string | string[] | File[];
+  value: string | string[] | File[] | boolean;
 }
 
 interface BookingState {

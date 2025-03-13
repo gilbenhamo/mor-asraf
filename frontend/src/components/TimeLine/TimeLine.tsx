@@ -1,21 +1,13 @@
-import TimeLineItem from "./TimeLineItem";
+import TimeLineItem, { TimeLineItemProps } from "./TimeLineItem";
 import { motion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
-// import { useGetAllGuestSpotsQuery } from "../../services/details-api";
 
-// interface QueryResult {
-//   data: GuestSpotType[]; // Assuming useGetAllGuestSpotsQuery returns an array of GuestSpot objects
-//   isError: boolean;
-//   isLoading: boolean;
-// }
 interface TimeLineProps {
-  data: any;
+  data: TimeLineItemProps[];
   isError: boolean;
   isLoading: boolean;
 }
 const TimeLine = ({ data, isError, isLoading }: TimeLineProps) => {
-  
-
   const containerRef = useRef<HTMLDivElement>(null);
   const [visibleItemIndex, setVisibleItemIndex] = useState<number>(0);
 
@@ -36,14 +28,14 @@ const TimeLine = ({ data, isError, isLoading }: TimeLineProps) => {
 
     const setInitialMiddleItem = () => {
       let startingIndex = data.findIndex(
-        (item: any) => new Date(item.endDate!) > new Date()
+        (item: TimeLineItemProps) => new Date(item.endDate!) > new Date(),
       );
       startingIndex = startingIndex === -1 ? data.length : startingIndex;
 
       if (container) {
         const itemHeight = container.scrollHeight / data.length;
         const middleIndex = Math.floor(
-          container.clientHeight / (2 * itemHeight)
+          container.clientHeight / (2 * itemHeight),
         );
         container.scrollTop =
           startingIndex * itemHeight - middleIndex * itemHeight;
@@ -62,6 +54,7 @@ const TimeLine = ({ data, isError, isLoading }: TimeLineProps) => {
       }
     };
   }, [data]);
+
   return (
     <div
       ref={containerRef}
@@ -77,7 +70,7 @@ const TimeLine = ({ data, isError, isLoading }: TimeLineProps) => {
       ) : isError ? (
         <div> ERROR </div>
       ) : (
-        data.map((item: any, index: number) => (
+        data.map((item: TimeLineItemProps, index: number) => (
           <motion.div
             key={index}
             animate={{
@@ -85,9 +78,9 @@ const TimeLine = ({ data, isError, isLoading }: TimeLineProps) => {
                 index === visibleItemIndex
                   ? 1
                   : index === visibleItemIndex - 1 ||
-                    index === visibleItemIndex + 1
-                  ? 0.5
-                  : 0.25,
+                      index === visibleItemIndex + 1
+                    ? 0.5
+                    : 0.25,
             }}
             transition={{
               ease: "easeInOut",
@@ -98,8 +91,8 @@ const TimeLine = ({ data, isError, isLoading }: TimeLineProps) => {
             {item.location !== "" ? (
               <TimeLineItem
                 _id={item._id}
-                headline={item.location}
-                subHeadline={item.studio}
+                location={item.location}
+                studio={item.studio}
                 startDate={new Date(item.startDate!)}
                 endDate={new Date(item.endDate!)}
                 fullBooked={item.fullBooked}

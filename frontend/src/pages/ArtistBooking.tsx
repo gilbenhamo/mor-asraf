@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { useState } from "react";
+import React, { useState } from "react";
 import FormTextArea from "../components/UI/FormTextArea";
 import Swal from "sweetalert2";
 import { useSendBookingFormMutation } from "../services/forms-api";
@@ -26,12 +26,12 @@ const ArtistBooking = ({ location, date, artist }: Props) => {
   const dispatch = useAppDispatch();
   const [referencePhotos64, setReferencePhotos64] = useState<string[]>([]);
   const [bodyPhotos64, setBodyPhotos64] = useState<string[]>([]);
-  const [sendBookingForm, {}] = useSendBookingFormMutation();
+  const [sendBookingForm] = useSendBookingFormMutation();
 
   const state = useAppSelector((state) => state.booking);
 
-  const handleChange = (e: any) => {
-    const { name, value, type, checked } = e.target;
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value, type, checked } = e.target as HTMLInputElement;
     const newValue = type === "checkbox" ? checked : value;
     dispatch(setAttr({ attr: name, value: newValue }));
   };
@@ -40,7 +40,7 @@ const ArtistBooking = ({ location, date, artist }: Props) => {
     dispatch(setAttr({ attr: name, value }));
   };
 
-  const handleSubmit = async (e: any) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const { date1, date2, date3, date4, checkbox18 } = state;
     if (!date1 && !date2 && !date3 && !date4)

@@ -1,12 +1,5 @@
-interface containerBaseProps {
-  children: React.ReactNode;
-}
 
-interface sectionWrapperProps extends containerBaseProps {
-  idName: string;
-}
-
-interface geustSpotsProps {
+export interface geustSpotsProps {
   index?:number;
   location: string;
   studio: string;
@@ -14,7 +7,7 @@ interface geustSpotsProps {
   icon:string;
 }
 
-interface GalleryItemBaseProps {
+export interface GalleryItemBaseProps {
   type:number;
   title?: string;
   description?: string;
@@ -23,16 +16,17 @@ interface GalleryItemBaseProps {
 
 }
 
-interface Gallery2ItemsProps extends GalleryItemBaseProps{
+export interface Gallery2ItemsProps extends GalleryItemBaseProps{
   img2: string;
 }
 
-interface Gallery3ItemsProps extends GalleryItemBaseProps{
+export interface Gallery3ItemsProps extends GalleryItemBaseProps{
   img2: string;
   img3: string;
 }
 
-interface GuestSpotType {
+export interface GuestSpotType {
+  id:string;
   location: string;
   studio: string;
   startDate: Date;

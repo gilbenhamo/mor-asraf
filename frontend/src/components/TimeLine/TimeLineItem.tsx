@@ -3,18 +3,18 @@ import TimeLinePiller from "./TimeLinePiller";
 import TimeLineDate from "./TimeLineDate";
 import { useNavigate } from "react-router-dom";
 
-interface TimeLineItemProps {
+export interface TimeLineItemProps {
   startDate: Date;
   endDate: Date;
-  headline: string;
-  subHeadline: string;
+  location: string;
+  studio: string;
   _id: string;
   fullBooked?: boolean;
 }
 
 const TimeLineItem = ({
-  headline,
-  subHeadline,
+  location,
+  studio,
   startDate,
   endDate,
   _id,
@@ -29,13 +29,14 @@ const TimeLineItem = ({
       scrollTo(0, 0);
     }, 500);
   };
+
   return (
     <div className="h-[100px] grid grid-cols-[1fr_auto_1fr] gap-x-2 items-center mx-auto">
       <TimeLineDate startDate={startDate} endDate={endDate} />
       <TimeLinePiller />
       <TimeLineEvent
-        heading={headline}
-        subHeading={subHeadline}
+        heading={location}
+        subHeading={studio}
         available={available}
         onClick={handleBookNow}
         fullBooked={fullBooked}

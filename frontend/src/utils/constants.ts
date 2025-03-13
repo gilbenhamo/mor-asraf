@@ -1,4 +1,5 @@
 import { galleryPhotos } from "../assets/GalleryPhotos";
+import {Gallery2ItemsProps, Gallery3ItemsProps, GalleryItemBaseProps} from "./prop.ts";
 
 export enum GalleryItemTypes {
   One,
@@ -256,7 +257,7 @@ export const healthDeclarationBoxs = [
     id: 6,
     text: `During the recovery period ranging 
     from 3 weeks to a month and a half, do not enter the 
-    sea \ pool \ sauna \ gym \ or any other place that could lead to 
+    sea / pool / sauna / gym / or any other place that could lead to 
     infection of the wound as a result of lack of hygiene.`,
   },
   {
