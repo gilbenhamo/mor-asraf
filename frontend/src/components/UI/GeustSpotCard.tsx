@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { VerticalTimelineElement } from "react-vertical-timeline-component";
+import {geustSpotsProps} from "../../utils/prop.ts";
 
 const GeustSpotCard = ({ location, studio, date, icon, index }: geustSpotsProps) => {
   return (
@@ -23,7 +24,7 @@ const GeustSpotCard = ({ location, studio, date, icon, index }: geustSpotsProps)
             className="w-full h-full object-cover rounded-full"
           />
         </div>
-      } 
+      }
     >
       <motion.div className="flex justify-start items-center flex-col">
         <motion.div

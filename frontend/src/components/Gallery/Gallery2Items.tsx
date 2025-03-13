@@ -1,4 +1,5 @@
 import GalleryItemsContainer from "../../containers/GalleryItemsContainer";
+import {Gallery2ItemsProps} from "../../utils/prop.ts";
 
 
 const Gallery2Items = ({ img1, img2, title, description, reverse }: Gallery2ItemsProps) => {
